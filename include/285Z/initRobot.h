@@ -3,22 +3,37 @@
 
 //ALL NAMES ARE PLACEHOLDERS TIL BOT DESIGN IS DECIDED
 
+//MOTOR DECLARATIONS
 //drive
-int portA;
-int portB;
-int portC;
-int portD;
+extern int portA;
+extern int portB;
+extern int portC;
+extern int portD;
 //functional
-int portE;
-int portF;
-int portG;
-int portH;
+extern int portE;
+extern int portF;
+extern int portG;
+extern int portH;
 
-pros::Motor driveMotorA;
-pros::Motor driveMotorB;
-pros::Motor driveMotorC;
-pros::Motor driveMotorD;
-pros::Motor driveMotorE;
-pros::Motor driveMotorF;
-pros::Motor driveMotorG;
-pros::Motor driveMotorH;
+extern pros::Motor driveMotorA;
+extern pros::Motor driveMotorB;
+extern pros::Motor driveMotorC;
+extern pros::Motor driveMotorD;
+extern pros::Motor driveMotorE;
+extern pros::Motor driveMotorF;
+extern pros::Motor driveMotorG;
+extern pros::Motor driveMotorH;
+
+//CONTROLLER DECLARATIONS
+extern okapi::ControllerButton aButton;
+extern okapi::ControllerButton bButton;
+extern okapi::ControllerButton xButton;
+extern okapi::ControllerButton yButton;
+extern okapi::ControllerButton upButton;
+extern okapi::ControllerButton downButton;
+extern okapi::ControllerButton rightButton;
+extern okapi::ControllerButton leftButton;
+extern okapi::ControllerButton rightTrigger;
+extern okapi::ControllerButton leftTrigger;
+extern okapi::ControllerButton rightBumper;
+extern okapi::ControllerButton leftBumper;
