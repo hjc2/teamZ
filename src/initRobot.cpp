@@ -5,16 +5,20 @@ int portA = 0;
 int portB = 1;
 int portC = 2;
 int portD = 3;
-int portE = 4;
-int portF = 5;
-int portG = 6;
-int portH = 7;
+
+int intakeLeftPort = 4;
+int intakeRight = 5;
+int beltPort = 6;
+int fwPort = 7;
 
 pros::Motor driveMotorA(portA);
 pros::Motor driveMotorB(portB);
 pros::Motor driveMotorC(portC);
 pros::Motor driveMotorD(portD);
-pros::Motor driveMotorE(portE);
-pros::Motor driveMotorF(portF);
-pros::Motor driveMotorG(portG);
-pros::Motor driveMotorH(portH);
+
+pros::Motor leftIntakeMotor(intakeLeftPort);
+pros::Motor rightIntakeMotor(intakeRight);
+pros::Motor beltMotor(beltPort);
+pros::Motor fwMotor(fwPort);
+
+okapi::Controller controller;

@@ -7,19 +7,21 @@ extern int portA;
 extern int portB;
 extern int portC;
 extern int portD;
-extern int portE;
-extern int portF;
-extern int portG;
-extern int portH;
+
+extern int intakeLeftPort;
+extern int intakeRight;
+extern int beltPort;
+extern int fwPort;
 
 extern pros::Motor driveMotorA;
 extern pros::Motor driveMotorB;
 extern pros::Motor driveMotorC;
 extern pros::Motor driveMotorD;
-extern pros::Motor driveMotorE;
-extern pros::Motor driveMotorF;
-extern pros::Motor driveMotorG;
-extern pros::Motor driveMotorH;
+
+extern pros::Motor leftIntakeMotor;
+extern pros::Motor rightIntakeMotor;
+extern pros::Motor beltMotor;
+extern pros::Motor fwMotor;
 
 //CONTROLLER
 extern okapi::Controller controller;
