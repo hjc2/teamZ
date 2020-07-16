@@ -1,3 +1,6 @@
-bool redAutonA();
-bool redautonB();
-bool redAutonC();
+#include "main.h"
+
+void redZeroAuton();
+void redOneAuton();
+void redTwoAuton();
+void redThreeAuton();

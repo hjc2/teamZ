@@ -1,3 +1,6 @@
-bool blueAutonA();
-bool blueAutonB();
-bool blueAutonC();
+#include "main.h"
+
+void blueZeroAuton();
+void blueOneAuton();
+void blueTwoAuton();
+void blueThreeAuton();
