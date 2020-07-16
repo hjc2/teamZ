@@ -13,6 +13,6 @@ void autonomous() {}
 
 void opcontrol() {
 	while (true) {
-		pros::delay(portA);
+		pros::delay(20);
 	}
 }

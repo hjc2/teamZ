@@ -14,11 +14,13 @@ bool intakeControl(bool overRide, int io){
             fwMotor.set_brake_mode(MOTOR_BRAKE_BRAKE);
             leftIntakeMotor.move_voltage(0);
             fwMotor.move_voltage(0);
+            return(false);
         } else {
             leftIntakeMotor.set_brake_mode(MOTOR_BRAKE_COAST);
             fwMotor.set_brake_mode(MOTOR_BRAKE_COAST);
             leftIntakeMotor.move_voltage(io);
             fwMotor.move_voltage(-1 * io);
+            return(true);
         }
     } else {
         if(controller.getDigital(okapi::ControllerDigital::intakeButton) == 0){
@@ -26,11 +28,13 @@ bool intakeControl(bool overRide, int io){
             fwMotor.set_brake_mode(MOTOR_BRAKE_BRAKE);
             leftIntakeMotor.move_voltage(0);
             fwMotor.move_voltage(0);
+            return(false);
         } else {
             leftIntakeMotor.set_brake_mode(MOTOR_BRAKE_COAST);
             fwMotor.set_brake_mode(MOTOR_BRAKE_COAST);
             leftIntakeMotor.move_voltage(io);
             fwMotor.move_voltage(-1 * io);
+            return(true);
         }
     }
 }
@@ -40,17 +44,21 @@ bool fwControl(bool overRide, int io){
         if(io == 0){
             fwMotor.set_brake_mode(MOTOR_BRAKE_BRAKE);
             fwMotor.move_voltage(0);
+            return(false);            
         } else {
             fwMotor.set_brake_mode(MOTOR_BRAKE_COAST);
             fwMotor.move_voltage(-1 * io);
+            return(true);
         }
     } else {
         if(controller.getDigital(okapi::ControllerDigital::fwButton) == 0){
             fwMotor.set_brake_mode(MOTOR_BRAKE_BRAKE);
             fwMotor.move_voltage(0);
+            return(false);
         } else {
             fwMotor.set_brake_mode(MOTOR_BRAKE_COAST);
             fwMotor.move_voltage(-1 * io);
+            return(true);
         }
     }
 }
