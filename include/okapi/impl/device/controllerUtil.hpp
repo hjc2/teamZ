@@ -43,7 +43,11 @@ enum class ControllerDigital {
   X = 14,     ///< X
   B = 15,     ///< B
   Y = 16,     ///< Y
-  A = 17      ///< A
+  A = 17,     ///< A
+
+  beltButton = 6,
+  intakeButton = 5,
+  fwButton = 4
 };
 
 class ControllerUtil {
