@@ -2,20 +2,56 @@
 #include "../include/285Z/initRobot.h"
 #include "../include/285Z/robot/functions.h"
 
+bool fwToggler = false;
+bool intakeToggler = false;
+bool beltToggler = false;
+
+//pushControlFunctions
 bool intakeControl(bool overRide, int io){
     if(overRide){
-        leftIntakeMotor.move_voltage(io);
-        rightIntakeMotor.move_voltage(-1 * io);
+        if(io == 0){
+            leftIntakeMotor.set_brake_mode(MOTOR_BRAKE_BRAKE);
+            fwMotor.set_brake_mode(MOTOR_BRAKE_BRAKE);
+            leftIntakeMotor.move_voltage(0);
+            fwMotor.move_voltage(0);
+        } else {
+            leftIntakeMotor.set_brake_mode(MOTOR_BRAKE_COAST);
+            fwMotor.set_brake_mode(MOTOR_BRAKE_COAST);
+            leftIntakeMotor.move_voltage(io);
+            fwMotor.move_voltage(-1 * io);
+        }
     } else {
-
+        if(controller.getDigital(okapi::ControllerDigital::intakeButton) == 0){
+            leftIntakeMotor.set_brake_mode(MOTOR_BRAKE_BRAKE);
+            fwMotor.set_brake_mode(MOTOR_BRAKE_BRAKE);
+            leftIntakeMotor.move_voltage(0);
+            fwMotor.move_voltage(0);
+        } else {
+            leftIntakeMotor.set_brake_mode(MOTOR_BRAKE_COAST);
+            fwMotor.set_brake_mode(MOTOR_BRAKE_COAST);
+            leftIntakeMotor.move_voltage(io);
+            fwMotor.move_voltage(-1 * io);
+        }
     }
 }
 
 bool fwControl(bool overRide, int io){
     if(overRide){
-
+        if(io == 0){
+            fwMotor.set_brake_mode(MOTOR_BRAKE_BRAKE);
+            fwMotor.move_voltage(0);
+        } else {
+            fwMotor.set_brake_mode(MOTOR_BRAKE_COAST);
+            fwMotor.move_voltage(-1 * io);
+        }
     } else {
-        
+        if(controller.getDigital(okapi::ControllerDigital::fwButton) == 0){
+            fwMotor.set_brake_mode(MOTOR_BRAKE_BRAKE);
+            fwMotor.move_voltage(0);
+        } else {
+            fwMotor.set_brake_mode(MOTOR_BRAKE_COAST);
+            fwMotor.move_voltage(-1 * io);
+        }
     }
 }
 
