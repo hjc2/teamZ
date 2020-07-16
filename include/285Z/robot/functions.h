@@ -6,6 +6,10 @@ bool intakeControl(bool overRide, int io);
 bool fwControl(bool overRide, int io);
 bool beltControl(bool overRide, int io);
 
+bool intakeTogglerControl();
+bool fwTogglerControl();
+bool beltTogglerControl();
+
 extern bool fwToggler;
 extern bool intakeToggler;
 extern bool beltToggler;

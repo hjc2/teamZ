@@ -6,6 +6,7 @@ bool fwToggler = false;
 bool intakeToggler = false;
 bool beltToggler = false;
 
+//select one of the functions to use by commenting one of them out
 //pushControlFunctions
 bool intakeControl(bool overRide, int io){
     if(overRide){
@@ -38,6 +39,7 @@ bool intakeControl(bool overRide, int io){
         }
     }
 }
+bool intakeTogglerControl(){}
 
 bool fwControl(bool overRide, int io){
     if(overRide){
@@ -60,6 +62,11 @@ bool fwControl(bool overRide, int io){
             fwMotor.move_voltage(-1 * io);
             return(true);
         }
+    }
+}
+bool fwTogglerControl(){
+    if(fwToggler){
+        fwToggler.set
     }
 }
 
@@ -86,3 +93,4 @@ bool beltControl(bool overRide, int io){
         }
     }
 }
+bool beltTogglerControl();
