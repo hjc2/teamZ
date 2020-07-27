@@ -1,7 +1,7 @@
 #include "main.h"
 #include "../include/285Z/initRobot.h"
 #include "../include/285Z/robot/functions.h"
-
+/*
 bool fwToggler = false;
 bool intakeToggler = false;
 bool beltToggler = false;
@@ -94,3 +94,4 @@ bool beltControl(bool overRide, int io){
     }
 }
 bool beltTogglerControl();
+*/

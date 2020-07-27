@@ -40,3 +40,13 @@ bool hDrive(bool overRide, int ioLeft, int ioRight, bool brake){
             return(1);
     }
 }
+bool xDrive(){
+    //controller.getAnalog(okapi::ControllerAnalog::leftY)
+    float topLeft = controller.getAnalog(okapi::ControllerAnalog::leftY) + controller.getAnalog(okapi::ControllerAnalog::leftX) + controller.getAnalog(okapi::ControllerAnalog::rightX);
+    float topRight = controller.getAnalog(okapi::ControllerAnalog::leftY) + -1 * controller.getAnalog(okapi::ControllerAnalog::leftX) + controller.getAnalog(okapi::ControllerAnalog::rightX);
+    float backLeft = -1 * controller.getAnalog(okapi::ControllerAnalog::leftY) + controller.getAnalog(okapi::ControllerAnalog::leftX) + controller.getAnalog(okapi::ControllerAnalog::rightX);
+    float backRight = -1 * controller.getAnalog(okapi::ControllerAnalog::leftY) + -1 * controller.getAnalog(okapi::ControllerAnalog::leftX) + controller.getAnalog(okapi::ControllerAnalog::rightX);
+}
+bool xDriveComplicated(bool overRide, int ioOne, int ioTwo, int ioThree, int ioFour, bool brake){/*  */
+    //to be made later
+}
