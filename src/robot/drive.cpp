@@ -42,11 +42,30 @@ bool hDrive(bool overRide, int ioLeft, int ioRight, bool brake){
 }
 bool xDrive(){
     //controller.getAnalog(okapi::ControllerAnalog::leftY)
-    float topLeft = controller.getAnalog(okapi::ControllerAnalog::leftY) + controller.getAnalog(okapi::ControllerAnalog::leftX) + controller.getAnalog(okapi::ControllerAnalog::rightX);
-    float topRight = controller.getAnalog(okapi::ControllerAnalog::leftY) + -1 * controller.getAnalog(okapi::ControllerAnalog::leftX) + controller.getAnalog(okapi::ControllerAnalog::rightX);
-    float backLeft = -1 * controller.getAnalog(okapi::ControllerAnalog::leftY) + controller.getAnalog(okapi::ControllerAnalog::leftX) + controller.getAnalog(okapi::ControllerAnalog::rightX);
-    float backRight = -1 * controller.getAnalog(okapi::ControllerAnalog::leftY) + -1 * controller.getAnalog(okapi::ControllerAnalog::leftX) + controller.getAnalog(okapi::ControllerAnalog::rightX);
+    float topLeft = controller.getAnalog(okapi::ControllerAnalog::leftY) + controller.getAnalog(okapi::ControllerAnalog::leftX) + controller.getAnalog(okapi::ControllerAnalog::rightX)*12000;
+    float backLeft = controller.getAnalog(okapi::ControllerAnalog::leftY) + -1 * controller.getAnalog(okapi::ControllerAnalog::leftX) + controller.getAnalog(okapi::ControllerAnalog::rightX)*12000;
+    float topRight = -1 * controller.getAnalog(okapi::ControllerAnalog::leftY) + controller.getAnalog(okapi::ControllerAnalog::leftX) + controller.getAnalog(okapi::ControllerAnalog::rightX)*12000;
+    float backRight = -1 * controller.getAnalog(okapi::ControllerAnalog::leftY) + -1 * controller.getAnalog(okapi::ControllerAnalog::leftX) + controller.getAnalog(okapi::ControllerAnalog::rightX)*12000;
+
+    float scaler = topLeft;
+
+    if(backLeft > scaler){scaler = backLeft;}
+    if(topRight > scaler){scaler = topRight;}
+    if(backRight > scaler){scaler = backRight;}
+    
+    topLeft /= scaler * 12000;
+    topRight /= scaler * 12000;
+    backRight /= scaler * 12000;
+    backLeft /= scaler * 12000;
+
+    driveMotorTopLeft.move_voltage(topLeft);
+    driveMotorTopRight.move_voltage(topRight);
+    driveMotorBackLeft.move_voltage(backLeft);
+    driveMotorBackRight.move_voltage(backRight);
+    return(true);
+    
 }
 bool xDriveComplicated(bool overRide, int ioOne, int ioTwo, int ioThree, int ioFour, bool brake){/*  */
     //to be made later
+    return(true);
 }
