@@ -12,6 +12,7 @@ void competition_initialize() {}
 
 //xArcade(myStrafe, myForward, mySpin)
 void autonomous() {
+	/*
 	auto autoChassis = ChassisControllerBuilder()
 	.withMotors(2, -3, -5, 4) //tl, tr, br, bl //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)
 	.withDimensions(AbstractMotor::gearset::green, {{15_in, 15_in}, imev5GreenTPR})
@@ -21,7 +22,7 @@ void autonomous() {
 	autoChassis->setState({0_in, 0_in, 0_deg});
 	pros::delay(20);
 	autoChassis->driveToPoint({1_ft, 1_ft});
-	
+	*/
 	//autoChassis->turnToAngle(90_deg);
 	//autoChassis.waitUntilSettled();
 
