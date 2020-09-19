@@ -1,0 +1,26 @@
+
+-include
+-motor control
+-getting controller input
+-pros structure;
+-odom
+-mp
+-okapi and pros libraries
+-namespaces
+-commenting
+
+-how to build your code
+-how to use github desktop
+-how we write commit messages
+-how to use pros
+-when to branch and when to push
+
+-prosv5 upload
+-prosv5 build all
+
+things to install
+
+github desktop
+gitbash
+pros
+atom
