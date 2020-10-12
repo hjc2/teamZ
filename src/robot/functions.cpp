@@ -47,7 +47,7 @@ int evaluateIntakeMode(){
   } else
   if(outtakeValue == 1){
     controlIntake(REVERSE);
-    toggleIntake = 1;
+    //toggleIntake = 1;
   } else if(!toggleIntake){
     controlIntake(BRAKE);
   } else {
