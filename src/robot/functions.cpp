@@ -5,7 +5,7 @@
 
 bool controlIntake(bool direction, int speed){
   if(direction){
-    speed = speed * -1;
+    speed *= -1;
   }
   intakeRight.move_voltage(speed);
 }
