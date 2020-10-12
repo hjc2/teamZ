@@ -1,6 +1,6 @@
 #include "main.h"
 #include "../include/285Z/initRobot.h"
-#pragma  once
+#pragma once
 int frontLeftMotorPort = 2;
 int frontRightMotorPort = -3;
 int backLeftMotorPort = 4;
@@ -17,11 +17,12 @@ int portH = 7;
 //pros::Motor driveMotorD(portD);
 pros::Motor intakeLeft(leftIntakePort);
 pros::Motor intakeRight(rightIntakePort);
+
 pros::Motor driveMotorG(portG);
 pros::Motor driveMotorH(portH);
 
-pros::Motor *rightIntake = &intakeLeft;
-pros::Motor *leftIntake = &intakeRight;
+pros::Motor *rightIntake = &intakeRight;
+pros::Motor *leftIntake = &intakeLeft;
 
 okapi::ControllerButton intakeButton = okapi::ControllerDigital::R2;  //INTAKE BUTTON
 okapi::ControllerButton outtakeButton = okapi::ControllerDigital::R1;  //OUTTAKE BUTTON
