@@ -2,4 +2,5 @@
 
 //SNAILBOT DEMO CODE
 
+bool pushIntake(bool value);
 

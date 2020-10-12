@@ -1,5 +1,6 @@
 #include "main.h"
 #include "../include/285Z/initRobot.h"
+#include "../include/285Z/robot/functions.h"
 using namespace okapi; //DONT TOUCH THIS
 
 void on_center_button() { }
@@ -51,7 +52,7 @@ void opcontrol() {
     Controller controller(ControllerId::master);
 	//DO NOT TOUCH THIS CODE
 
-  double analogLeftStick= controller.getAnalog(ControllerAnalog::rightX);
+  double analogLeftStick = controller.getAnalog(ControllerAnalog::rightX);
 	//WHILE LOOP FOR OPCONTROL
     while (true) {
 		//DO NOT TOUCH THIS CODE
@@ -61,6 +62,7 @@ void opcontrol() {
         	controller.getAnalog(ControllerAnalog::leftX) //spin
 		);
 		//DO NOT TOUCH THIS CODE
+		pushIntake(controller.getDigital(ControllerDigital::R2));
 		pros::delay(20);
 	}
 }
