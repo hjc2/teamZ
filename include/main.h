@@ -67,6 +67,11 @@ void initialize(void);
 void disabled(void);
 void competition_initialize(void);
 void opcontrol(void);
+const extern int BRAKE;
+const extern int FORWARD;
+const extern int REVERSE;
+extern int toggleIntake;
+extern int toggleIntake;
 #ifdef __cplusplus
 }
 #endif

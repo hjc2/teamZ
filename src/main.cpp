@@ -3,6 +3,12 @@
 #include "../include/285Z/robot/functions.h"
 using namespace okapi; //DONT TOUCH THIS
 
+const int BRAKE = 0;
+const int FORWARD = 1;
+const int REVERSE = 2;
+
+int toggleIntake = 0;
+
 void on_center_button() { }
 
 void initialize() {}
@@ -48,21 +54,17 @@ void opcontrol() {
 	.withMotors(frontLeftMotorPort, frontRightMotorPort, backRightMotorPort, backLeftMotorPort) //tl, tr, br, bl //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)
 	.withDimensions(AbstractMotor::gearset::green, {{15_in, 15_in}, imev5GreenTPR})
 	.build();
+
     auto xModel = std::dynamic_pointer_cast<XDriveModel>(chassis->getModel());
     Controller controller(ControllerId::master);
-	//DO NOT TOUCH THIS CODE
 
-  double analogLeftStick = controller.getAnalog(ControllerAnalog::rightX);
-	//WHILE LOOP FOR OPCONTROL
     while (true) {
-		//DO NOT TOUCH THIS CODE
-        xModel->xArcade(
-			controller.getAnalog(ControllerAnalog::rightX), //side to side
-        	controller.getAnalog(ControllerAnalog::rightY), //front back
-        	controller.getAnalog(ControllerAnalog::leftX) //spin
-		);
-		//DO NOT TOUCH THIS CODE
-		pushIntake(controller.getDigital(ControllerDigital::R2));
-		pros::delay(20);
+      xModel->xArcade(
+  			controller.getAnalog(ControllerAnalog::rightX), //side to side
+      	controller.getAnalog(ControllerAnalog::rightY), //front back
+      	controller.getAnalog(ControllerAnalog::leftX) //spin
+		  );
+    evaluateIntakeMode();
+    pros::delay(20);
 	}
 }
