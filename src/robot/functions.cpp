@@ -50,8 +50,10 @@ int evaluateIntakeMode(){
     //toggleIntake = 1;
   } else if(!toggleIntake){
     controlIntake(BRAKE);
-  } else {
+  } else if(toggleIntake){
     controlIntake(FORWARD);
+  } else {
+    controlIntake(BRAKE);
   }
 }
 /*
