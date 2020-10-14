@@ -6,7 +6,7 @@ using namespace okapi; //DONT TOUCH THIS
 const int BRAKE = 0;
 const int FORWARD = 1;
 const int REVERSE = 2;
-
+const double Deadzone = 0.1;
 int toggleIntake = 0;
 
 void on_center_button() { }
@@ -62,7 +62,8 @@ void opcontrol() {
       xModel->xArcade(
   			controller.getAnalog(ControllerAnalog::rightX), //side to side
       	controller.getAnalog(ControllerAnalog::rightY), //front back
-      	controller.getAnalog(ControllerAnalog::leftX) //spin
+      	controller.getAnalog(ControllerAnalog::leftX), //spin
+        Deadzone
 		  );
     evaluateIntakeMode();
     //rightIntake -> move_voltage(12000);
