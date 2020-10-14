@@ -65,6 +65,7 @@ void opcontrol() {
       	controller.getAnalog(ControllerAnalog::leftX) //spin
 		  );
     evaluateIntakeMode();
+    //rightIntake -> move_voltage(12000);
     pros::delay(20);
 	}
 }

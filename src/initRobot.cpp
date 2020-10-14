@@ -6,7 +6,7 @@ int frontRightMotorPort = -3;
 int backLeftMotorPort = 4;
 int backRightMotorPort = -5;
 int leftIntakePort = 8;
-int rightIntakePort = -9;
+int rightIntakePort = 9;
 int portG = 6;
 int portH = 7;
 //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)   .withMotors(2, -3, -5, 4)

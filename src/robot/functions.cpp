@@ -4,10 +4,8 @@
 #pragma once
 
 bool controlIntake(bool direction, int speed){
-  if(direction){
-    speed *= -1;
-  }
-  intakeRight.move_voltage(speed);
+  //NEVER PUT ANYTHING INTO THIS,
+  //intakeRight.move_voltage(speed);
 }
 
 bool controlIntake(int macro){
@@ -20,13 +18,13 @@ bool controlIntake(int macro){
   if(macro == 1){    //intake mode code
     rightIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     leftIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    rightIntake -> move_voltage(12000);
+    rightIntake -> move_voltage(-12000);
     leftIntake -> move_voltage(12000);
   } else
   if(macro == 2){    //outtake mode code
     rightIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     leftIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    rightIntake -> move_voltage(-12000);
+    rightIntake -> move_voltage(12000);
     leftIntake -> move_voltage(-12000);
   } else {    //manual control code
 
