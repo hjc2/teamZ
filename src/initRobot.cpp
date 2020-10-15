@@ -9,6 +9,13 @@ int leftIntakePort = 8;
 int rightIntakePort = 9;
 int portG = 6;
 int portH = 7;
+
+char leftEncoderPortOne = 'E';
+char leftEncoderPortTwo = 'F';
+char rightEncoderPortOne = 'C';
+char rightEncoderPortTwo = 'D';
+char middleEncoderPortOne = 'A';
+char middleEncoderPortTwo = 'B';
 //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)   .withMotors(2, -3, -5, 4)
 
 //pros::Motor driveMotorA(portA);

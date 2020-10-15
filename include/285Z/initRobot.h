@@ -10,6 +10,12 @@ extern int rightIntakePort;
 extern int portG;
 extern int portH;
 
+extern char leftEncoderPortOne;
+extern char leftEncoderPortTwo;
+extern char rightEncoderPortOne;
+extern char rightEncoderPortTwo;
+extern char middleEncoderPortOne;
+extern char middleEncoderPortTwo;
 //extern pros::Motor driveMotorA;
 //extern pros::Motor driveMotorB;
 //extern pros::Motor driveMotorC;
