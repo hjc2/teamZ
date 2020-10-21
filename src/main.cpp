@@ -8,6 +8,7 @@ const int FORWARD = 1;
 const int REVERSE = 2;
 const double Deadzone = 0.1;
 int toggleIntake = 0;
+int toggleIncycle = 0;
 
 void on_center_button() { }
 
@@ -34,15 +35,23 @@ void autonomous() {
 	.withDimensions(AbstractMotor::gearset::green, {{15_in, 15_in}, imev5GreenTPR})
 	.build();
     auto xModel = std::dynamic_pointer_cast<XDriveModel>(chassis->getModel());
-
+/*
 	pros::delay(20);
 	for(float i  = 0; i < 1; i+=0.01){
 		int y = 1 - i;
         xModel->xArcade(i/2,y/2,0);
 		pros::delay(20);
 	}
-	xModel->xArcade(0,0,0);
-
+  */
+	xModel->xArcade(0,0.25,0);
+  pros::delay(6000);
+  for(float i = 0; i += 0.01; i < 1){
+    xModel->xArcade(0, i, 0);
+    pros::delay(10);
+  }
+  for(float i = 1; i -= 0.01; i > 0){
+    xModel->xArcade(0, i, 0);
+  }
 	//take the input and strafe to it
 
 }
@@ -66,6 +75,7 @@ void opcontrol() {
         Deadzone
 		  );
     evaluateIntakeMode();
+    evaluateIncycleMode();
     //rightIntake -> move_voltage(12000);
     pros::delay(20);
 	}

@@ -21,7 +21,10 @@ extern pros::Motor driveMotorH;
 
 extern pros::Motor *rightIntake;
 extern pros::Motor *leftIntake;
+extern pros::Motor *ejectorMotor;
+extern pros::Motor *cyclerMotor;
 
 extern okapi::ControllerButton intakeButton;
 extern okapi::ControllerButton outtakeButton;
-//CONTROLLER
+extern okapi::ControllerButton incycleButton;
+extern okapi::ControllerButton outcycleButton;

@@ -72,6 +72,8 @@ const extern int FORWARD;
 const extern int REVERSE;
 const extern double Deadzone;
 extern int toggleIntake;
+extern int toggleIncycle;
+
 //extern int toggleIntake;
 #ifdef __cplusplus
 }

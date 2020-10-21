@@ -3,5 +3,9 @@
 //SNAILBOT DEMO CODE
 
 bool controlIntake(bool direction, int speed);
+
 bool controlIntake(int macro);
 int evaluateIntakeMode();
+
+bool controlIncycle(int macro);
+int evaluateIncycleMode();
