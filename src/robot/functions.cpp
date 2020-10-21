@@ -72,7 +72,7 @@ bool controlIncycle(int macro){
     ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     ejectorMotor -> move_voltage(12000);
-    cyclerMotor -> move_voltage(-12000);
+    cyclerMotor -> move_voltage(12000);
   } else {    //manual control code
 
   }
