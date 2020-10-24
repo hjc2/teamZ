@@ -8,7 +8,7 @@ int backRightMotorPort = -5;
 int leftIntakePort = 8;
 int rightIntakePort = 9;
 int ejectorPort = 11;
-int cyclerPort = 20;
+int cyclerPort = 13;
 //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)   .withMotors(2, -3, -5, 4)
 
 //pros::Motor driveMotorA(portA);
