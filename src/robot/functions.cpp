@@ -8,28 +8,53 @@ bool controlIntake(bool direction, int speed){
   //intakeRight.move_voltage(speed);
 }
 
+int evaluateDriver(){
+  int cycleValue =  cycleButton.changedToPressed();
+  int ejectValue = ejectButton.isPressed();
+  int reverseValue = reverseButton.isPressed();
+  if(cycleValue){
+    if(toggleCycle){
+      controlIntake(FORWARD);
+      controlIncycle(FORWARD);
+      toggleCycle = 0;
+    } else {
+      controlIntake(BRAKE);
+      controlIntake(BRAKE);
+      toggleCycle = 1;
+    }
+  }
+  else if(ejectValue){
+    controlIntake(FORWARD);
+    controlIncycle(EJECT);
+  }
+  else if(reverseValue){
+    controlIntake(REVERSE);
+    controlIncycle(REVERSE);
+  } else if(toggleCycle){
+    controlIntake(FORWARD);
+    controlIncycle(FORWARD);
+  } else {
+    controlIntake(BRAKE);
+    controlIncycle(BRAKE);
+  }
+  return(0);
+}
+
 bool controlIntake(int macro){
   if(macro == 0){    //brake mode code
-    rightIntake -> move_voltage(0);
-    leftIntake -> move_voltage(0);
-    rightIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-    leftIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    setInBrake();
   } else
   if(macro == 1){    //intake mode code
-    rightIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    leftIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    rightIntake -> move_voltage(-12000);
-    leftIntake -> move_voltage(12000);
+    setIntake();
   } else
   if(macro == 2){    //outtake mode code
-    rightIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    leftIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    rightIntake -> move_voltage(12000);
-    leftIntake -> move_voltage(-12000);
+    setOuttake();
   } else {    //manual control code
 
   }
 }
+
+
 
 int evaluateIntakeMode(){
   bool intakeValue = intakeButton.changedToPressed();
@@ -57,23 +82,16 @@ int evaluateIntakeMode(){
 
 bool controlIncycle(int macro){
   if(macro == 0){    //brake mode code
-    ejectorMotor -> move_voltage(0);
-    cyclerMotor -> move_voltage(0);
-    ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-    cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    setCyBrake();
   } else
   if(macro == 1){    //intake mode code
-    ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    ejectorMotor -> move_voltage(-12000);
-    cyclerMotor -> move_voltage(12000);
+    setCycle();
   } else
   if(macro == 2){    //outtake mode code
-    ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    ejectorMotor -> move_voltage(12000);
-    cyclerMotor -> move_voltage(12000);
-  } else {    //manual control code
+    setReverse();
+  } if(macro == 3){ //ejectorMode
+    setEject();
+  }  else {    //manual control code
 
   }
 }
@@ -101,27 +119,47 @@ int evaluateIncycleMode(){
     controlIncycle(BRAKE);
   }
 }
-/*
-bool controlIncycle(int macro){
-  if(macro == 0){    //brake mode code
-    intakeLeft.move_voltage(0);
-    intakeRight.move_voltage(0);
-    intakeLeft.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-    intakeRight.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-  } else
-  if(macro == 1){    //intake mode code
-    intakeLeft.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    intakeRight.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    intakeLeft.move_voltage(12000);
-    intakeRight.move_voltage(12000);
-  } else
-  if(macro == 2){    //outtake mode code
-    intakeLeft.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    intakeRight.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    intakeLeft.move_voltage(-12000);
-    intakeRight.move_voltage(-12000);
-  } else {    //manual control code
 
-  }
+void setInBrake(){
+  rightIntake -> move_voltage(0);
+  leftIntake -> move_voltage(0);
+  rightIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+  leftIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 }
-*/
+void setOuttake(){
+  rightIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  leftIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  rightIntake -> move_voltage(12000);
+  leftIntake -> move_voltage(-12000);
+}
+void setIntake(){
+  rightIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  leftIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  rightIntake -> move_voltage(-12000);
+  leftIntake -> move_voltage(12000);
+}
+
+void setCyBrake(){
+  ejectorMotor -> move_voltage(0);
+  cyclerMotor -> move_voltage(0);
+  ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+  cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+}
+void setEject(){
+  ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  ejectorMotor -> move_voltage(12000);
+  cyclerMotor -> move_voltage(12000);
+}
+void setCycle(){
+  ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  ejectorMotor -> move_voltage(-12000);
+  cyclerMotor -> move_voltage(12000);
+}
+void setReverse(){
+  ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  ejectorMotor -> move_voltage(12000);
+  cyclerMotor -> move_voltage(-12000);
+}

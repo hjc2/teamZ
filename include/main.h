@@ -70,10 +70,11 @@ void opcontrol(void);
 const extern int BRAKE;
 const extern int FORWARD;
 const extern int REVERSE;
+const extern int EJECT;
 const extern double Deadzone;
 extern int toggleIntake;
 extern int toggleIncycle;
-
+extern int toggleCycle;
 //extern int toggleIntake;
 #ifdef __cplusplus
 }

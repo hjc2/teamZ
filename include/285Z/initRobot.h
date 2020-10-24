@@ -28,3 +28,7 @@ extern okapi::ControllerButton intakeButton;
 extern okapi::ControllerButton outtakeButton;
 extern okapi::ControllerButton incycleButton;
 extern okapi::ControllerButton outcycleButton;
+
+extern okapi::ControllerButton cycleButton;
+extern okapi::ControllerButton ejectButton;
+extern okapi::ControllerButton reverseButton;

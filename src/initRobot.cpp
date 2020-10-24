@@ -31,3 +31,7 @@ okapi::ControllerButton intakeButton = okapi::ControllerDigital::R2;  //INTAKE B
 okapi::ControllerButton outtakeButton = okapi::ControllerDigital::R1;  //OUTTAKE BUTTON
 okapi::ControllerButton incycleButton = okapi::ControllerDigital::L2;
 okapi::ControllerButton outcycleButton = okapi::ControllerDigital::L1;
+
+okapi::ControllerButton cycleButton = okapi::ControllerDigital::R2;
+okapi::ControllerButton ejectButton = okapi::ControllerDigital::R1;
+okapi::ControllerButton reverseButton = okapi::ControllerDigital::L1;

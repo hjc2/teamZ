@@ -6,10 +6,11 @@ using namespace okapi; //DONT TOUCH THIS
 const int BRAKE = 0;
 const int FORWARD = 1;
 const int REVERSE = 2;
+const int EJECT = 3;
 const double Deadzone = 0.1;
 int toggleIntake = 0;
 int toggleIncycle = 0;
-
+int toggleCycle = 0;
 void on_center_button() { }
 
 void initialize() {}
@@ -74,8 +75,9 @@ void opcontrol() {
       	controller.getAnalog(ControllerAnalog::leftX), //spin
         Deadzone
 		  );
-    evaluateIntakeMode();
-    evaluateIncycleMode();
+    evaluateDriver();
+    //evaluateIntakeMode();
+    //evaluateIncycleMode();
     //rightIntake -> move_voltage(12000);
     pros::delay(20);
 	}
