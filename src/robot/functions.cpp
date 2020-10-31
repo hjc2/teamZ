@@ -12,7 +12,7 @@ int evaluateDriver(){
   int cycleValue =  cycleButton.changedToPressed();
   int ejectValue = ejectButton.isPressed();
   int reverseValue = reverseButton.isPressed();
-  if(cycleValue){
+  if(cycleValue){ //TOGGLE STUFF
     if(toggleCycle){
       controlIntake(FORWARD);
       controlIncycle(FORWARD);
@@ -23,17 +23,17 @@ int evaluateDriver(){
       toggleCycle = 1;
     }
   }
-  else if(ejectValue){
+  else if(ejectValue){ //EJECTION MODE
     controlIntake(FORWARD);
     controlIncycle(EJECT);
   }
-  else if(reverseValue){
+  else if(reverseValue){ //PURE REVERES MODE
     controlIntake(REVERSE);
     controlIncycle(REVERSE);
-  } else if(toggleCycle){
+  } else if(toggleCycle){ //INTAKE MODE
     controlIntake(FORWARD);
     controlIncycle(FORWARD);
-  } else {
+  } else { //BRAKE MODE
     controlIntake(BRAKE);
     controlIncycle(BRAKE);
   }

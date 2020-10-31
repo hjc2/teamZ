@@ -36,7 +36,56 @@ void autonomous() {
 	.withDimensions(AbstractMotor::gearset::green, {{15_in, 15_in}, imev5GreenTPR})
 	.build();
     auto xModel = std::dynamic_pointer_cast<XDriveModel>(chassis->getModel());
+
+    //MOVES FORWARD TO TOUCH GOAL
+    xModel ->xArcade(0, 0.5, 0);
+    controlIntake(FORWARD);
+    controlIncycle(BRAKE);
+    pros::delay(500);
+    for(double i = 0.5; i < 1; i+=0.01){ //SLOWING DOWN AND ENTERING THE GOAL
+      xModel ->xArcade(0, i, 0);
+      pros::delay(10);
+    }
+    //TURNS OFF THE INTAKE AND SHOOTS IT INTO THE GOAL
+    controlIntake(BRAKE);
+    pros::delay(50);
+    controlIncycle(FORWARD);
+    for(double i = 0; i < 1; i+=0.01){ //BACKING UP SPEEDING UP
+      xModel ->xArcade(0, -i, 0);
+      pros::delay(10);
+    }
+    for(double i = 0; i > 0; i-=0.01){ //BACKING UP SLOWING DOWN
+      xModel ->xArcade(0, -i, 0);
+      pros::delay(10);
+    }
+
+    pros::delay(100);
+    //STRAFING TO THE MIDDLE GOAL
+    for(double i = 0; i < 1; i+=0.01){ //BACKING UP SPEEDING UP
+      xModel ->xArcade(i, 0, 0);
+      pros::delay(10);
+    }
+    for(double i = 0; i > 0; i-=0.01){ //BACKING UP SLOWING DOWN
+      xModel ->xArcade(0, -i, 0);
+      pros::delay(10);
+    }
+
+
+
+    //FIRST AUTON/*
+    /*
+    int xVelocity = 0;
+    int yVelocity = 0;
+
+    yVelocity = -0.1
+    while(yVelocity < 1){
+      xModel ->xArcade(xVelocity, yVelocity, 0);
+      xVelocity += 0.01;
+      yVelocity += 0.01;
+    }
+
 /*
+
 	pros::delay(20);
 	for(float i  = 0; i < 1; i+=0.01){
 		int y = 1 - i;
