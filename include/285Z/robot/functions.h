@@ -19,6 +19,7 @@ void setEject();
 void setCycle();
 void setReverse();
 void setCyBrake();
+void setPush();
 
 
 //R2 intake and cycler

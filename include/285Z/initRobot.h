@@ -29,6 +29,10 @@ extern okapi::ControllerButton outtakeButton;
 extern okapi::ControllerButton incycleButton;
 extern okapi::ControllerButton outcycleButton;
 
+//THE ACTUALLY USED BUTTONS
 extern okapi::ControllerButton cycleButton;
 extern okapi::ControllerButton ejectButton;
 extern okapi::ControllerButton reverseButton;
+extern okapi::ControllerButton pushButton;
+
+extern pros::ADIAnalogIn lineSensorOne;

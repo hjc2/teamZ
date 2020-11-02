@@ -12,6 +12,9 @@ int evaluateDriver(){
   int cycleValue =  cycleButton.changedToPressed();
   int ejectValue = ejectButton.isPressed();
   int reverseValue = reverseButton.isPressed();
+  int pushValue = pushButton.isPressed();
+  controlIntake(BRAKE);
+  controlIncycle(BRAKE);
   if(cycleValue){ //TOGGLE STUFF
     if(toggleCycle){
       controlIntake(FORWARD);
@@ -33,6 +36,9 @@ int evaluateDriver(){
   } else if(toggleCycle){ //INTAKE MODE
     controlIntake(FORWARD);
     controlIncycle(FORWARD);
+  } else if(pushValue){
+    controlIntake(FORWARD);
+    controlIncycle(LINE);
   } else { //BRAKE MODE
     controlIntake(BRAKE);
     controlIncycle(BRAKE);
@@ -49,6 +55,21 @@ bool controlIntake(int macro){
   } else
   if(macro == 2){    //outtake mode code
     setOuttake();
+  } else {    //manual control code
+
+  }
+}
+bool controlIncycle(int macro){
+  if(macro == 0){    //brake mode code
+    setCyBrake();
+  } else if(macro == 1){    //intake mode code
+    setCycle();
+  } else if(macro == 2){    //outtake mode code
+    setReverse();
+  } if(macro == 3){ //ejectorMode
+    setEject();
+  } if(macro == 4){
+    setPush();
   } else {    //manual control code
 
   }
@@ -80,21 +101,6 @@ int evaluateIntakeMode(){
   }
 }
 
-bool controlIncycle(int macro){
-  if(macro == 0){    //brake mode code
-    setCyBrake();
-  } else
-  if(macro == 1){    //intake mode code
-    setCycle();
-  } else
-  if(macro == 2){    //outtake mode code
-    setReverse();
-  } if(macro == 3){ //ejectorMode
-    setEject();
-  }  else {    //manual control code
-
-  }
-}
 
 int evaluateIncycleMode(){
   bool incycleValue = incycleButton.changedToPressed();
@@ -162,4 +168,10 @@ void setReverse(){
   cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   ejectorMotor -> move_voltage(-12000);
   cyclerMotor -> move_voltage(-12000);
+}
+void setPush(){
+  ejectorMotor -> move_voltage(0);
+  ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+  cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  cyclerMotor -> move_voltage(12000);
 }
