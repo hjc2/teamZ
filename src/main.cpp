@@ -16,7 +16,8 @@ int toggleLine = 0;
 
 void on_center_button() { }
 
-void initialize() {}
+void initialize() {
+}
 
 void disabled() {} //LEAVE THIS EMPTY
 
@@ -27,7 +28,8 @@ void competition_initialize() {}
 void autonomous() {}
 
 void opcontrol() {
-
+  lineSensorOne.calibrate();
+  pros::delay(1000);
 	//DO NOT TOUCH THIS CODE
     auto chassis = ChassisControllerBuilder()
 	.withMotors(frontLeftMotorPort, frontRightMotorPort, backRightMotorPort, backLeftMotorPort) //tl, tr, br, bl //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)
@@ -44,8 +46,10 @@ void opcontrol() {
       	controller.getAnalog(ControllerAnalog::leftX), //spin
         Deadzone
 		  );
-      //testDriver();
       evaluateDriver();
+      std::cout << "raw value: " << lineSensorOne.get_value() << "\n";
+      std::cout << "calibrated: " << lineSensorOne.get_value_calibrated() << "\n";
+
     pros::delay(20);
 	}
 }

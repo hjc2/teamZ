@@ -163,15 +163,17 @@ void setReverse(){
 }
 //line sensor shenanigans
 void setLine(){
-  if(1 == 1/** input the line sensor condition equation here**/){ //line sensor activated
+  if(lineSensorOne.get_value() < 2880){ //line sensor activated
     cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     ejectorMotor -> move_velocity(0);
     cyclerMotor -> move_velocity(-600);
     ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    std::cout << "BALL";
   } else {//line sensor deactivated
     ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     ejectorMotor -> move_velocity(-600);
     cyclerMotor -> move_velocity(-600);
+    std::cout << "NO BALL";
   }
 }
