@@ -71,9 +71,12 @@ const extern int BRAKE;
 const extern int FORWARD;
 const extern int REVERSE;
 const extern int EJECT;
+const extern int LINE;
 const extern double Deadzone;
 
 extern int toggleCycle;
+extern int toggleLine;
+
 //extern int toggleIntake;
 #ifdef __cplusplus
 }

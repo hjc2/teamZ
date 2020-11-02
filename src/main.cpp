@@ -7,9 +7,13 @@ const int BRAKE = 0;
 const int FORWARD = 1;
 const int REVERSE = 2;
 const int EJECT = 3;
+const int LINE = 4;
+
 const double Deadzone = 0.1;
 
 int toggleCycle = 0;
+int toggleLine = 0;
+
 void on_center_button() { }
 
 void initialize() {}
