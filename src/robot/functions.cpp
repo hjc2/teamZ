@@ -11,34 +11,48 @@ void testDriver(){
     setCyBrake();
   }
 }
+//heirarchy
+//pure reverse
+//ejection
+//cycle
+//line
 int evaluateDriver(){
   bool cycleValue =  cycleButton.changedToPressed();
+  bool lineValue = lineButton.changedToPressed();
   bool ejectValue = ejectButton.isPressed();
   bool reverseValue = reverseButton.isPressed();
-  bool lineValue = lineButton.isPressed();
+
   if(lineValue){
     if(toggleLine){
+      /*
       controlIntake(FORWARD);
-      controlIncycle(LINE);
+      controlIncycle(FORWARD);
+      */
       toggleLine = 0;
     } else {
+      /*
       controlIntake(BRAKE);
       controlIntake(BRAKE);
+      */
       toggleLine = 1;
     }
   }
-  if(cycleValue){ //TOGGLE STUFF
+   if(cycleValue){ //TOGGLE STUFF
     if(toggleCycle){
+      /*
       controlIntake(FORWARD);
       controlIncycle(FORWARD);
+      */
       toggleCycle = 0;
     } else {
+      /*
       controlIntake(BRAKE);
       controlIntake(BRAKE);
+      */
       toggleCycle = 1;
     }
   }
-  else if(ejectValue){ //EJECTION MODE
+  if(ejectValue){ //EJECTION MODE
     controlIntake(FORWARD);
     controlIncycle(EJECT);
   }
@@ -48,7 +62,12 @@ int evaluateDriver(){
   } else if(toggleCycle){ //INTAKE MODE
     controlIntake(FORWARD);
     controlIncycle(FORWARD);
-  } else { //BRAKE MODE
+  } else if(toggleLine){
+    controlIntake(FORWARD);
+    controlIncycle(LINE);
+    std::cout << "toggleLine\n";
+  }
+  else { //BRAKE MODE
     controlIntake(BRAKE);
     controlIncycle(BRAKE);
   }
@@ -83,7 +102,7 @@ bool controlIncycle(int macro){
   } if(macro == 3){ //ejectorMode
     setEject();
   }  else
-  if(macro ==4){
+  if(macro == 4){
     setLine();
   } else {    //manual control code
 
@@ -145,10 +164,10 @@ void setReverse(){
 //line sensor shenanigans
 void setLine(){
   if(1 == 1/** input the line sensor condition equation here**/){ //line sensor activated
+    cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     ejectorMotor -> move_velocity(0);
     cyclerMotor -> move_velocity(-600);
     ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-    cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   } else {//line sensor deactivated
     ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
