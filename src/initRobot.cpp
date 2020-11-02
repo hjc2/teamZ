@@ -9,12 +9,7 @@ int leftIntakePort = 8;
 int rightIntakePort = 9;
 int ejectorPort = 11;
 int cyclerPort = 1;
-//  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)   .withMotors(2, -3, -5, 4)
 
-//pros::Motor driveMotorA(portA);
-//pros::Motor driveMotorB(portB);
-//pros::Motor driveMotorC(portC);
-//pros::Motor driveMotorD(portD);
 pros::Motor intakeLeft(leftIntakePort);
 pros::Motor intakeRight(rightIntakePort);
 
@@ -23,7 +18,6 @@ pros::Motor cyclerMotorMotor(cyclerPort);
 
 pros::Motor *rightIntake = &intakeRight;
 pros::Motor *leftIntake = &intakeLeft;
-
 pros::Motor *ejectorMotor = &ejectorMotorMotor;
 pros::Motor *cyclerMotor = &cyclerMotorMotor;
 
