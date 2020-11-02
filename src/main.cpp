@@ -8,8 +8,7 @@ const int FORWARD = 1;
 const int REVERSE = 2;
 const int EJECT = 3;
 const double Deadzone = 0.1;
-int toggleIntake = 0;
-int toggleIncycle = 0;
+
 int toggleCycle = 0;
 void on_center_button() { }
 
@@ -41,10 +40,8 @@ void opcontrol() {
       	controller.getAnalog(ControllerAnalog::leftX), //spin
         Deadzone
 		  );
-    evaluateDriver();
-    //evaluateIntakeMode();
-    //evaluateIncycleMode();
-    //rightIntake -> move_voltage(12000);
+      //testDriver();
+      evaluateDriver();
     pros::delay(20);
 	}
 }

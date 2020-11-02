@@ -2,11 +2,21 @@
 #include "../include/285Z/robot/functions.h"
 #include "../include/285Z/initRobot.h"
 #pragma once
-
+void testDriver(){
+  if(cycleButton.isPressed()){
+    setIntake();
+    setCycle();
+  } else {
+    setInBrake();
+    setCyBrake();
+  }
+}
 int evaluateDriver(){
-  int cycleValue =  cycleButton.changedToPressed();
-  int ejectValue = ejectButton.isPressed();
-  int reverseValue = reverseButton.isPressed();
+  bool cycleValue =  cycleButton.changedToPressed();
+  bool ejectValue = ejectButton.isPressed();
+  bool reverseValue = reverseButton.isPressed();
+  bool lineValue = lineButton.isPressed();
+
   if(cycleValue){ //TOGGLE STUFF
     if(toggleCycle){
       controlIntake(FORWARD);
@@ -49,7 +59,6 @@ bool controlIntake(int macro){
   }
 }
 
-
 bool controlIncycle(int macro){
   if(macro == 0){    //brake mode code
     setCyBrake();
@@ -70,7 +79,7 @@ bool controlIncycle(int macro){
 //motors will stop and brake
 void setInBrake(){
   rightIntake -> move_voltage(0);
-  leftIntake -> move_voltage(0);
+  leftIntake -> move_velocity(0);
   rightIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
   leftIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 }
@@ -78,22 +87,23 @@ void setInBrake(){
 void setOuttake(){
   rightIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   leftIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-  rightIntake -> move_voltage(12000);
-  leftIntake -> move_voltage(-12000);
+  rightIntake -> move_velocity(600);
+  leftIntake -> move_velocity(-600);
 }
 //motors will intake at full power
 void setIntake(){
   rightIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   leftIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-  rightIntake -> move_voltage(-12000);
-  leftIntake -> move_voltage(12000);
+  rightIntake -> move_velocity(-600);
+  leftIntake -> move_velocity(600);
 }
 
 //CYCLER FUNCTIONS
 //both motors will stop and brake
 void setCyBrake(){
-  ejectorMotor -> move_voltage(0);
-  cyclerMotor -> move_voltage(0);
+  ejectorMotor -> move_velocity(0);
+  cyclerMotor -> move_velocity(0);
+  std::cout << ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD) << "/n";
   ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
   cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 }
@@ -101,20 +111,20 @@ void setCyBrake(){
 void setEject(){
   ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-  ejectorMotor -> move_voltage(-12000);
-  cyclerMotor -> move_voltage(12000);
+  ejectorMotor -> move_velocity(600);
+  cyclerMotor -> move_velocity(-600);
 }
 //both cycler and ejector motors go full power
 void setCycle(){
   ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-  ejectorMotor -> move_voltage(12000);
-  cyclerMotor -> move_voltage(12000);
+  ejectorMotor -> move_velocity(-600);
+  cyclerMotor -> move_velocity(-600);
 }
 //both the ejector and cycler motors reverse
 void setReverse(){
   ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-  ejectorMotor -> move_voltage(-12000);
-  cyclerMotor -> move_voltage(-12000);
+  ejectorMotor -> move_velocity(600);
+  cyclerMotor -> move_velocity(600);
 }

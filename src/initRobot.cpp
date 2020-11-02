@@ -10,17 +10,18 @@ int rightIntakePort = 9;
 int ejectorPort = 11;
 int cyclerPort = 1;
 
-pros::Motor intakeLeft(leftIntakePort);
-pros::Motor intakeRight(rightIntakePort);
+pros::Motor intakeLeft(leftIntakePort, 2);
+pros::Motor intakeRight(rightIntakePort, 2);
 
-pros::Motor ejectorMotorMotor(ejectorPort);
-pros::Motor cyclerMotorMotor(cyclerPort);
+pros::Motor ejectorMotorMotor(ejectorPort, 2);
+pros::Motor cyclerMotorMotor(cyclerPort, 2);
 
 pros::Motor *rightIntake = &intakeRight;
 pros::Motor *leftIntake = &intakeLeft;
 pros::Motor *ejectorMotor = &ejectorMotorMotor;
 pros::Motor *cyclerMotor = &cyclerMotorMotor;
 
-okapi::ControllerButton cycleButton = okapi::ControllerDigital::R2;
+okapi::ControllerButton cycleButton = okapi::ControllerDigital::L2;
 okapi::ControllerButton ejectButton = okapi::ControllerDigital::R1;
 okapi::ControllerButton reverseButton = okapi::ControllerDigital::L1;
+okapi::ControllerButton lineButton = okapi::ControllerDigital::R2;
