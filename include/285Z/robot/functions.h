@@ -2,19 +2,18 @@
 #include "../include/285Z/initRobot.h"
 //SNAILBOT DEMO CODE
 
-bool controlIntake(bool direction, int speed);
 int evaluateDriver();
 
 bool controlIntake(int macro);
-int evaluateIntakeMode();
 
 bool controlIncycle(int macro);
-int evaluateIncycleMode();
 
+//INTAKE FUNCTIONS
 void setInBrake();
 void setOuttake();
 void setIntake();
 
+//CYCLER FUNCTIONS
 void setEject();
 void setCycle();
 void setReverse();
