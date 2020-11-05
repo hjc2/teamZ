@@ -5,8 +5,8 @@ int frontLeftMotorPort = 2;
 int frontRightMotorPort = -3;
 int backLeftMotorPort = 4;
 int backRightMotorPort = -5;
-int leftIntakePort = 7; 
-int rightIntakePort = 6; //6
+int leftIntakePort = 9; 
+int rightIntakePort = 8; //6
 int ejectorPort = 11;
 int cyclerPort = 1;
 
