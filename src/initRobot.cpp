@@ -10,11 +10,11 @@ int rightIntakePort = 9;
 int ejectorPort = 11;
 int cyclerPort = 1;
 
-pros::Motor intakeLeft(leftIntakePort, 2);
-pros::Motor intakeRight(rightIntakePort, 2);
+pros::Motor intakeLeft(leftIntakePort, pros::E_MOTOR_GEARSET_06 );
+pros::Motor intakeRight(rightIntakePort, pros::E_MOTOR_GEARSET_06 );
 
-pros::Motor ejectorMotorMotor(ejectorPort, 2);
-pros::Motor cyclerMotorMotor(cyclerPort, 2);
+pros::Motor ejectorMotorMotor(ejectorPort, pros::E_MOTOR_GEARSET_06 );
+pros::Motor cyclerMotorMotor(cyclerPort, pros::E_MOTOR_GEARSET_06 );
 
 pros::Motor *rightIntake = &intakeRight;
 pros::Motor *leftIntake = &intakeLeft;
