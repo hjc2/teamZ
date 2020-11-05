@@ -24,31 +24,17 @@ int evaluateDriver(){
 
   if(lineValue){
     if(toggleLine){
-      /*
-      controlIntake(FORWARD);
-      controlIncycle(FORWARD);
-      */
+
       toggleLine = 0;
     } else {
-      /*
-      controlIntake(BRAKE);
-      controlIntake(BRAKE);
-      */
       toggleLine = 1;
     }
   }
    if(cycleValue){ //TOGGLE STUFF
     if(toggleCycle){
-      /*
-      controlIntake(FORWARD);
-      controlIncycle(FORWARD);
-      */
+
       toggleCycle = 0;
     } else {
-      /*
-      controlIntake(BRAKE);
-      controlIntake(BRAKE);
-      */
       toggleCycle = 1;
     }
   }
