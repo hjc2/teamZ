@@ -37,6 +37,7 @@ int evaluateDriver(){
     } else {
       toggleCycle = 1;
     }
+    std::cout << "l2 button pressed";
   }
   if(ejectValue){ //EJECTION MODE
     controlIntake(FORWARD);
@@ -48,6 +49,7 @@ int evaluateDriver(){
   } else if(toggleCycle){ //INTAKE MODE
     controlIntake(FORWARD);
     controlIncycle(FORWARD);
+    std::cout << "l2 run";
   } else if(toggleLine){
     controlIntake(FORWARD);
     controlIncycle(LINE);
@@ -107,15 +109,15 @@ void setInBrake(){
 void setOuttake(){
   rightIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   leftIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-  rightIntake -> move_velocity(2400);
-  leftIntake -> move_velocity(-2400);
+  rightIntake -> move_velocity(600);
+  leftIntake -> move_velocity(-600);
 }
 //motors will intake at full power
 void setIntake(){
   rightIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   leftIntake -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-  rightIntake -> move_velocity(-2400);
-  leftIntake -> move_velocity(2400);
+  rightIntake -> move_velocity(-600);
+  leftIntake -> move_velocity(600);
 }
 
 //CYCLER FUNCTIONS
@@ -130,36 +132,36 @@ void setCyBrake(){
 void setEject(){
   ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-  ejectorMotor -> move_velocity(1200);
-  cyclerMotor -> move_velocity(-1200);
+  ejectorMotor -> move_velocity(600);
+  cyclerMotor -> move_velocity(-600);
 }
 //both cycler and ejector motors go full power
 void setCycle(){
   ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-  ejectorMotor -> move_velocity(-1200);
-  cyclerMotor -> move_velocity(-1200);
+  ejectorMotor -> move_velocity(-600);
+  cyclerMotor -> move_velocity(-600);
 }
 //both the ejector and cycler motors reverse
 void setReverse(){
   ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   ejectorMotor -> move_velocity(-600);
-  cyclerMotor -> move_velocity(1200);
+  cyclerMotor -> move_velocity(600);
 }
 //line sensor shenanigans
 void setLine(){
   if(lineSensorOne.get_value() < 2880){ //line sensor activated
     cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     ejectorMotor -> move_velocity(0);
-    cyclerMotor -> move_velocity(-2400);
+    cyclerMotor -> move_velocity(-600);
     ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     std::cout << "BALL";
   } else {//line sensor deactivated
     ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    ejectorMotor -> move_velocity(-2400);
-    cyclerMotor -> move_velocity(-2400);
+    ejectorMotor -> move_velocity(-600);
+    cyclerMotor -> move_velocity(-600);
     std::cout << "NO BALL";
   }
 }
