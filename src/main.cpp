@@ -49,7 +49,14 @@ void opcontrol() {
       evaluateDriver();
       std::cout << "raw value: " << lineSensorOne.get_value() << "\n";
       std::cout << "calibrated: " << lineSensorOne.get_value_calibrated() << "\n";
-
+      std::cout << "actual cycler velocity: " << cyclerMotor -> get_actual_velocity() << "\n";
+      std::cout << "actual ejector velocity: " << ejectorMotor -> get_actual_velocity() << "\n";
+      std::cout << "actual left intake velocity: " << leftIntake -> get_actual_velocity() << "\n";
+      std::cout << "actual right intake velocity: " << rightIntake -> get_actual_velocity() << "\n";
+      std::cout << "actual cycler voltage: " << cyclerMotor -> get_voltage() << "\n";
+      std::cout << "actual ejector voltage: " << ejectorMotor -> get_voltage() << "\n";
+      std::cout << "actual left intake voltage: " << leftIntake -> get_voltage() << "\n";
+      std::cout << "actual right intake voltage: " << rightIntake -> get_voltage() << "\n";
     pros::delay(20);
 	}
 }
