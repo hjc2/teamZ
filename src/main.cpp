@@ -29,7 +29,7 @@ void autonomous() {}
 
 void opcontrol() {
   lineSensorOne.calibrate();
-  pros::delay(1000);
+  //pros::delay(1000);
 	//DO NOT TOUCH THIS CODE
     auto chassis = ChassisControllerBuilder()
 	.withMotors(frontLeftMotorPort, frontRightMotorPort, backRightMotorPort, backLeftMotorPort) //tl, tr, br, bl //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)

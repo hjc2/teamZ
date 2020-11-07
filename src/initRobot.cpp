@@ -5,7 +5,7 @@ int frontLeftMotorPort = 2;
 int frontRightMotorPort = -3;
 int backLeftMotorPort = 4;
 int backRightMotorPort = -5;
-int leftIntakePort = 9; 
+int leftIntakePort = 9;
 int rightIntakePort = 8; //6
 int ejectorPort = 11;
 int cyclerPort = 1;
@@ -21,8 +21,8 @@ pros::Motor *leftIntake = &intakeLeft;
 pros::Motor *ejectorMotor = &ejectorMotorMotor;
 pros::Motor *cyclerMotor = &cyclerMotorMotor;
 
-okapi::ControllerButton cycleButton = okapi::ControllerDigital::L2;
+okapi::ControllerButton cycleButton = okapi::ControllerDigital::R2;
 okapi::ControllerButton ejectButton = okapi::ControllerDigital::R1;
 okapi::ControllerButton reverseButton = okapi::ControllerDigital::L1;
-okapi::ControllerButton lineButton = okapi::ControllerDigital::R2;
+okapi::ControllerButton lineButton = okapi::ControllerDigital::L2;
 pros::ADIAnalogIn lineSensorOne ('A');
