@@ -149,6 +149,7 @@ void setReverse(){
   ejectorMotor -> move_velocity(-600);
   cyclerMotor -> move_velocity(-600);
 }
+
 //line sensor shenanigans
 void setLine(){ //semi correct
   if(lineSensorOne.get_value() < 2880){ //line sensor activated
