@@ -65,13 +65,19 @@ void autonomous() {
   xModel->xArcade(0,0,0); //stops at the goal
   setInBrake();
   setCycle(); //turns on cycler to score in tl goal
-  pros::delay(500); //time the cycler will run for
+  pros::delay(400); //time the cycler will run for
   setCyBrake();
   pros::delay(200); //making sure we dont have a trailing shot
 
   //backing out of the goal
   xModel -> xArcade(0, -0.6, 0); //backing up from the goal
-  pros::delay(1700); //time for the bot to back up
+  setReverse();
+  setIntake();
+  pros::delay(80);
+  setCyBrake();
+  pros::delay(500);
+  setInBrake();
+  pros::delay(1120); //time for the bot to back up
 
   //turning towards red driver station
   xModel->xArcade(0,0,-0.4); //ccw turn 45 deg
@@ -79,14 +85,16 @@ void autonomous() {
 
   //strafing to middle goal
   xModel->xArcade(-0.6,0,0); //strafing left to the middle goal
-  pros::delay(1100); //time to get to the middle goal
+  pros::delay(1250); //time to get to the middle goal
 
   //driving into the middle red goal
-  xModel->xArcade(0,0.6,0); //moves forward til into goal
-  setInBrake(); //making sure intake is off
-  setCyBrake(); //brakes cycler to keep ball from going up
-  pros::delay(1100); //waits for this time
-  setIntake();
+  xModel->xArcade(0,0.7,0); //moves forward til into goal
+  setIntake(); //making sure intake is off
+  setCycle(); //brakes cycler to keep ball from going up
+  pros::delay(100);
+  setInBrake();
+  setCyBrake();
+  pros::delay(1000); //waits for this time
 
   //scoring in middle red goal
   setInBrake();
@@ -105,21 +113,22 @@ void autonomous() {
 
   //strafing left to the bottom red goal
   xModel->xArcade(-1, 0, 0); //speed it strafes left at
-  pros::delay(825); //time to strafe left for
+  pros::delay(850); //time to strafe left for
 
   //turning to face the bottom red goal
   xModel->xArcade(0, 0, -0.6);
-  pros::delay(400); //time to turn to the left;ix
+  pros::delay(350); //time to turn to the left;ix
 
   //driving forward to the bottom red goal
-  xModel->xArcade(0, 0.5, 0);
-  pros::delay(1100); //time to drive to the goal
-
+  xModel->xArcade(0, 1, 0);
+  setIntake();
+  pros::delay(350); //time to drive to the goal
+  
   //scoring into the bottom red goal
   setCycle(); //turning on the intake
   setIntake();
   pros::delay(500);
-  setOuttake();
+  setInBrake();
   pros::delay(2000); //runs til the end of the auton
   setCyBrake();
 
@@ -127,6 +136,7 @@ void autonomous() {
   xModel->xArcade(0, -1, 0);
   pros::delay(400);
   xModel->xArcade(0, 0, 0);
+  setOuttake();
 
 }
 
