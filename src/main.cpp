@@ -79,7 +79,7 @@ void autonomous() {
 
   //strafing to middle goal
   xModel->xArcade(-0.6,0,0); //strafing left to the middle goal
-  pros::delay(1000); //time to get to the middle goal
+  pros::delay(1100); //time to get to the middle goal
 
   //driving into the middle red goal
   xModel->xArcade(0,0.6,0); //moves forward til into goal
@@ -103,15 +103,15 @@ void autonomous() {
 
   //strafing left to the bottom red goal
   xModel->xArcade(-1, 0, 0); //speed it strafes left at
-  pros::delay(675); //time to strafe left for
+  pros::delay(725); //time to strafe left for
 
   //turning to face the bottom red goal
   xModel->xArcade(0, 0, -0.6);
   pros::delay(300); //time to turn to the left;ix
 
   //driving forward to the bottom red goal
-  xModel->xArcade(0, 1, 0);
-  pros::delay(500); //time to drive to the goal
+  xModel->xArcade(0, 0.5, 0);
+  pros::delay(1100); //time to drive to the goal
 
   //scoring into the bottom red goal
   setCycle(); //turning on the intake
