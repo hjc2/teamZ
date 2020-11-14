@@ -40,20 +40,32 @@ void autonomous() {
 
   //turning towards topleft goal
   xModel->xArcade(0,0,-0.4); //ccw turn 45 deg
-  pros::delay(600);
+  pros::delay(500);
+
+  //deploy
+  xModel->xArcade(0,0,0); //ccw turn 45 deg
+  setOuttake();
+  ejectorMotor -> move_velocity(600);
+  pros::delay(400);
+  setInBrake();
+  ejectorMotor -> move_velocity(0);
 
   //driving into the top red goal
   xModel->xArcade(0,0.6,0); //moves forward til into goal
+  pros::delay(400);
+  setOuttake();
+  ejectorMotor -> move_velocity(600);
   setIntake(); //turns on intake to grab tl red ball
   setCyBrake(); //brakes cycler to keep ball from going up
-  pros::delay(1000); //waits
+  pros::delay(600); //waits
   setInBrake(); //turns off intake to stop the blue balls from coming into it
   pros::delay(120);
 
   //scoring in topleft goal
   xModel->xArcade(0,0,0); //stops at the goal
+  setInBrake();
   setCycle(); //turns on cycler to score in tl goal
-  pros::delay(200); //time the cycler will run for
+  pros::delay(500); //time the cycler will run for
   setCyBrake();
   pros::delay(200); //making sure we dont have a trailing shot
 
@@ -77,13 +89,13 @@ void autonomous() {
 
   //scoring in middle red goal
   xModel->xArcade(0,0,0); //stops at the goal
-  //setCycle(); //turns on cycler to score in tl goal
-  pros::delay(200); //time the cycler will run for
-  //setCyBrake(); //turns off the cycler
-  pros::delay(200); //making sure we dont have a trailing shot
-  //setReverse(); //making sure there were no blue balls that got into our robot
-  //setOuttake(); //making sure there were no blue balls that got into our robot
-  pros::delay(100); //feel like there should be a delay between this movement
+  setCycle(); //turns on cycler to score in tl goal
+  pros::delay(600); //time the cycler will run for
+  setCyBrake(); //turns off the cycler
+  pros::delay(600); //making sure we dont have a trailing shot
+  setReverse(); //making sure there were no blue balls that got into our robot
+  setOuttake(); //making sure there were no blue balls that got into our robot
+  pros::delay(600); //feel like there should be a delay between this movement
 
   //backing up to the white line
   xModel->xArcade(0, -1, 0); //speed it backsup at
@@ -133,6 +145,7 @@ void opcontrol() {
         Deadzone
 		  );
       evaluateDriver();
+      /**
       std::cout << "raw value: " << lineSensorOne.get_value() << "\n";
       std::cout << "calibrated: " << lineSensorOne.get_value_calibrated() << "\n";
       std::cout << "actual cycler velocity: " << cyclerMotor -> get_actual_velocity() << "\n";
@@ -143,6 +156,7 @@ void opcontrol() {
       std::cout << "actual ejector voltage: " << ejectorMotor -> get_voltage() << "\n";
       std::cout << "actual left intake voltage: " << leftIntake -> get_voltage() << "\n";
       std::cout << "actual right intake voltage: " << rightIntake -> get_voltage() << "\n";
+      **/
     pros::delay(20);
 	}
 }
