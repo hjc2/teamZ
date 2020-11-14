@@ -86,8 +86,10 @@ void autonomous() {
   setInBrake(); //making sure intake is off
   setCyBrake(); //brakes cycler to keep ball from going up
   pros::delay(1100); //waits for this time
+  setIntake();
 
   //scoring in middle red goal
+  setInBrake();
   xModel->xArcade(0,0,0); //stops at the goal
   setCycle(); //turns on cycler to score in tl goal
   pros::delay(600); //time the cycler will run for
@@ -103,11 +105,11 @@ void autonomous() {
 
   //strafing left to the bottom red goal
   xModel->xArcade(-1, 0, 0); //speed it strafes left at
-  pros::delay(725); //time to strafe left for
+  pros::delay(825); //time to strafe left for
 
   //turning to face the bottom red goal
   xModel->xArcade(0, 0, -0.6);
-  pros::delay(300); //time to turn to the left;ix
+  pros::delay(400); //time to turn to the left;ix
 
   //driving forward to the bottom red goal
   xModel->xArcade(0, 0.5, 0);
@@ -115,6 +117,9 @@ void autonomous() {
 
   //scoring into the bottom red goal
   setCycle(); //turning on the intake
+  setIntake();
+  pros::delay(500);
+  setOuttake();
   pros::delay(2000); //runs til the end of the auton
   setCyBrake();
 
