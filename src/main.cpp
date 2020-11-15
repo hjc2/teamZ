@@ -34,115 +34,223 @@ void autonomous() {
   auto xModel = std::dynamic_pointer_cast<XDriveModel>(chassis->getModel());
 
   //AUTO SELECTION
-  //RED AUTO
-  //rightwards, forwards, cw?
-  //getting off the wall
-  xModel->xArcade(0.6, 0, 0);
-  pros::delay(1200); //moves right ~1 tile
+  //
+  if(autoSelector.get_value() > 2050){
+    //RED AUTO
+    //rightwards, forwards, cw?
+    //getting off the wall
+    xModel->xArcade(0.6, 0, 0);
+    pros::delay(1200); //moves right ~1 tile
 
-  //turning towards topleft goal
-  xModel->xArcade(0,0,-0.4); //ccw turn 45 deg
-  pros::delay(500);
+    //turning towards topleft goal
+    xModel->xArcade(0,0,-0.4); //ccw turn 45 deg
+    pros::delay(500);
 
-  //deploy
-  xModel->xArcade(0,0,0); //ccw turn 45 deg
-  setOuttake();
-  ejectorMotor -> move_velocity(600);
-  pros::delay(400);
-  setInBrake();
-  ejectorMotor -> move_velocity(0);
+    //deploy
+    xModel->xArcade(0,0,0); //ccw turn 45 deg
+    setOuttake();
+    ejectorMotor -> move_velocity(600);
+    pros::delay(400);
+    setInBrake();
+    ejectorMotor -> move_velocity(0);
 
-  //driving into the top red goal
-  xModel->xArcade(0,0.6,0); //moves forward til into goal
-  pros::delay(400);
-  setOuttake();
-  ejectorMotor -> move_velocity(600);
-  setIntake(); //turns on intake to grab tl red ball
-  setCyBrake(); //brakes cycler to keep ball from going up
-  pros::delay(600); //waits
-  setInBrake(); //turns off intake to stop the blue balls from coming into it
-  pros::delay(120);
+    //driving into the top red goal
+    xModel->xArcade(0,0.6,0); //moves forward til into goal
+    pros::delay(400);
+    setOuttake();
+    ejectorMotor -> move_velocity(600);
+    setIntake(); //turns on intake to grab tl red ball
+    setCyBrake(); //brakes cycler to keep ball from going up
+    pros::delay(600); //waits
+    setInBrake(); //turns off intake to stop the blue balls from coming into it
+    pros::delay(120);
 
-  //scoring in topleft goal
-  xModel->xArcade(0,0,0); //stops at the goal
-  setInBrake();
-  setCycle(); //turns on cycler to score in tl goal
-  pros::delay(400); //time the cycler will run for
-  setCyBrake();
-  pros::delay(200); //making sure we dont have a trailing shot
+    //scoring in topleft goal
+    xModel->xArcade(0,0,0); //stops at the goal
+    setInBrake();
+    setCycle(); //turns on cycler to score in tl goal
+    pros::delay(400); //time the cycler will run for
+    setCyBrake();
+    pros::delay(200); //making sure we dont have a trailing shot
 
-  //backing out of the goal
-  xModel -> xArcade(0, -0.6, 0); //backing up from the goal
-  setReverse();
-  setIntake();
-  pros::delay(80);
-  setCyBrake();
-  pros::delay(500);
-  setInBrake();
-  pros::delay(1120); //time for the bot to back up
+    //backing out of the goal
+    xModel -> xArcade(0, -0.6, 0); //backing up from the goal
+    setReverse();
+    setIntake();
+    pros::delay(80);
+    setCyBrake();
+    pros::delay(500);
+    setInBrake();
+    pros::delay(1120); //time for the bot to back up
 
-  //turning towards red driver station
-  xModel->xArcade(0,0,-0.4); //ccw turn 45 deg
-  pros::delay(450);
+    //turning towards red driver station
+    xModel->xArcade(0,0,-0.4); //ccw turn 45 deg
+    pros::delay(450);
 
-  //strafing to middle goal
-  xModel->xArcade(-0.6,0,0); //strafing left to the middle goal
-  pros::delay(1250); //time to get to the middle goal
+    //strafing to middle goal
+    xModel->xArcade(-0.6,0,0); //strafing left to the middle goal
+    pros::delay(1250); //time to get to the middle goal
 
-  //driving into the middle red goal
-  xModel->xArcade(0,0.7,0); //moves forward til into goal
-  setIntake(); //making sure intake is off
-  setCycle(); //brakes cycler to keep ball from going up
-  pros::delay(100);
-  setInBrake();
-  setCyBrake();
-  pros::delay(1000); //waits for this time
+    //driving into the middle red goal
+    xModel->xArcade(0,0.7,0); //moves forward til into goal
+    setIntake(); //making sure intake is off
+    setCycle(); //brakes cycler to keep ball from going up
+    pros::delay(100);
+    setInBrake();
+    setCyBrake();
+    pros::delay(1000); //waits for this time
 
-  //scoring in middle red goal
-  setInBrake();
-  xModel->xArcade(0,0,0); //stops at the goal
-  setCycle(); //turns on cycler to score in tl goal
-  pros::delay(600); //time the cycler will run for
-  setCyBrake(); //turns off the cycler
-  pros::delay(600); //making sure we dont have a trailing shot
-  setReverse(); //making sure there were no blue balls that got into our robot
-  setOuttake(); //making sure there were no blue balls that got into our robot
-  pros::delay(600); //feel like there should be a delay between this movement
+    //scoring in middle red goal
+    setInBrake();
+    xModel->xArcade(0,0,0); //stops at the goal
+    setCycle(); //turns on cycler to score in tl goal
+    pros::delay(600); //time the cycler will run for
+    setCyBrake(); //turns off the cycler
+    pros::delay(600); //making sure we dont have a trailing shot
+    setReverse(); //making sure there were no blue balls that got into our robot
+    setOuttake(); //making sure there were no blue balls that got into our robot
+    pros::delay(600); //feel like there should be a delay between this movement
 
-  //backing up to the white line
-  xModel->xArcade(0, -1, 0); //speed it backsup at
-  pros::delay(600); //time to backup for
+    //backing up to the white line
+    xModel->xArcade(0, -1, 0); //speed it backsup at
+    pros::delay(600); //time to backup for
 
-  //strafing left to the bottom red goal
-  xModel->xArcade(-1, 0, 0); //speed it strafes left at
-  pros::delay(850); //time to strafe left for
+    //strafing left to the bottom red goal
+    xModel->xArcade(-1, 0, 0); //speed it strafes left at
+    pros::delay(850); //time to strafe left for
 
-  //turning to face the bottom red goal
-  xModel->xArcade(0, 0, -0.6);
-  pros::delay(350); //time to turn to the left;ix
+    //turning to face the bottom red goal
+    xModel->xArcade(0, 0, -0.6);
+    pros::delay(350); //time to turn to the left;ix
 
-  //driving forward to the bottom red goal
-  xModel->xArcade(0, 0.5, 0);
-  setIntake();
-  pros::delay(800); //time to drive to the goal
+    //driving forward to the bottom red goal
+    xModel->xArcade(0, 0.5, 0);
+    setIntake();
+    pros::delay(800); //time to drive to the goal
 
-  //scoring into the bottom red goal
-  setCycle(); //turning on the intake
-  setIntake();
-  pros::delay(1500);
-  setInBrake();
-  pros::delay(500); //runs til the end of the auton
-  setIntake();
-  setEject();
-  pros::delay(300);
-  //backing out of the goal
-  xModel->xArcade(0, -1, 0);
-  pros::delay(400);
-  xModel->xArcade(0, 0, 0);
-  setOuttake();
+    //scoring into the bottom red goal
+    setCycle(); //turning on the intake
+    setIntake();
+    pros::delay(1500);
+    setInBrake();
+    pros::delay(500); //runs til the end of the auton
+    setIntake();
+    setEject();
+    pros::delay(300);
+    //backing out of the goal
+    xModel->xArcade(0, -1, 0);
+    pros::delay(400);
+    xModel->xArcade(0, 0, 0);
+    setOuttake();
+  } else if(autoSelector.get_value() < 2050){
+    //BLUE AUTO
+    //rightwards, forwards, cw?
+    //getting off the wall
+    xModel->xArcade(- 0.6, 0, 0);
+    pros::delay(1200); //moves left ~1 tile
 
+    //turning towards topleft goal
+    xModel->xArcade(0,0,-0.4); //ccw turn 45 deg
+    pros::delay(500);
+
+    //deploy
+    xModel->xArcade(0,0,0); //ccw turn 45 deg
+    setOuttake();
+    ejectorMotor -> move_velocity(600);
+    pros::delay(400);
+    setInBrake();
+    ejectorMotor -> move_velocity(0);
+
+    //driving into the top red goal
+    xModel->xArcade(0,0.6,0); //moves forward til into goal
+    pros::delay(400);
+    setOuttake();
+    ejectorMotor -> move_velocity(600);
+    setIntake(); //turns on intake to grab tl red ball
+    setCyBrake(); //brakes cycler to keep ball from going up
+    pros::delay(600); //waits
+    setInBrake(); //turns off intake to stop the blue balls from coming into it
+    pros::delay(120);
+
+    //scoring in topleft goal
+    xModel->xArcade(0,0,0); //stops at the goal
+    setInBrake();
+    setCycle(); //turns on cycler to score in tl goal
+    pros::delay(400); //time the cycler will run for
+    setCyBrake();
+    pros::delay(200); //making sure we dont have a trailing shot
+
+    //backing out of the goal
+    xModel -> xArcade(0, -0.6, 0); //backing up from the goal
+    setReverse();
+    setIntake();
+    pros::delay(80);
+    setCyBrake();
+    pros::delay(500);
+    setInBrake();
+    pros::delay(1120); //time for the bot to back up
+
+    //turning towards red driver station
+    xModel->xArcade(0,0,-0.4); //ccw turn 45 deg
+    pros::delay(450);
+
+    //strafing to middle goal
+    xModel->xArcade(-0.6,0,0); //strafing left to the middle goal
+    pros::delay(1250); //time to get to the middle goal
+
+    //driving into the middle red goal
+    xModel->xArcade(0,0.7,0); //moves forward til into goal
+    setIntake(); //making sure intake is off
+    setCycle(); //brakes cycler to keep ball from going up
+    pros::delay(100);
+    setInBrake();
+    setCyBrake();
+    pros::delay(1000); //waits for this time
+
+    //scoring in middle red goal
+    setInBrake();
+    xModel->xArcade(0,0,0); //stops at the goal
+    setCycle(); //turns on cycler to score in tl goal
+    pros::delay(600); //time the cycler will run for
+    setCyBrake(); //turns off the cycler
+    pros::delay(600); //making sure we dont have a trailing shot
+    setReverse(); //making sure there were no blue balls that got into our robot
+    setOuttake(); //making sure there were no blue balls that got into our robot
+    pros::delay(600); //feel like there should be a delay between this movement
+
+    //backing up to the white line
+    xModel->xArcade(0, -1, 0); //speed it backsup at
+    pros::delay(600); //time to backup for
+
+    //strafing left to the bottom red goal
+    xModel->xArcade(-1, 0, 0); //speed it strafes left at
+    pros::delay(850); //time to strafe left for
+
+    //turning to face the bottom red goal
+    xModel->xArcade(0, 0, -0.6);
+    pros::delay(350); //time to turn to the left;ix
+
+    //driving forward to the bottom red goal
+    xModel->xArcade(0, 0.5, 0);
+    setIntake();
+    pros::delay(800); //time to drive to the goal
+
+    //scoring into the bottom red goal
+    setCycle(); //turning on the intake
+    setIntake();
+    pros::delay(1500);
+    setInBrake();
+    pros::delay(500); //runs til the end of the auton
+    setIntake();
+    setEject();
+    pros::delay(300);
+    //backing out of the goal
+    xModel->xArcade(0, -1, 0);
+    pros::delay(400);
+    xModel->xArcade(0, 0, 0);
+    setOuttake();
+  }
 }
-
 void opcontrol() {
   lineSensorOne.calibrate();
   //pros::delay(1000);
