@@ -26,3 +26,4 @@ okapi::ControllerButton ejectButton = okapi::ControllerDigital::R1;
 okapi::ControllerButton reverseButton = okapi::ControllerDigital::L1;
 okapi::ControllerButton lineButton = okapi::ControllerDigital::R2;
 pros::ADIAnalogIn lineSensorOne ('A');
+pros::ADIAnalogIn autoSelector ('A');

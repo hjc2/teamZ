@@ -25,5 +25,6 @@ extern okapi::ControllerButton reverseButton;
 extern okapi::ControllerButton lineButton;
 extern pros::ADIAnalogIn lineSensorOne;
 extern pros::ADIAnalogIn lineSensorTwo;
+extern pros::ADIAnalogIn autoSelector;
 //
 //

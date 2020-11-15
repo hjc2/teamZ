@@ -32,6 +32,8 @@ void autonomous() {
     .build();
 
   auto xModel = std::dynamic_pointer_cast<XDriveModel>(chassis->getModel());
+
+  //AUTO SELECTION
   //RED AUTO
   //rightwards, forwards, cw?
   //getting off the wall
@@ -120,18 +122,19 @@ void autonomous() {
   pros::delay(350); //time to turn to the left;ix
 
   //driving forward to the bottom red goal
-  xModel->xArcade(0, 1, 0);
+  xModel->xArcade(0, 0.5, 0);
   setIntake();
-  pros::delay(350); //time to drive to the goal
-  
+  pros::delay(800); //time to drive to the goal
+
   //scoring into the bottom red goal
   setCycle(); //turning on the intake
   setIntake();
-  pros::delay(500);
+  pros::delay(1500);
   setInBrake();
-  pros::delay(2000); //runs til the end of the auton
-  setCyBrake();
-
+  pros::delay(500); //runs til the end of the auton
+  setIntake();
+  setEject();
+  pros::delay(300);
   //backing out of the goal
   xModel->xArcade(0, -1, 0);
   pros::delay(400);
