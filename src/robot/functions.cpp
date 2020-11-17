@@ -47,6 +47,7 @@ int evaluateDriver(){
     }
     //std::cout << "l2 button pressed";
   }
+  
   if(ejectValue){ //EJECTION MODE
     controlIntake(FORWARD);
     controlIncycle(EJECT);

@@ -18,6 +18,7 @@ int toggleNoIntake = 0;
 void on_center_button() { }
 
 void initialize() {
+  /*
   while(1){
     std::cout << autoSelector.get_value();
     if(autoSelector.get_value() > 2048){ //RED MODE
@@ -29,6 +30,7 @@ void initialize() {
     }
     pros::delay(25);
   }
+  */
 }
 
 void disabled() {} //LEAVE THIS EMPTY
