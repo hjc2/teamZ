@@ -21,6 +21,7 @@ int evaluateDriver(){
   bool lineValue = lineButton.changedToPressed();
   bool noIntakeValue = noIntakeButton.changedToPressed();
 
+  bool noIntakePush = noIntakeButton.isPressed();
   bool ejectValue = ejectButton.isPressed();
   bool reverseValue = reverseButton.isPressed();
   if(lineValue){ //LINE TOGGLE MODE CHECKER
@@ -52,9 +53,14 @@ int evaluateDriver(){
   else if(reverseValue){ //PURE REVERES MODE
     controlIntake(REVERSE);
     controlIncycle(REVERSE);
-  } else if(toggleNoIntake){ //PURE REVERES MODE
+  } /* else if(toggleNoIntake){ //PURE REVERES MODE
     controlIntake(BRAKE);
     controlIncycle(FORWARD);
+  } */
+  else if(noIntakePush){ //INTAKE MODE
+    controlIntake(BRAKE);
+    controlIncycle(FORWARD);
+    std::cout << "l2 run";
   } else if(toggleCycle){ //INTAKE MODE
     controlIntake(FORWARD);
     controlIncycle(FORWARD);

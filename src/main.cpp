@@ -18,6 +18,17 @@ int toggleNoIntake = 0;
 void on_center_button() { }
 
 void initialize() {
+  while(1){
+    std::cout << autoSelector.get_value();
+    if(autoSelector.get_value() > 2048){ //RED MODE
+      if(autoSelector.get_value() > 3072){ //3 SEGMENT
+
+      }
+    } else if(autoSelector.get_value() > 1024){ //BLUE MODE
+
+    }
+    pros::delay(25);
+  }
 }
 
 void disabled() {} //LEAVE THIS EMPTY
