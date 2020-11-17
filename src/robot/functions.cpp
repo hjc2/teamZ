@@ -31,13 +31,14 @@ int evaluateDriver(){
       toggleLine = 1;
     }
   }
+  /*
   if(noIntakeValue){ //NOINTAKE MODE TOGGLE CHECKER
     if(toggleNoIntake){
       toggleNoIntake = 0;
     } else {
       toggleNoIntake = 1;
     }
-  }
+  }*/
    if(cycleValue){ //TOGGLE STUFF
     if(toggleCycle){
       toggleCycle = 0;
