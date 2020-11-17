@@ -21,11 +21,11 @@ pros::Motor *leftIntake = &intakeLeft;
 pros::Motor *ejectorMotor = &ejectorMotorMotor;
 pros::Motor *cyclerMotor = &cyclerMotorMotor;
 
-okapi::ControllerButton cycleButton = okapi::ControllerDigital::L2;
+okapi::ControllerButton cycleButton = okapi::ControllerDigital::L1;
 okapi::ControllerButton ejectButton = okapi::ControllerDigital::R1;
-okapi::ControllerButton reverseButton = okapi::ControllerDigital::L1;
+okapi::ControllerButton reverseButton = okapi::ControllerDigital::A;
 okapi::ControllerButton lineButton = okapi::ControllerDigital::R2;
-okapi::ControllerButton noIntakeButton = okapi::ControllerDigital::A;
+okapi::ControllerButton noIntakeButton = okapi::ControllerDigital::L2;
 
 pros::ADIAnalogIn lineSensorOne ('A');
 pros::ADIAnalogIn autoSelector ('B');
