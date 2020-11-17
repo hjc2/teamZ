@@ -19,25 +19,31 @@ void testDriver(){
 int evaluateDriver(){
   bool cycleValue =  cycleButton.changedToPressed();
   bool lineValue = lineButton.changedToPressed();
+  bool noIntakeValue = noIntakeButton.changedToPressed();
+
   bool ejectValue = ejectButton.isPressed();
   bool reverseValue = reverseButton.isPressed();
-
-  if(lineValue){
+  if(lineValue){ //LINE TOGGLE MODE CHECKER
     if(toggleLine){
-
       toggleLine = 0;
     } else {
       toggleLine = 1;
     }
   }
+  if(noIntakeValue){ //NOINTAKE MODE TOGGLE CHECKER
+    if(toggleNoIntake){
+      toggleNoIntake = 0;
+    } else {
+      toggleNoIntake = 1;
+    }
+  }
    if(cycleValue){ //TOGGLE STUFF
     if(toggleCycle){
-
       toggleCycle = 0;
     } else {
       toggleCycle = 1;
     }
-    std::cout << "l2 button pressed";
+    //std::cout << "l2 button pressed";
   }
   if(ejectValue){ //EJECTION MODE
     controlIntake(FORWARD);
@@ -46,6 +52,9 @@ int evaluateDriver(){
   else if(reverseValue){ //PURE REVERES MODE
     controlIntake(REVERSE);
     controlIncycle(REVERSE);
+  } else if(toggleNoIntake){ //PURE REVERES MODE
+    controlIntake(BRAKE);
+    controlIncycle(FORWARD);
   } else if(toggleCycle){ //INTAKE MODE
     controlIntake(FORWARD);
     controlIncycle(FORWARD);

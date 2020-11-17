@@ -13,6 +13,7 @@ const double Deadzone = 0.1;
 
 int toggleCycle = 0;
 int toggleLine = 0;
+int toggleNoIntake = 0;
 
 void on_center_button() { }
 

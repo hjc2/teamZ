@@ -76,6 +76,7 @@ const extern double Deadzone;
 
 extern int toggleCycle;
 extern int toggleLine;
+extern int toggleNoIntake;
 
 //extern int toggleIntake;
 #ifdef __cplusplus
