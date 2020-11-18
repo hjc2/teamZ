@@ -18,25 +18,17 @@ int toggleNoIntake = 0;
 void on_center_button() { }
 
 void initialize() {
-  /*
-  while(1){
-    std::cout << autoSelector.get_value();
-    if(autoSelector.get_value() > 2048){ //RED MODE
-      if(autoSelector.get_value() > 3072){ //3 SEGMENT
-
-      }
-    } else if(autoSelector.get_value() > 1024){ //BLUE MODE
-
-    }
-    pros::delay(25);
-  }
-  */
+  if(autoSelector.get_value() > 3296){ std::cout << "Red 3 Goal Auto";}
+  else if(autoSelector.get_value() > 2496){ std::cout << "Red 2 Goal Auto";}
+  else if(autoSelector.get_value() > 1696){ std::cout << "No Auto";}
+  else if(autoSelector.get_value() > 896){ std::cout << "Blue 2 Goal Auto";}
+  else if(autoSelector.get_value() > 896){ std::cout << "Blue 3 Goal Auto";}
+  pros::delay(300);
 }
 
 void disabled() {} //LEAVE THIS EMPTY
 
 void competition_initialize() {}
-
 //xArcade(myStrafe, myForward, mySpin)
 
 void autonomous() {
@@ -56,7 +48,6 @@ void autonomous() {
   */
   //AUTO SELECTION
   //
-  autoSelector.get_value();
   if(autoSelector.get_value() > 2050){
     //RED AUTO
     //rightwards, forwards, cw?
@@ -314,6 +305,11 @@ void opcontrol() {
       std::cout << "actual right intake voltage: " << rightIntake -> get_voltage() << "\n";
       std::cout << "raw value: " << autoSelector.get_value() << "\n";
       */
+      if(autoSelector.get_value() > 3296){ std::cout << "Red 3 Goal Auto";}
+      else if(autoSelector.get_value() > 2496){ std::cout << "Red 2 Goal Auto";}
+      else if(autoSelector.get_value() > 1696){ std::cout << "No Auto";}
+      else if(autoSelector.get_value() > 896){ std::cout << "Blue 2 Goal Auto";}
+      else if(autoSelector.get_value() > 896){ std::cout << "Blue 3 Goal Auto";}
     pros::delay(20);
 	}
 }
