@@ -22,8 +22,8 @@ void initialize() {
   else if(autoSelector.get_value() > 2496){ std::cout << "Red 2 Goal Auto";}
   else if(autoSelector.get_value() > 1696){ std::cout << "No Auto";}
   else if(autoSelector.get_value() > 896){ std::cout << "Blue 2 Goal Auto";}
-  else if(autoSelector.get_value() > 896){ std::cout << "Blue 3 Goal Auto";}
-  pros::delay(300);
+  else if(autoSelector.get_value() > 0){ std::cout << "Blue 3 Goal Auto";}
+  pros::delay(20);
 }
 
 void disabled() {} //LEAVE THIS EMPTY
@@ -309,7 +309,7 @@ void opcontrol() {
       else if(autoSelector.get_value() > 2496){ std::cout << "Red 2 Goal Auto";}
       else if(autoSelector.get_value() > 1696){ std::cout << "No Auto";}
       else if(autoSelector.get_value() > 896){ std::cout << "Blue 2 Goal Auto";}
-      else if(autoSelector.get_value() > 896){ std::cout << "Blue 3 Goal Auto";}
+      else if(autoSelector.get_value() > 0){ std::cout << "Blue 3 Goal Auto";}
     pros::delay(20);
 	}
 }
