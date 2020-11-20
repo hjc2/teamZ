@@ -20,12 +20,6 @@ const int tuneThree = 2720;
 void on_center_button() { }
 
 void initialize() {
-  if(autoSelector.get_value() > 3296){ std::cout << "Red 3 Goal Auto";}
-  else if(autoSelector.get_value() > 2496){ std::cout << "Red 2 Goal Auto";}
-  else if(autoSelector.get_value() > 1696){ std::cout << "No Auto";}
-  else if(autoSelector.get_value() > 896){ std::cout << "Blue 2 Goal Auto";}
-  else if(autoSelector.get_value() > 0){ std::cout << "Blue 3 Goal Auto";}
-  pros::delay(20);
 }
 
 void disabled() {} //LEAVE THIS EMPTY
