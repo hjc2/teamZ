@@ -176,11 +176,6 @@ void opcontrol() {
       std::cout << "actual right intake voltage: " << rightIntake -> get_voltage() << "\n";
       std::cout << "raw value: " << autoSelector.get_value() << "\n";
       */
-      if(autoSelector.get_value() > 3296 && autoSelector.get_value() < 4097){ std::cout << "Red 3 Goal Auto" << "\n";}
-      else if(autoSelector.get_value() > 2496 && autoSelector.get_value() < 3295){ std::cout << "Red 2 Goal Auto" << "\n";}
-      else if(autoSelector.get_value() > 1696 && autoSelector.get_value() < 2495){ std::cout << "No Auto" << "\n";}
-      else if(autoSelector.get_value() > 896 && autoSelector.get_value() < 1695){ std::cout << "Blue 2 Goal Auto" << "\n";}
-      else if(autoSelector.get_value() > 0 && autoSelector.get_value() < 895){ std::cout << "Blue 3 Goal Auto" << "\n";}
     pros::delay(20);
 	}
 }
