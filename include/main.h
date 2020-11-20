@@ -74,6 +74,10 @@ const extern int EJECT;
 const extern int LINE;
 const extern double Deadzone;
 
+const extern int tuneOne;
+const extern int tuneTwo;
+const extern int tuneThree;
+
 extern int toggleCycle;
 extern int toggleLine;
 extern int toggleNoIntake;

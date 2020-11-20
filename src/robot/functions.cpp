@@ -47,7 +47,7 @@ int evaluateDriver(){
     }
     //std::cout << "l2 button pressed";
   }
-  
+
   if(ejectValue){ //EJECTION MODE
     controlIntake(FORWARD);
     controlIncycle(EJECT);
@@ -169,17 +169,34 @@ void setReverse(){
 
 //line sensor shenanigans
 void setLine(){ //semi correct
-  if(lineSensorOne.get_value() < 2880){ //line sensor activated
-    cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    ejectorMotor -> move_velocity(0);
-    cyclerMotor -> move_velocity(600);
-    ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-    std::cout << "BALL";
-  } else {//line sensor deactivated
+  int top = lineSensorOne.get_value();
+  int mid = lineSensorTwo.get_value();
+  int bot = lineSensorThree.get_value();
+  if(top < tuneOne){
+    if(mid < tuneTwo){
+      if(bot < tuneThree){ //TOP MID AND BOT ACTIVATED
+        setCyBrake();
+        setInBrake();
+        std::cout << "bot activated";
+      } else { //TOP AND MID ACTIVATED
+        setCyBrake();
+        setIntake();
+        std::cout << "mid activated";
+      }
+    } else { //TOP ACTIVATED
+      cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+      ejectorMotor -> move_velocity(0);
+      cyclerMotor -> move_velocity(600);
+      ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+      setIntake();
+      std::cout << "top activated";
+    }
+  } else { //NO BALL
     ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    ejectorMotor -> move_velocity(-600);
+    ejectorMotor -> move_velocity(-150);
     cyclerMotor -> move_velocity(600);
-    std::cout << "NO BALL";
+    setIntake(); //runs intake fully
+    std::cout << "no ball";
   }
 }
