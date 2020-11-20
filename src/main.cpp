@@ -48,8 +48,8 @@ void autonomous() {
     //deploy
     xModel->xArcade(0,0,0); //sit still
     setOuttake();
-    ejectorMotor -> move_velocity(600);
-    pros::delay(400);
+    ejectorMotor -> move_velocity(200);
+    pros::delay(2000);
     setInBrake();
     ejectorMotor -> move_velocity(0);
 
@@ -89,7 +89,7 @@ void autonomous() {
 
     //strafing to middle goal
     xModel->xArcade(-0.6,0,0); //strafing left to the middle goal
-    pros::delay(1250); //time to get to the middle goal
+    pros::delay(1150); //time to get to the middle goal
 
     //driving into the middle red goal
     xModel->xArcade(0,0.7,0); //moves forward til into goal
@@ -115,6 +115,8 @@ void autonomous() {
     xModel->xArcade(0, -1, 0); //speed it backsup at
     pros::delay(600); //time to backup for
     xModel->xArcade(0, 0, 0); //speed it backsup at
+    setCyBrake();
+    setInBrake();
  //RED TWO GOAL
 }
 void opcontrol() {
