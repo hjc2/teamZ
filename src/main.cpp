@@ -60,32 +60,27 @@ void autonomous() {
 
      //driving into the top red goal
      xModel->xArcade(0,0.6,0); //moves forward til into goal
-     pros::delay(400);
-     setOuttake();
-     ejectorMotor -> move_velocity(600);
-     setIntake(); //turns on intake to grab tl red ball
-     setCyBrake(); //brakes cycler to keep ball from going up
+     pros::delay(700);
+     setEject();
+     setIntake();
      pros::delay(600); //waits
-     setInBrake(); //turns off intake to stop the blue balls from coming into it
-     pros::delay(120);
+     pros::delay(10000);
 
      //scoring in topleft goal
      xModel->xArcade(0,0,0); //stops at the goal
-     setInBrake();
-     setCycle(); //turns on cycler to score in tl goal
-     pros::delay(400); //time the cycler will run for
-     setCyBrake();
-     pros::delay(200); //making sure we dont have a trailing shot
+     setEject();
+     setIntake();
 
      //backing out of the goal
      xModel -> xArcade(0, -0.6, 0); //backing up from the goal
-     setReverse();
+     setEject();
      setIntake();
      pros::delay(80);
-     setCyBrake();
-     setOuttake();
+     setEject();
+     setIntake();
      pros::delay(500);
-     setInBrake();
+     setEject();
+     setIntake();
      pros::delay(1120); //time for the bot to back up
 
      //turning towards red driver station
@@ -98,22 +93,25 @@ void autonomous() {
 
      //driving into the middle red goal
      xModel->xArcade(0,0.7,0); //moves forward til into goal
-     setIntake(); //making sure intake is off
-     setCycle(); //brakes cycler to keep ball from going up
+     setEject();
+     setIntake();
      pros::delay(100);
-     setInBrake();
-     setCyBrake();
+     setEject();
+     setIntake();
      pros::delay(1000); //waits for this time
 
      //scoring in middle red goal
-     setInBrake();
+     setEject();
+     setIntake();
      xModel->xArcade(0,0,0); //stops at the goal
-     setCycle(); //turns on cycler to score in tl goal
+     setEject();
+     setIntake();
      pros::delay(600); //time the cycler will run for
-     setCyBrake(); //turns off the cycler
+     setEject();
+     setIntake();
      pros::delay(600); //making sure we dont have a trailing shot
-     setReverse(); //making sure there were no blue balls that got into our robot
-     setOuttake(); //making sure there were no blue balls that got into our robot
+     setEject();
+     setIntake();
      pros::delay(600); //feel like there should be a delay between this movement
 
      //backing up to the white line
@@ -134,20 +132,22 @@ void autonomous() {
      pros::delay(800); //time to drive to the goal
 
      //scoring into the bottom red goal
-     setCycle(); //turning on the intake
+     setEject();
      setIntake();
      pros::delay(1500);
-     setInBrake();
-     pros::delay(500); //runs til the end of the auton
-     setIntake();
      setEject();
+     setIntake();
+     pros::delay(500); //runs til the end of the auton
+     setEject();
+     setIntake();
      pros::delay(300);
      //backing out of the goal
-     xModel->xArcade(0, -1, 0);
+     xModel->xArcade(0, 1, 0);
      pros::delay(400);
      xModel->xArcade(0, 0, 0);
-     setOuttake();
-}
+     setEject();
+     setIntake();
+   }
 void opcontrol() {
   lineSensorOne.calibrate();
   //pros::delay(1000);
