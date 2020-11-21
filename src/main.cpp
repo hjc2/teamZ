@@ -122,7 +122,7 @@ void autonomous() {
 
      //strafing left to the bottom red goal
      xModel->xArcade(-1, 0, 0); //speed it strafes left at
-     pros::delay(700); //time to strafe left for
+     pros::delay(775); //time to strafe left for
 
      //turning to face the bottom red goal
      xModel->xArcade(0, 0, -0.6);
