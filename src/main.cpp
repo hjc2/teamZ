@@ -90,7 +90,7 @@ void autonomous() {
 
      //turning towards red driver station
      xModel->xArcade(0,0,-0.4); //ccw turn 45 deg
-     pros::delay(450);
+     pros::delay(425);
 
      //strafing to middle goal
      xModel->xArcade(-0.6,0,0); //strafing left to the middle goal
