@@ -89,12 +89,12 @@ void autonomous() {
     pros::delay(1120); //time for the bot to back up
 
     //turning towards blue driver station
-    xModel->xArcade(0,0,0.4); //CW turn 45 deg
+    xModel->xArcade(0,0,0.5); //CW turn 45 deg
     pros::delay(450);
 
     //strafing to middle goal
     xModel->xArcade(0.6,0,0); //strafing right to the middle goal
-    pros::delay(1250); //time to get to the middle goal
+    pros::delay(1300); //time to get to the middle goal
 
     //driving into the middle blue goal
     xModel->xArcade(0,0.7,0); //moves forward til into goal
@@ -118,7 +118,7 @@ void autonomous() {
 
     //backing up to the white line
     xModel->xArcade(0, -1, 0); //speed it backsup at
-    pros::delay(600); //time to backup for
+    pros::delay(400); //time to backup for
     xModel->xArcade(0, 0, 0); //speed it backsup at
 }
 void opcontrol() {
@@ -140,7 +140,14 @@ void opcontrol() {
       	controller.getAnalog(ControllerAnalog::leftX), //spin
         Deadzone
 		  );
-      evaluateDriver();
+      if(noCycle.isPressed()){
+        cyclerMotor -> move_velocity(0);
+        ejectorMotor -> move_velocity(0);
+        leftIntake -> move_velocity(600);
+        rightIntake -> move_velocity(600);
+      } else {
+        evaluateDriver();
+      }
       /*
       std::cout << "raw value: " << lineSensorOne.get_value() << "\n";
       std::cout << "calibrated: " << lineSensorOne.get_value_calibrated() << "\n";
