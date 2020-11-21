@@ -67,14 +67,15 @@ void autonomous() {
     setIntake(); //turns on intake to grab tl red ball
     setCyBrake(); //brakes cycler to keep ball from going up
     pros::delay(600); //waits
-    setInBrake(); //turns off intake to stop the blue balls from coming into it
+    setIntake();
     pros::delay(120);
+    setInBrake();
 
     //scoring in topleft goal
     xModel->xArcade(0,0,0); //stops at the goal
     setInBrake();
     setCycle(); //turns on cycler to score in tl goal
-    pros::delay(400); //time the cycler will run for
+    pros::delay(600); //time the cycler will run for
     setCyBrake();
     pros::delay(200); //making sure we dont have a trailing shot
 
