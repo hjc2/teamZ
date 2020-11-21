@@ -78,15 +78,15 @@ void autonomous() {
     setCyBrake();
     pros::delay(200); //making sure we dont have a trailing shot
 
-    //backing out of the goal
     xModel -> xArcade(0, -0.6, 0); //backing up from the goal
-    setReverse();
-    setIntake();
-    pros::delay(80);
-    setCyBrake();
-    pros::delay(500);
-    setInBrake();
-    pros::delay(1120); //time for the bot to back up
+     setReverse();
+     setIntake();
+     pros::delay(160);
+     setCyBrake();
+     setOuttake();
+     pros::delay(420);
+     setInBrake();
+     pros::delay(1120); //time for the bot to back up
 
     //turning towards blue driver station
     xModel->xArcade(0,0,0.4); //CW turn 45 deg
@@ -119,34 +119,7 @@ void autonomous() {
     //backing up to the white line
     xModel->xArcade(0, -1, 0); //speed it backsup at
     pros::delay(600); //time to backup for
-
-    //strafing right to the bottom blue goal
-    xModel->xArcade(1, 0, 0); //speed it strafes left at
-    pros::delay(850); //time to strafe left for
-
-    //turning to face the bottom blue goal right
-    xModel->xArcade(0, 0, 0.6); //right turn
-    pros::delay(350); //time to turn to the right;ix
-
-    //driving forward to the bottom blue goal
-    xModel->xArcade(0, 0.5, 0);
-    setIntake();
-    pros::delay(800); //time to drive to the goal
-
-    //scoring into the bottom blue goal
-    setCycle(); //turning on the intake
-    setIntake();
-    pros::delay(1500);
-    setInBrake();
-    pros::delay(500); //runs til the end of the auton
-    setIntake();
-    setEject();
-    pros::delay(300);
-    //backing out of the goal
-    xModel->xArcade(0, -1, 0);
-    pros::delay(400);
-    xModel->xArcade(0, 0, 0);
-    setOuttake();
+    xModel->xArcade(0, 0, 0); //speed it backsup at
 }
 void opcontrol() {
   lineSensorOne.calibrate();
