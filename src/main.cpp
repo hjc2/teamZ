@@ -60,7 +60,6 @@ void autonomous() {
     else if(autoSelector.get_value() > 896 && autoSelector.get_value() < 1695){ std::cout << "Blue 2 Goal Auto" << "\n";}
     else if(autoSelector.get_value() > 0 && autoSelector.get_value() < 895){ std::cout << "Blue 3 Goal Auto" << "\n";}
     std::cout << "auto voltage: " << autoSelector.get_value() << "\n";
-
     pros::delay(40);
   }*/
   if(autoSelector.get_value() > 3296 && autoSelector.get_value() < 4097){
