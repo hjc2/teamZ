@@ -78,7 +78,7 @@ void autonomous() {
     setIntake();
     pros::delay(80);
     setCyBrake();
-    setOuttake();
+    setInBrake();
     pros::delay(500);
     setInBrake();
     pros::delay(1120); //time for the bot to back up
