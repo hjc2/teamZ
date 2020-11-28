@@ -1,6 +1,10 @@
 #include "main.h"
 #include "../include/285Z/initRobot.h"
 #include "../include/285Z/robot/functions.h"
+#include "../include/285Z/autonomous/blueAuton.h"
+#include "../include/285Z/autonomous/redAuton.h"
+#include "../include/285Z/autonomous/miscAuton.h"
+
 using namespace okapi; //DONT TOUCH THIS
 
 const int BRAKE = 0;
@@ -81,7 +85,6 @@ void on_right_button(){ //red or blue selection
 void initialize() {
 }
 
-
 void disabled() {} //LEAVE THIS EMPTY
 
 void competition_initialize() {
@@ -111,13 +114,13 @@ void competition_initialize() {
 }
 
 void autonomous() {
-    auto chassis = ChassisControllerBuilder()
-    .withMotors(frontLeftMotorPort, frontRightMotorPort, backRightMotorPort, backLeftMotorPort) //tl, tr, br, bl //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)
-    .withDimensions(AbstractMotor::gearset::green, {{15_in, 15_in}, imev5GreenTPR})
-    .build();
-
-    auto xModel = std::dynamic_pointer_cast<XDriveModel>(chassis->getModel());
-
+  evaluate_auto();
+  if(autoValue == NO_AUTO){noAuto();} else
+  if(autoValue == RED_HOMEROW){redHomeRow();} else
+  if(autoValue == RED_TWOGOAL){redTwoGoal();} else
+  if(autoValue == SKILLS_AUTO){skillsAuto();} else
+  if(autoValue == BLUE_HOMEROW){blueHomeRow();} else
+  if(autoValue == BLUE_TWOGOAL){blueTwoGoal();}
 }
 void opcontrol() {
   //pros::delay(1000);
