@@ -18,6 +18,11 @@ const int BLUE_TWOGOAL = 5;
 
 const double Deadzone = 0.1;
 
+int autoValue = 0;
+int twoThree = 0;
+int redBlue = 0;
+int skillsNone = 0;
+
 int toggleCycle = 0;
 int toggleLine = 0;
 int toggleNoIntake = 0;
@@ -27,23 +32,82 @@ const int tuneThree = 2720;
 Controller controller(ControllerId::master);
 pros::Controller master(CONTROLLER_MASTER);
 
-void initialize() {
-  pros::lcd::initialize();
-  pros::delay(20);
-  while(true){
-    if(autoValue == NO_AUTO){pros::lcd::set_text(1, "NO AUTO");} else
-    if(autoValue == RED_HOMEROW){pros::lcd::set_text(1, "RED HOMEROW");} else
-    if(autoValue == RED_TWOGOAL){pros::lcd::set_text(1, "RED TWO GOAL");} else
-    if(autoValue == SKILLS_AUTO){pros::lcd::set_text(1, "SKILLS AUTO");} else
-    if(autoValue == BLUE_HOMEROW){pros::lcd::set_text(1, "BLUE HOMEROW");} else
-    if(autoValue == BLUE_TWOGOAL){pros::lcd::set_text(1, "BLUE TWO GOAL");}
-    pros::delay(20);
+void evaluate_auto(){
+  if(skillsNone == 0){autoValue = NO_AUTO;} else //sets it to no auto
+  if(skillsNone == 1){autoValue = SKILLS_AUTO;} else //sets it to skills auto
+  if(skillsNone == 2){
+    if(redBlue == 0){
+      if(twoThree == 0){
+        autoValue = RED_HOMEROW;
+      } else {
+        autoValue = RED_TWOGOAL;
+      }
+    } else {
+      if(twoThree == 0){
+        autoValue = BLUE_HOMEROW;
+      } else {
+        autoValue = BLUE_TWOGOAL;
+      }
+    }
   }
 }
+void on_center_button(){
+  if(skillsNone >= 0 && skillsNone < 3){
+    if(skillsNone == 2){
+      skillsNone = 0;
+    } else {
+      skillsNone++;
+    }
+  } else {
+    skillsNone = 0;
+  }
+}
+
+void on_left_button(){ //two or three auto selection
+  if(twoThree == 0){
+    twoThree = 1;
+  } else {
+    twoThree = 0;
+  }
+}
+void on_right_button(){ //red or blue selection
+  if(redBlue == 0){
+    redBlue = 1;
+  } else {
+    redBlue = 0;
+  }
+}
+
+void initialize() {
+}
+
 
 void disabled() {} //LEAVE THIS EMPTY
 
 void competition_initialize() {
+
+    pros::lcd::initialize();
+    pros::c::lcd_register_btn1_cb(on_center_button);
+    pros::c::lcd_register_btn0_cb(on_left_button);
+    pros::c::lcd_register_btn2_cb(on_right_button);
+
+    pros::delay(20);
+    while(true){
+      evaluate_auto();
+      pros::delay(5);
+      if(autoValue == NO_AUTO){pros::lcd::set_text(1, "NO AUTO");} else
+      if(autoValue == RED_HOMEROW){pros::lcd::set_text(1, "RED HOMEROW");} else
+      if(autoValue == RED_TWOGOAL){pros::lcd::set_text(1, "RED TWO GOAL");} else
+      if(autoValue == SKILLS_AUTO){pros::lcd::set_text(1, "SKILLS AUTO");} else
+      if(autoValue == BLUE_HOMEROW){pros::lcd::set_text(1, "BLUE HOMEROW");} else
+      if(autoValue == BLUE_TWOGOAL){pros::lcd::set_text(1, "BLUE TWO GOAL");}
+      pros::delay(5);
+      pros::lcd::set_text(2, "TOP SENSOR: " + std::to_string(lineSensorOne.get_value()));
+      pros::lcd::set_text(3, "MID SENSOR: " + std::to_string(lineSensorTwo.get_value()));
+      pros::lcd::set_text(4, "BOTTOM SENSOR: " + std::to_string(lineSensorThree.get_value()));
+      pros::delay(20);
+
+    }
 }
 
 void autonomous() {

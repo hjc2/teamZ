@@ -67,6 +67,12 @@ void initialize(void);
 void disabled(void);
 void competition_initialize(void);
 void opcontrol(void);
+
+void evaluate_auto(void);
+void on_center_button(void);
+void on_right_button(void);
+void on_left_button(void);
+
 const extern int BRAKE;
 const extern int FORWARD;
 const extern int REVERSE;
@@ -87,6 +93,9 @@ const extern int tuneTwo;
 const extern int tuneThree;
 
 extern int autoValue;
+extern int twoThree;
+extern int redBlue;
+extern int skillsNone;
 
 extern int toggleCycle;
 extern int toggleLine;
