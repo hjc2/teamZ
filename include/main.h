@@ -72,16 +72,27 @@ const extern int FORWARD;
 const extern int REVERSE;
 const extern int EJECT;
 const extern int LINE;
+
+const extern int NO_AUTO;
+const extern int RED_HOMEROW;
+const extern int RED_TWOGOAL;
+const extern int SKILLS_AUTO;
+const extern int BLUE_HOMEROW;
+const extern int BLUE_TWOGOAL;
+
 const extern double Deadzone;
 
 const extern int tuneOne;
 const extern int tuneTwo;
 const extern int tuneThree;
 
+extern int autoValue;
+
 extern int toggleCycle;
 extern int toggleLine;
 extern int toggleNoIntake;
-
+extern okapi::Controller controller;
+extern pros::Controller master;
 //extern int toggleIntake;
 #ifdef __cplusplus
 }

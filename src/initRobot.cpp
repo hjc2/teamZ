@@ -32,3 +32,5 @@ pros::ADIAnalogIn lineSensorTwo ('C');
 pros::ADIAnalogIn lineSensorThree ('D');
 
 pros::ADIAnalogIn autoSelector ('B');
+
+pros::ADIDigitalIn colorSelector('E');

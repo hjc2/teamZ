@@ -9,6 +9,13 @@ const int REVERSE = 2;
 const int EJECT = 3;
 const int LINE = 4;
 
+const int NO_AUTO = 0;
+const int RED_HOMEROW = 1;
+const int RED_TWOGOAL = 2;
+const int SKILLS_AUTO = 3;
+const int BLUE_HOMEROW = 4;
+const int BLUE_TWOGOAL = 5;
+
 const double Deadzone = 0.1;
 
 int toggleCycle = 0;
@@ -17,14 +24,27 @@ int toggleNoIntake = 0;
 const int tuneOne = 2720;
 const int tuneTwo = 2720;
 const int tuneThree = 2720;
+Controller controller(ControllerId::master);
+pros::Controller master(CONTROLLER_MASTER);
 
 void initialize() {
-  
+  pros::lcd::initialize();
+  pros::delay(20);
+  while(true){
+    if(autoValue == NO_AUTO){pros::lcd::set_text(1, "NO AUTO");} else
+    if(autoValue == RED_HOMEROW){pros::lcd::set_text(1, "RED HOMEROW");} else
+    if(autoValue == RED_TWOGOAL){pros::lcd::set_text(1, "RED TWO GOAL");} else
+    if(autoValue == SKILLS_AUTO){pros::lcd::set_text(1, "SKILLS AUTO");} else
+    if(autoValue == BLUE_HOMEROW){pros::lcd::set_text(1, "BLUE HOMEROW");} else
+    if(autoValue == BLUE_TWOGOAL){pros::lcd::set_text(1, "BLUE TWO GOAL");}
+    pros::delay(20);
+  }
 }
 
 void disabled() {} //LEAVE THIS EMPTY
 
-void competition_initialize() {}
+void competition_initialize() {
+}
 
 void autonomous() {
     auto chassis = ChassisControllerBuilder()
@@ -39,14 +59,13 @@ void opcontrol() {
   //pros::delay(1000);
 	//DO NOT TOUCH THIS CODE
     auto chassis = ChassisControllerBuilder()
-	.withMotors(frontLeftMotorPort, frontRightMotorPort, backRightMotorPort, backLeftMotorPort) //tl, tr, br, bl //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)
-	.withDimensions(AbstractMotor::gearset::green, {{15_in, 15_in}, imev5GreenTPR})
-	.build();
+	   .withMotors(frontLeftMotorPort, frontRightMotorPort, backRightMotorPort, backLeftMotorPort) //tl, tr, br, bl //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)
+	   .withDimensions(AbstractMotor::gearset::green, {{15_in, 15_in}, imev5GreenTPR})
+  	 .build();
 
     auto xModel = std::dynamic_pointer_cast<XDriveModel>(chassis->getModel());
-    Controller controller(ControllerId::master);
 
-    while (285 > 118) {
+    while (true) {
       xModel->xArcade(
   			controller.getAnalog(ControllerAnalog::rightX), //side to side
       	controller.getAnalog(ControllerAnalog::rightY), //front back
@@ -54,7 +73,7 @@ void opcontrol() {
         Deadzone
 		  );
       evaluateDriver();
-      /*
+      /* //debugging code, dont uncomment unless you know what you're doing
       std::cout << "raw value: " << lineSensorOne.get_value() << "\n";
       std::cout << "calibrated: " << lineSensorOne.get_value_calibrated() << "\n";
       std::cout << "actual cycler velocity: " << cyclerMotor -> get_actual_velocity() << "\n";
@@ -67,11 +86,6 @@ void opcontrol() {
       std::cout << "actual right intake voltage: " << rightIntake -> get_voltage() << "\n";
       std::cout << "raw value: " << autoSelector.get_value() << "\n";
       */
-      if(autoSelector.get_value() > 3296 && autoSelector.get_value() < 4097){ std::cout << "Red 3 Goal Auto" << "\n";}
-      else if(autoSelector.get_value() > 2496 && autoSelector.get_value() < 3295){ std::cout << "Red 2 Goal Auto" << "\n";}
-      else if(autoSelector.get_value() > 1696 && autoSelector.get_value() < 2495){ std::cout << "No Auto" << "\n";}
-      else if(autoSelector.get_value() > 896 && autoSelector.get_value() < 1695){ std::cout << "Blue 2 Goal Auto" << "\n";}
-      else if(autoSelector.get_value() > 0 && autoSelector.get_value() < 895){ std::cout << "Blue 3 Goal Auto" << "\n";}
-    pros::delay(20);
+    pros::delay(20); //NEVER DELETE THIS
 	}
 }

@@ -31,5 +31,7 @@ extern pros::ADIAnalogIn lineSensorTwo; //MIDDLE LINE SENSOR ('C')
 extern pros::ADIAnalogIn lineSensorThree; //BOTTOM LINE SENSOR ('D')
 
 extern pros::ADIAnalogIn autoSelector;
+
+extern pros::ADIDigitalIn colorSelector;
 //
 //
