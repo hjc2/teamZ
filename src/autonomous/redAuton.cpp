@@ -14,10 +14,21 @@ void redHomeRow(){
 
   auto xModel = std::dynamic_pointer_cast<XDriveModel>(chassis->getModel());
 
-  xModel -> xArcade(1, 0, 0);
-  pros::delay(250);
-  xModel -> xArcade(0, 0, 0);
-  pros::delay(15000);
+  for(float i = 0; i < 1; i += 0.01){
+    xModel -> xArcade(-i/5, -i / 1.5, -i / 3);
+    pros::delay(10);
+  }
+  for(float i = 1; i > 0; i -= 0.01){
+    xModel -> xArcade(-i*i, -i, -i / 3);
+    pros::delay(10);
+  }
+  for(float i = 0; i < 1; i += 0.01){
+    xModel -> xArcade(0, i / 1.5, 0);
+    pros::delay(7);
+  }
+
+  xModel -> xArcade(0,0, 0);
+
 }
 void redTwoGoal(){
   auto chassis = ChassisControllerBuilder()
