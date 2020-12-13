@@ -23,7 +23,7 @@ pros::Motor *cyclerMotor = &cyclerMotorMotor;
 
 okapi::ControllerButton cycleButton = okapi::ControllerDigital::L1;
 okapi::ControllerButton ejectButton = okapi::ControllerDigital::R1;
-okapi::ControllerButton reverseButton = okapi::ControllerDigital::A;
+okapi::ControllerButton reverseButton = okapi::ControllerDigital::Y;
 okapi::ControllerButton lineButton = okapi::ControllerDigital::R2;
 okapi::ControllerButton noIntakeButton = okapi::ControllerDigital::L2;
 
