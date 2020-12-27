@@ -28,8 +28,8 @@ okapi::ControllerButton lineButton = okapi::ControllerDigital::R2;
 okapi::ControllerButton noIntakeButton = okapi::ControllerDigital::L2;
 
 pros::ADIAnalogIn lineSensorOne ('A');
-pros::ADIAnalogIn lineSensorTwo ('C');
-pros::ADIAnalogIn lineSensorThree ('D');
+pros::ADIAnalogIn lineSensorTwo ('B');
+pros::ADIAnalogIn lineSensorThree ('C');
 
 pros::ADIAnalogIn autoSelector ('B');
 

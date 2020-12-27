@@ -186,7 +186,7 @@ void setLine(){ //semi correct
     } else { //TOP ACTIVATED
       cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
       ejectorMotor -> move_velocity(0);
-      cyclerMotor -> move_velocity(600);
+      cyclerMotor -> move_velocity(500);
       ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
       setIntake();
       std::cout << "top activated";
@@ -194,8 +194,8 @@ void setLine(){ //semi correct
   } else { //NO BALL
     ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    ejectorMotor -> move_velocity(-150);
-    cyclerMotor -> move_velocity(600);
+    ejectorMotor -> move_velocity(150);
+    cyclerMotor -> move_velocity(150);
     setIntake(); //runs intake fully
     std::cout << "no ball";
   }
