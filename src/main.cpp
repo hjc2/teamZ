@@ -30,8 +30,8 @@ int skillsNone = 0;
 int toggleCycle = 0;
 int toggleLine = 0;
 int toggleNoIntake = 0;
-const int tuneOne = 2830; //top sensor
-const int tuneTwo = 2900; //mid sensor
+const int tuneOne = 2850; //top sensor
+const int tuneTwo = 2870; //mid sensor
 const int tuneThree = 2900; //bottom sensor
 Controller controller(ControllerId::master);
 pros::Controller master(CONTROLLER_MASTER);
