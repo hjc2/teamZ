@@ -65,7 +65,7 @@ int evaluateDriver(){
     controlIntake(BRAKE);
     controlIncycle(SLOWED);
     std::cout << "SLOWED run";
-  } else if(toggleCycle){ //INTAKE MODE
+  } else if(cycleButton.isPressed()){ //INTAKE MODE
     controlIntake(FORWARD);
     controlIncycle(FORWARD);
     std::cout << "l2 run";
