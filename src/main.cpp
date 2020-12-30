@@ -12,6 +12,7 @@ const int FORWARD = 1;
 const int REVERSE = 2;
 const int EJECT = 3;
 const int LINE = 4;
+const int SLOWED = 5;
 
 const int NO_AUTO = 0;
 const int RED_HOMEROW = 1;

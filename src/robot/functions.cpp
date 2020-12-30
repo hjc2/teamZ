@@ -61,8 +61,8 @@ int evaluateDriver(){
   } */
   else if(noIntakePush){ //INTAKE MODE
     controlIntake(BRAKE);
-    controlIncycle(FORWARD);
-    std::cout << "l2 run";
+    controlIncycle(SLOWED);
+    std::cout << "SLOWED run";
   } else if(toggleCycle){ //INTAKE MODE
     controlIntake(FORWARD);
     controlIncycle(FORWARD);
@@ -81,13 +81,13 @@ int evaluateDriver(){
 
 //takes macro
 bool controlIntake(int macro){
-  if(macro == 0){    //brake mode code
+  if(macro == BRAKE){    //brake mode code
     setInBrake();
   } else
-  if(macro == 1){    //intake mode code
+  if(macro == FORWARD){    //intake mode code
     setIntake();
   } else
-  if(macro == 2){    //outtake mode code
+  if(macro == REVERSE){    //outtake mode code
     setOuttake();
   } else {    //manual control code
 
@@ -96,19 +96,22 @@ bool controlIntake(int macro){
 
 //takes macro
 bool controlIncycle(int macro){
-  if(macro == 0){    //brake mode code
+  if(macro == BRAKE){    //brake mode code
     setCyBrake();
   } else
-  if(macro == 1){    //intake mode code
+  if(macro == FORWARD){    //intake mode code
     setCycle();
   } else
-  if(macro == 2){    //outtake mode code
+  if(macro == REVERSE){    //outtake mode code
     setReverse();
-  } if(macro == 3){ //ejectorMode
+  } if(macro == EJECT){ //ejectorMode
     setEject();
   }  else
-  if(macro == 4){
+  if(macro == LINE){ //line mod
     setLine();
+  } else
+  if(macro == SLOWED){ //no intake mode
+    setSlowed();
   } else {    //manual control code
 
   }
@@ -157,7 +160,7 @@ void setCycle(){
   ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   ejectorMotor -> move_velocity(600);
-  cyclerMotor -> move_velocity(400);
+  cyclerMotor -> move_velocity(600);
 }
 //both the ejector and cycler motors reverse
 void setReverse(){
@@ -166,7 +169,13 @@ void setReverse(){
   ejectorMotor -> move_velocity(-600);
   cyclerMotor -> move_velocity(-600);
 }
-
+//cycler runs slower and ejector runs full speed
+void setSlowed(){
+  ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+  ejectorMotor -> move_velocity(600);
+  cyclerMotor -> move_velocity(400);
+}
 //line sensor shenanigans
 void setLine(){ //semi correct
   int top = lineSensorOne.get_value();

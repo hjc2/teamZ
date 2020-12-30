@@ -19,6 +19,7 @@ void setCycle();
 void setReverse();
 void setCyBrake();
 void setLine();
+void setSlowed();
 
 //R2 intake and cycler
 //R1 PURE REVERSE

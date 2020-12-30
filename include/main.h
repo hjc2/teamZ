@@ -78,6 +78,7 @@ const extern int FORWARD;
 const extern int REVERSE;
 const extern int EJECT;
 const extern int LINE;
+const extern int SLOWED;
 
 const extern int NO_AUTO;
 const extern int RED_HOMEROW;
