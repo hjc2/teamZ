@@ -39,6 +39,7 @@ int evaluateDriver(){
       toggleNoIntake = 1;
     }
   }*/
+  /*
    if(cycleValue){ //TOGGLE STUFF
     if(toggleCycle){
       toggleCycle = 0;
@@ -46,7 +47,8 @@ int evaluateDriver(){
       toggleCycle = 1;
     }
     //std::cout << "l2 button pressed";
-  }
+  }*/
+  toggleCycle = cycleValue;
 
   if(ejectValue){ //EJECTION MODE
     controlIntake(FORWARD);
