@@ -162,7 +162,7 @@ void setCycle(){
   ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   ejectorMotor -> move_velocity(600);
-  cyclerMotor -> move_velocity(600);
+  cyclerMotor -> move_velocity(400);
 }
 //both the ejector and cycler motors reverse
 void setReverse(){

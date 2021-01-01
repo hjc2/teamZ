@@ -17,8 +17,22 @@ void skillsAuto(){ //SKILLS AUTO
 
   auto xModel = std::dynamic_pointer_cast<XDriveModel>(chassis->getModel());
 
-  xModel -> xArcade(-1, 1, 0);
-  pros::delay(250);
-  xModel -> xArcade(0, 0, 0);
-  pros::delay(15000);
+  setCycle();
+  pros::delay(400);
+  setCyBrake();
+  xModel -> xArcade(0.5,0.2,0);
+  pros::delay(400);
+  xModel -> xArcade(0,0,0);
+  setOuttake();
+  pros::delay(1000);
+
+  setIntake();
+  xModel -> xArcade(0,0.6,-0.075);
+  pros::delay(600);
+  xModel -> xArcade(0,0.6,-0.3);
+  pros::delay(1100);
+  xModel -> xArcade(0,0,0);
+
+
+
 }
