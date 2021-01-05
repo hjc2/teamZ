@@ -17,22 +17,25 @@ void skillsAuto(){ //SKILLS AUTO
 
   auto xModel = std::dynamic_pointer_cast<XDriveModel>(chassis->getModel());
 
-  setCycle();
-  pros::delay(400);
-  setCyBrake();
-  xModel -> xArcade(0.5,0.2,0);
-  pros::delay(400);
-  xModel -> xArcade(0,0,0);
-  setOuttake();
-  pros::delay(1000);
+  ejectorMotor -> move_velocity(600);
+  pros::delay(500);
+  ejectorMotor -> move_velocity(0);
+  pros::delay(500);
+  //hood deploy stuff
 
-  setIntake();
-  xModel -> xArcade(0,0.6,-0.075);
-  pros::delay(600);
-  xModel -> xArcade(0,0.6,-0.3);
-  pros::delay(1100);
-  xModel -> xArcade(0,0,0);
+  rightIntake -> move_velocity(600);
+  leftIntake -> move_velocity(-600);
+  pros::delay(500);
+  rightIntake -> move_velocity(0);
+  leftIntake -> move_velocity(0);
+  //intake deploy
 
+  for (int i = 0; i < 5000; i += 5) {
+    setLine();
+    pros::delay(5);
+  }
 
+  xModel -> xArcade(0, 0.3, 0);
+  pros::delay(200);
 
 }
