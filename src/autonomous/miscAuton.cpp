@@ -7,8 +7,11 @@
 using namespace okapi; //DONT TOUCH THIS
 
 void noAuto(){ //DONT CHANGE THIS, IT'S MEANT TO SIT STILL
+
   pros::delay(15000);
+
 }
+
 void skillsAuto(){ //SKILLS AUTO
   auto chassis = ChassisControllerBuilder()
   .withMotors(frontLeftMotorPort, frontRightMotorPort, backRightMotorPort, backLeftMotorPort) //tl, tr, br, bl //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)
@@ -17,11 +20,19 @@ void skillsAuto(){ //SKILLS AUTO
 
   auto xModel = std::dynamic_pointer_cast<XDriveModel>(chassis->getModel());
 
-  ejectorMotor -> move_velocity(600);
+  //line mode code
+  for (int i = 0; i < 600; i += 5) {
+    setLine();
+    pros::delay(5);
+  }
+  //hood deploy
+
   pros::delay(500);
-  ejectorMotor -> move_velocity(0);
+
+  xModel -> xArcade(0, 0.2, 0);
   pros::delay(500);
-  //hood deploy stuff
+
+  xModel -> xArcade(0, 0, 0);
 
   rightIntake -> move_velocity(600);
   leftIntake -> move_velocity(-600);
@@ -30,12 +41,11 @@ void skillsAuto(){ //SKILLS AUTO
   leftIntake -> move_velocity(0);
   //intake deploy
 
-  for (int i = 0; i < 5000; i += 5) {
+  for (int i = 0; i < 600; i += 5) {
     setLine();
     pros::delay(5);
   }
 
-  xModel -> xArcade(0, 0.3, 0);
   pros::delay(200);
 
 }
