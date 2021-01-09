@@ -26,7 +26,7 @@ const double Deadzone = 0.1;
 int autoValue = 0;
 int twoThree = 0;
 int redBlue = 0;
-int skillsNone = 0;
+int skillsNone = 1;
 
 int toggleCycle = 0;
 int toggleLine = 0;
