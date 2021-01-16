@@ -71,7 +71,7 @@ void skillsAuto(){ //SKILLS AUTO
   xModel -> xArcade(0, 0, 0);
   pros::delay(500);
 
-    xModel -> xArcade(0, 0, 0.5); //turning to face wall goal
+    xModel -> xArcade(0, 0, 0.4); //turning to face wall goal
   for (int i = 0; i < 350; i += 5) {
     setLine();
     pros::delay(5);
@@ -80,7 +80,7 @@ void skillsAuto(){ //SKILLS AUTO
   xModel -> xArcade(0, 0, 0);
   pros::delay(500);
 
-  xModel -> xArcade(0.6, 0, 0); //strafing to align with wall goal
+  xModel -> xArcade(0.8, 0, 0); //strafing to align with wall goal
   for (int i = 0; i < 500; i += 5) {
     setLine();
     pros::delay(5);
@@ -99,9 +99,9 @@ void skillsAuto(){ //SKILLS AUTO
   xModel -> xArcade(0, 0, 0);
 
   xModel -> xArcade(0, -0.4, 0); //backing out of goal
-  pros::delay(1500);
-  xModel -> xArcade(0, -0.7, 0); //backing out of goal
-  pros::delay(400);
+  pros::delay(1600);
+  xModel -> xArcade(0, -0.6, 0); //backing out of goal
+  pros::delay(600);
 
 
 
@@ -135,7 +135,7 @@ void skillsAuto(){ //SKILLS AUTO
     xModel -> xArcade(0, 0, 0.5); //turning to face ball to back wall
     pros::delay(600);
 
-    xModel -> xArcade(0.5, 0, 0); //strafing to align with 2nd wall goal
+    xModel -> xArcade(0.65, 0, 0); //strafing to align with 2nd wall goal
     pros::delay(600);
 
     setEject();
