@@ -84,6 +84,13 @@ void on_right_button(){ //red or blue selection
 }
 
 void initialize() {
+
+  /*imuSensor.reset();
+  while(imuSensor.is_calibrating()){
+    pros::delay(15);
+  }
+  */
+
 }
 
 void disabled() {} //LEAVE THIS EMPTY
@@ -128,7 +135,7 @@ void opcontrol() {
 	//DO NOT TOUCH THIS CODE
     auto chassis = ChassisControllerBuilder()
 	   .withMotors(frontLeftMotorPort, frontRightMotorPort, backRightMotorPort, backLeftMotorPort) //tl, tr, br, bl //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)
-	   .withDimensions(AbstractMotor::gearset::green, {{15_in, 15_in}, imev5GreenTPR})
+	   .withDimensions(AbstractMotor::gearset::green, {{3.25_in, 14_in}, imev5GreenTPR})
   	 .build();
 
     auto xModel = std::dynamic_pointer_cast<XDriveModel>(chassis->getModel());
