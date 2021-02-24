@@ -4,6 +4,7 @@
 #include "../include/285Z/autonomous/blueAuton.h"
 #include "../include/285Z/autonomous/redAuton.h"
 #include "../include/285Z/autonomous/miscAuton.h"
+#include "../include/285Z/robot/pid.h"
 
 using namespace okapi; //DONT TOUCH THIS
 
@@ -85,11 +86,10 @@ void on_right_button(){ //red or blue selection
 
 void initialize() {
 
-  /*imuSensor.reset();
+  imuSensor.reset();
   while(imuSensor.is_calibrating()){
     pros::delay(15);
   }
-  */
 
 }
 
@@ -148,19 +148,23 @@ void opcontrol() {
         Deadzone
 		  );
       evaluateDriver();
-      /* //debugging code, dont uncomment unless you know what you're doing
-      std::cout << "raw value: " << lineSensorOne.get_value() << "\n";
-      std::cout << "calibrated: " << lineSensorOne.get_value_calibrated() << "\n";
-      std::cout << "actual cycler velocity: " << cyclerMotor -> get_actual_velocity() << "\n";
-      std::cout << "actual ejector velocity: " << ejectorMotor -> get_actual_velocity() << "\n";
-      std::cout << "actual left intake velocity: " << leftIntake -> get_actual_velocity() << "\n";
-      std::cout << "actual right intake velocity: " << rightIntake -> get_actual_velocity() << "\n";
-      std::cout << "actual cycler voltage: " << cyclerMotor -> get_voltage() << "\n";
-      std::cout << "actual ejector voltage: " << ejectorMotor -> get_voltage() << "\n";
-      std::cout << "actual left intake voltage: " << leftIntake -> get_voltage() << "\n";
-      std::cout << "actual right intake voltage: " << rightIntake -> get_voltage() << "\n";
-      std::cout << "raw value: " << autoSelector.get_value() << "\n";
-      */
+
     pros::delay(20); //NEVER DELETE THIS
 	}
 }
+
+
+
+/* //debugging code, dont uncomment unless you know what you're doing
+std::cout << "raw value: " << lineSensorOne.get_value() << "\n";
+std::cout << "calibrated: " << lineSensorOne.get_value_calibrated() << "\n";
+std::cout << "actual cycler velocity: " << cyclerMotor -> get_actual_velocity() << "\n";
+std::cout << "actual ejector velocity: " << ejectorMotor -> get_actual_velocity() << "\n";
+std::cout << "actual left intake velocity: " << leftIntake -> get_actual_velocity() << "\n";
+std::cout << "actual right intake velocity: " << rightIntake -> get_actual_velocity() << "\n";
+std::cout << "actual cycler voltage: " << cyclerMotor -> get_voltage() << "\n";
+std::cout << "actual ejector voltage: " << ejectorMotor -> get_voltage() << "\n";
+std::cout << "actual left intake voltage: " << leftIntake -> get_voltage() << "\n";
+std::cout << "actual right intake voltage: " << rightIntake -> get_voltage() << "\n";
+std::cout << "raw value: " << autoSelector.get_value() << "\n";
+*/

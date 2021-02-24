@@ -33,6 +33,5 @@ extern pros::ADIAnalogIn lineSensorThree; //BOTTOM LINE SENSOR ('D')
 extern pros::ADIAnalogIn autoSelector;
 
 extern pros::ADIDigitalIn colorSelector;
-//extern pros::Imu imuSensor;
-//
-//
+
+extern pros::Imu imuSensor;

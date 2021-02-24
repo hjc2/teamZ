@@ -1,9 +1,12 @@
+#pragma once
 #include "main.h"
 
-/*
-float singleAxisPID(float initialValue, float currentValue, float desiredValue, kP, kI, kD, cD, cI){
-    float cP = currentValue / (desiredValue - initialValue)
-    float value = cP * 1 + kP * kD + cD * cI;
-    return(value);
-}
-*/
+#define RELATIVE 0
+#define ABSOLUTE 1
+
+extern double kP;
+extern double kI;
+extern double kD;
+
+void calibrate();
+void turn(double);

@@ -1,6 +1,5 @@
 #include "main.h"
 #include "../include/285Z/initRobot.h"
-#pragma once
 int frontLeftMotorPort = 2;
 int frontRightMotorPort = -3;
 int backLeftMotorPort = 4;
@@ -36,6 +35,5 @@ pros::ADIAnalogIn autoSelector ('B');
 pros::ADIDigitalIn colorSelector('E');
 
 //IMU CODE
-/*const std::uint8_t imuPort = 21;
+const std::uint8_t imuPort = 21;
 pros::Imu imuSensor(imuPort);
-*/

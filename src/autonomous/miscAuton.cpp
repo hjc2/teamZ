@@ -1,14 +1,18 @@
-#pragma once
-
 #include "main.h"
 #include "../include/285Z/autonomous/miscAuton.h"
 #include "../include/285Z/robot/functions.h"
 #include "../include/285Z/initRobot.h"
+#include "../include/285Z/robot/pid.h"
+
 using namespace okapi; //DONT TOUCH THIS
 
 void noAuto(){ //DONT CHANGE THIS, IT'S MEANT TO SIT STILL
 
-  pros::delay(15000);
+  turn(30);
+
+  //pros::delay(15000);
+
+  //uncomment when done testing IMU + Motion Profile
 
 }
 
