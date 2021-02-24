@@ -1,9 +1,11 @@
 #include "main.h"
 #include "../include/285Z/initRobot.h"
+
 int frontLeftMotorPort = 2;
 int frontRightMotorPort = -3;
 int backLeftMotorPort = 4;
 int backRightMotorPort = -5;
+
 int leftIntakePort = 9;
 int rightIntakePort = 8; //6
 int ejectorPort = 11;
@@ -19,6 +21,9 @@ pros::Motor *rightIntake = &intakeRight;
 pros::Motor *leftIntake = &intakeLeft;
 pros::Motor *ejectorMotor = &ejectorMotorMotor;
 pros::Motor *cyclerMotor = &cyclerMotorMotor;
+
+okapi::MotorGroup driveL({frontLeftMotorPort, backLeftMotorPort,});
+okapi::MotorGroup driveR({frontRightMotorPort, backRightMotorPort});
 
 okapi::ControllerButton cycleButton = okapi::ControllerDigital::L1;
 okapi::ControllerButton ejectButton = okapi::ControllerDigital::R1;

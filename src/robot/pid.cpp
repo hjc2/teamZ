@@ -13,8 +13,10 @@ double deg = 0;
 bool absolute = true;
 
 void turn(double degrees){
-//  driveL.setBrakeMode(AbstractMotor::brakeMode::hold);
-//  driveR.setBrakeMode(AbstractMotor::brakeMode::hold);
+
+  driveR.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+  driveL.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+
   double thetaI = imuSensor.get_heading();
   double thetaF = degrees;
 
@@ -69,8 +71,8 @@ void turn(double degrees){
 
     double sum = P + I + D;
 
-  //  driveL.moveVelocity(sum);
-  //  driveR.moveVelocity(-sum);
+    driveL.moveVelocity(sum);
+    driveR.moveVelocity(-sum);
 
     oldError = error;
     double errorThreshold = 1.5;
@@ -78,6 +80,6 @@ void turn(double degrees){
 
     TURN_NOT_FINISH = !((abs(error) < errorThreshold) && (abs(changeInError) < velocityThreshold));
   }
-//  driveL.moveVelocity(0);
-//  driveR.moveVelocity(0);
+  driveL.moveVelocity(0);
+  driveR.moveVelocity(0);
 }
