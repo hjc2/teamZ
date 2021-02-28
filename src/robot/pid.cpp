@@ -1,9 +1,9 @@
 #include "285Z/initRobot.h"
 #include "285Z/robot/pid.h"
 
-const double GLOBAL_kP = 0.72;
-const double GLOBAL_kI = 0.0003;
-const double GLOBAL_kD = 0.6;
+const double GLOBAL_kP = 3;
+const double GLOBAL_kI = 0.000001;
+const double GLOBAL_kD = 0.1;
 
 void calibrate(){
   imuSensor.reset();
@@ -75,7 +75,7 @@ void turn(double degrees){
     driveR.moveVelocity(-sum);
 
     oldError = error;
-    double errorThreshold = 1.5;
+    double errorThreshold = 0.1;
     double velocityThreshold = 2;
 
     TURN_NOT_FINISH = !((abs(error) < errorThreshold) && (abs(changeInError) < velocityThreshold));

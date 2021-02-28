@@ -40,5 +40,5 @@ pros::ADIAnalogIn autoSelector ('B');
 pros::ADIDigitalIn colorSelector('E');
 
 //IMU CODE
-const std::uint8_t imuPort = 21;
+const std::uint8_t imuPort = 20;
 pros::Imu imuSensor(imuPort);
