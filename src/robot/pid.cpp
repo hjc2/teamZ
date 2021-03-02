@@ -2,7 +2,7 @@
 #include "285Z/robot/pid.h"
 
 const double GLOBAL_kP = 3;
-const double GLOBAL_kI = 0.000001;
+const double GLOBAL_kI = 0.00001;
 const double GLOBAL_kD = 0.1;
 
 void calibrate(){
@@ -75,7 +75,7 @@ void turn(double degrees){
     driveR.moveVelocity(-sum);
 
     oldError = error;
-    double errorThreshold = 0.1;
+    double errorThreshold = 1.5;
     double velocityThreshold = 2;
 
     TURN_NOT_FINISH = !((abs(error) < errorThreshold) && (abs(changeInError) < velocityThreshold));
