@@ -9,7 +9,6 @@ bool controlIntake(int macro);
 bool controlIncycle(int macro);
 
 //INTAKE FUNCTIONS
-void setBrakeAll();
 void setInBrake();
 void setOuttake();
 void setIntake();

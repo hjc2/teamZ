@@ -95,6 +95,8 @@ void skillsAuto(){
     pros::delay(5);
   }
   move(tankProfile, 2.3_ft, fwd);
+  setCyBrake();
+  setInBrake();
   turn(45);
   move(tankProfile, 1.2_ft, fwd);
   cycle(300);
@@ -108,7 +110,8 @@ void skillsAuto(){
   move(tankProfile, 1.3_ft, fwd);
   turn(0);
   move(tankProfile, 1.9_ft, fwd);
-  setBrakeAll();
+  setInBrake();
+  setCyBrake();
   cycle(400);
 
 
@@ -118,7 +121,7 @@ void skillsAuto(){
   turn(270);
   setLine();
   move(tankProfile, 2.7_ft, fwd);
-  setBrakeAll();
+  //setBrakeAll();
   turn(315);
   move(tankProfile, 1.5_ft, fwd);
   cycle(500);
@@ -139,7 +142,7 @@ void skillsAuto(){
   turn(180);
   setLine();
   move(tankProfile, 2.6_ft, fwd);
-  setBrakeAll();
+  //setBrakeAll();
   turn(225);
   move(tankProfile, 1.1_ft, fwd);
   cycle(500);
@@ -151,7 +154,7 @@ void skillsAuto(){
   turn(90);
   setLine();
   move(tankProfile, 1.1_ft, fwd);
-  setBrakeAll();
+  //setBrakeAll();
   turn(0);
   move(tankProfile, 1_ft, fwd);
   setOuttake();
@@ -159,10 +162,11 @@ void skillsAuto(){
   setInBrake();
   cycle(500);
 
+
   turn(180);
   setLine();
   move(tankProfile, 2.4_ft, fwd);
-  setBrakeAll();
+  //setBreakAll();
   cycle(300);
   move(tankProfile, 2.2_ft, bwd);
   turn(90);
