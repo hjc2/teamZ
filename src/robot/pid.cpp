@@ -2,10 +2,11 @@
 #include "285Z/robot/pid.h"
 
 const double GLOBAL_kP = 3;
-const double GLOBAL_kI = 0.000001;
+const double GLOBAL_kI = 0.00001;
 const double GLOBAL_kD = 0.1;
 
-bool clockwise = true;
+double deg = 0;
+bool absolute = true;
 
 void calibrate(){
   imuSensor.reset();
@@ -24,15 +25,6 @@ void turn(double degrees){
 
   double deltaI = abs(thetaF - thetaI);
 
-// Decides which direction to turn
-  if (thetaF > thetaI && deltaI > 180) {
-    clockwise = false;
-  }
-  else if (deltaI < 180) {
-      clockwise = false;
-  }
-
-// idk lol
   if (deltaI > 180){
     if (thetaF > 180) {
       turnTarget = thetaF - 360;
@@ -79,16 +71,11 @@ void turn(double degrees){
 
     double sum = P + I + D;
 
-    if (clockwise) {
-      driveL.moveVelocity(sum);
-      driveR.moveVelocity(-sum);
-    } else {
-      driveL.moveVelocity(-sum);
-      driveR.moveVelocity(sum);
-    }
+    driveL.moveVelocity(sum);
+    driveR.moveVelocity(-sum);
 
     oldError = error;
-    double errorThreshold = 0.1;
+    double errorThreshold = 1.5;
     double velocityThreshold = 2;
 
     TURN_NOT_FINISH = !((abs(error) < errorThreshold) && (abs(changeInError) < velocityThreshold));
