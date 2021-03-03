@@ -120,6 +120,11 @@ bool controlIncycle(int macro){
 }
 
 //INTAKE FUNCTIONS
+//breaks intake, cycler, and ejector
+void setBrakeAll() {
+  setInBrake();
+  setCyBrake();
+}
 //motors will stop and brake
 void setInBrake(){
   rightIntake -> move_velocity(0);
