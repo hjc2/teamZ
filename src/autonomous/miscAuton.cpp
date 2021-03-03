@@ -41,6 +41,7 @@ AsyncMotionProfileControllerBuilder()
 //AUTON FUNCTIONS
 //for motion profile movement ***(include _ft after distance value)***
 void move(std::shared_ptr<okapi::AsyncMotionProfileController> profile, okapi::QLength distance, bool dir){ //movement function
+
     profile->generatePath({
       {0_ft,0_ft,0_deg},
       {distance, 0_ft,0_deg}},
@@ -48,6 +49,24 @@ void move(std::shared_ptr<okapi::AsyncMotionProfileController> profile, okapi::Q
     );
 
     profile->setTarget("M", dir);
+    profile->waitUntilSettled();
+    profile->removePath("M");
+}
+
+void moveIntake(std::shared_ptr<okapi::AsyncMotionProfileController> profile, okapi::QLength distance, bool dir, int time){
+
+    profile->generatePath({
+    {0_ft,0_ft,0_deg},
+    {distance, 0_ft,0_deg}},
+    "M"
+    );
+
+    profile->setTarget("M", dir);
+    for(int i = 0; i < time; i +=5){
+      setLine();
+      pros::delay(5);
+    }
+    setBrakeAll();
     profile->waitUntilSettled();
     profile->removePath("M");
 }
@@ -83,101 +102,85 @@ void noAuto(){
 
 void skillsAuto(){
 
-  //deploy
   deployMotion();
 
 
   //first goal scoring
 
   turn(0);
-  for(int time = 0; time < 30; time +=5){
-    setLine();
-    pros::delay(5);
-  }
-  move(tankProfile, 2.3_ft, fwd);
+  moveIntake(tankProfile, 2.4_ft, fwd, 2000);
   turn(45);
   move(tankProfile, 1.2_ft, fwd);
-  cycle(300);
+  cycle(600);
 
 
   //right wall goal
 
-  move(tankProfile, 3.4_ft, bwd);
-  turn(270);
-  setLine();
-  move(tankProfile, 1.3_ft, fwd);
+  move(tankProfile, 1.2_ft, bwd);
   turn(0);
-  move(tankProfile, 1.9_ft, fwd);
-  setBrakeAll();
+  move(xDriveProfile, 0.45_ft, fwd);
+  moveIntake(tankProfile, 0.5_ft, fwd, 1300);
+  move(tankProfile, 0.35_ft, bwd);
+  turn(270);
+  moveIntake(tankProfile, 2.35_ft, fwd, 2200);
+  turn(0);
+  move(tankProfile, 0.7_ft, fwd);
   cycle(400);
 
 
   //getting red tile ball and back right corner goal
 
-  move(tankProfile, 1.2_ft, bwd);
+  move(tankProfile, 1.05_ft, bwd);
   turn(270);
-  setLine();
-  move(tankProfile, 2.7_ft, fwd);
+  setReverse();
+  pros::delay(300);
   setBrakeAll();
+  moveIntake(tankProfile, 2.45_ft, fwd, 2200);
   turn(315);
-  move(tankProfile, 1.5_ft, fwd);
-  cycle(500);
+  move(tankProfile, 2_ft, fwd);
+  cycle(400);
 
 
-  //scoring back center wall goal
+  //scoring back wall goal
 
-  move(tankProfile, 0.8_ft, bwd);
+  move(tankProfile, 1.3_ft, bwd);
   turn(270);
-  move(xDriveProfile, 3.5_ft, fwd);
-  move(tankProfile, 0.7_ft, fwd);
-  cycle(500);
+  setReverse();
+  pros::delay(200);
+  setBrakeAll();
+  move(xDriveProfile, 3.1_ft, fwd);
+  move(tankProfile, 1.1_ft, fwd);
+  cycle(600);
 
 
   //getting back left corner goal
 
-  move(tankProfile, 0.7_ft, bwd);
-  turn(180);
-  setLine();
-  move(tankProfile, 2.6_ft, fwd);
-  setBrakeAll();
-  turn(225);
-  move(tankProfile, 1.1_ft, fwd);
-  cycle(500);
-  move(tankProfile, 3.4_ft, bwd);
-
-
-  //center + right wall goals
-
-  turn(90);
-  setLine();
-  move(tankProfile, 1.1_ft, fwd);
-  setBrakeAll();
-  turn(0);
-  move(tankProfile, 1_ft, fwd);
-  setOuttake();
-  pros::delay(1500);
-  setInBrake();
+  move(tankProfile, 0.5_ft, bwd);
+  turn(185);
+  moveIntake(tankProfile, 3.2_ft, fwd, 2000);
+  turn(220);
+  move(tankProfile, 1.9_ft, fwd);
   cycle(500);
 
-  turn(180);
-  setLine();
-  move(tankProfile, 2.4_ft, fwd);
-  setBrakeAll();
-  cycle(300);
-  move(tankProfile, 2.2_ft, bwd);
+
+  //right wall goal
+
+  move(tankProfile, 2.9_ft, bwd);
   turn(90);
-  setEject();
-  pros::delay(400);
-  setCyBrake();
-  setLine();
-  move(tankProfile, 1.7_ft, fwd);
+  moveIntake(tankProfile, 2_ft, fwd, 800);
+  turn(180);
+  moveIntake(tankProfile, 2.8_ft, fwd, 800);
+  cycle(800);
 
 
   //final goal (front left corner goal)
 
+  move(tankProfile, 1.05_ft, bwd);
+  turn(90);
+  moveIntake(tankProfile, 2.45_ft, fwd, 1400);
   turn(135);
-  move(tankProfile, 1.6_ft, fwd);
-  cycle(600);
-  move(tankProfile, 0.6_ft, bwd);
+  move(tankProfile, 2_ft, fwd);
+  cycle(500);
+  move(tankProfile, 2.75_ft, fwd);
 
 }
