@@ -69,10 +69,10 @@ void deployMotion() {
 
   start(ejectorMotor, 500, 600);
   move(xDriveProfile, 0.9_ft, fwd);
-  turn(0);
   setOuttake();
   pros::delay(400);
   setInBrake();
+  turn(0);
 
 }
 
@@ -86,19 +86,20 @@ void skillsAuto(){
 
   deployMotion();
 
-  //first ball + corner goal
-  move(tankProfile, 1.3_ft, fwd);
+  //first ball + corner goalmove(tankProfile, 1.3_ft, fwd);
 
   for (int i = 0; i < 2000; i += 5) {
     setLine();
     pros::delay(5);
   }
+  move(tankProfile, 1.3_ft, fwd);
+  pros::delay(500);
   setCyBrake();
   setInBrake();
 
   pros::delay(200);
   move(tankProfile, 0.4_ft, fwd);
-  turn(48);
+  turn(53);
   move(tankProfile, 0.9_ft, fwd);
   cycle(400);
   move(tankProfile, 0.9_ft, bwd);
