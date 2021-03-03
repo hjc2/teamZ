@@ -21,8 +21,8 @@ std::shared_ptr<AsyncMotionProfileController> tankProfile =
 AsyncMotionProfileControllerBuilder()
   .withLimits({
     1.2, // Maximum linear velocity of the Chassis in m/s
-    1.8, // Maximum linear acceleration of the Chassis in m/s/s
-    4.0 // Maximum linear jerk of the Chassis in m/s/s/s
+    1.6, // Maximum linear acceleration of the Chassis in m/s/s
+    4 // Maximum linear jerk of the Chassis in m/s/s/s
   })
   .withOutput(chassis)
   .buildMotionProfileController();
@@ -31,8 +31,8 @@ std::shared_ptr<AsyncMotionProfileController> xDriveProfile =
 AsyncMotionProfileControllerBuilder()
   .withLimits({
     1.2, // Maximum linear velocity of the Chassis in m/s
-    1.8, // Maximum linear acceleration of the Chassis in m/s/s
-    4.0 // Maximum linear jerk of the Chassis in m/s/s/s
+    1.6, // Maximum linear acceleration of the Chassis in m/s/s
+    4 // Maximum linear jerk of the Chassis in m/s/s/s
   })
   .withOutput(chassisStrafe)
   .buildMotionProfileController();
@@ -67,12 +67,11 @@ void cycle (uint32_t time) {
 
 void deployMotion() {
 
-  start(ejectorMotor, 500, 600);
+  start(ejectorMotor, 700, 600);
   move(xDriveProfile, 0.9_ft, fwd);
   setOuttake();
-  pros::delay(400);
+  pros::delay(600);
   setInBrake();
-  turn(0);
 
 }
 
@@ -84,28 +83,105 @@ void noAuto(){
 
 void skillsAuto(){
 
+  //deploy
   deployMotion();
 
-  //first ball + corner goalmove(tankProfile, 1.3_ft, fwd);
 
-  for (int i = 0; i < 2000; i += 5) {
+  //first goal scoring
+
+  turn(0);
+  for(int time = 0; time < 30; time +=5){
     setLine();
     pros::delay(5);
   }
-  move(tankProfile, 1.3_ft, fwd);
-  pros::delay(500);
+  move(tankProfile, 2.3_ft, fwd);
   setCyBrake();
   setInBrake();
+  turn(45);
+  move(tankProfile, 1.2_ft, fwd);
+  cycle(300);
 
-  pros::delay(200);
-  move(tankProfile, 0.4_ft, fwd);
-  turn(53);
-  move(tankProfile, 0.9_ft, fwd);
+
+  //right wall goal
+
+  move(tankProfile, 3.4_ft, bwd);
+  turn(270);
+  setLine();
+  move(tankProfile, 1.3_ft, fwd);
+  turn(0);
+  move(tankProfile, 1.9_ft, fwd);
+  setInBrake();
+  setCyBrake();
   cycle(400);
-  move(tankProfile, 0.9_ft, bwd);
 
 
-  //second ball + right wall goal
+  //getting red tile ball and back right corner goal
 
+  move(tankProfile, 1.2_ft, bwd);
+  turn(270);
+  setLine();
+  move(tankProfile, 2.7_ft, fwd);
+  //setBrakeAll();
+  turn(315);
+  move(tankProfile, 1.5_ft, fwd);
+  cycle(500);
+
+
+  //scoring back center wall goal
+
+  move(tankProfile, 0.8_ft, bwd);
+  turn(270);
+  move(xDriveProfile, 3.5_ft, fwd);
+  move(tankProfile, 0.7_ft, fwd);
+  cycle(500);
+
+
+  //getting back left corner goal
+
+  move(tankProfile, 0.7_ft, bwd);
+  turn(180);
+  setLine();
+  move(tankProfile, 2.6_ft, fwd);
+  //setBrakeAll();
+  turn(225);
+  move(tankProfile, 1.1_ft, fwd);
+  cycle(500);
+  move(tankProfile, 3.4_ft, bwd);
+
+
+  //center + right wall goals
+
+  turn(90);
+  setLine();
+  move(tankProfile, 1.1_ft, fwd);
+  //setBrakeAll();
+  turn(0);
+  move(tankProfile, 1_ft, fwd);
+  setOuttake();
+  pros::delay(1500);
+  setInBrake();
+  cycle(500);
+
+
+  turn(180);
+  setLine();
+  move(tankProfile, 2.4_ft, fwd);
+  //setBreakAll();
+  cycle(300);
+  move(tankProfile, 2.2_ft, bwd);
+  turn(90);
+  setEject();
+  pros::delay(400);
+  setCyBrake();
+  setLine();
+  move(tankProfile, 1.7_ft, fwd);
+
+
+  //final goal (front left corner goal)
+
+  turn(135);
+  move(tankProfile, 1.6_ft, fwd);
+  cycle(600);
+  move(tankProfile, 0.6_ft, bwd);
 
 }
