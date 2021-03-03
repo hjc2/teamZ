@@ -26,4 +26,12 @@ void setSlowed();
 //R1 PURE REVERSE
 
 //L1 turn to ejector mode (overrides everything)
-//
+
+//AUTON FUNCTIONS
+void move(std::shared_ptr<okapi::AsyncMotionProfileController> profile, okapi::QLength distance, bool dir);
+void start (pros::Motor *motor, uint32_t delay, std::uint32_t speed);
+void cycle (uint32_t delay);
+void deployMotion();
+
+const bool fwd {false};
+const bool bwd {true};
