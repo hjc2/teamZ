@@ -146,11 +146,11 @@ void skillsAuto(){
   move(tankProfile, 1.3_ft, bwd);
   turn(270);
   setReverse();
-  pros::delay(200);
+  pros::delay(250);
   setBrakeAll();
   move(xDriveProfile, 3.1_ft, fwd);
   move(tankProfile, 1.1_ft, fwd);
-  cycle(600);
+  cycle(400);
 
 
   //getting back left corner goal
@@ -163,24 +163,35 @@ void skillsAuto(){
   cycle(500);
 
 
-  //right wall goal
+  //right wall goal + CENTER
 
   move(tankProfile, 2.9_ft, bwd);
   turn(90);
-  moveIntake(tankProfile, 2_ft, fwd, 800);
+  moveIntake(tankProfile, 2_ft, fwd, 1200);
+  turn(0);
+  moveIntake(tankProfile, 0.8_ft, fwd, 3000);
+  cycle(400);
+  move(tankProfile, 0.8_ft, bwd);
+  turn(45);
+  setOuttake();
+  setReverse();
+  pros::delay(1000);
+  setBrakeAll();
+
   turn(180);
-  moveIntake(tankProfile, 2.8_ft, fwd, 800);
-  cycle(800);
+  moveIntake(tankProfile, 2.2_ft, fwd, 1000);
+  cycle(500);
 
 
   //final goal (front left corner goal)
 
-  move(tankProfile, 1.05_ft, bwd);
+  move(tankProfile, 0.5_ft, bwd);
   turn(90);
-  moveIntake(tankProfile, 2.45_ft, fwd, 1400);
+  move(tankProfile, 2.4_ft, fwd);
   turn(135);
-  move(tankProfile, 2_ft, fwd);
+  move(tankProfile, 1.2_ft, fwd);
   cycle(500);
-  move(tankProfile, 2.75_ft, fwd);
+  move(tankProfile, 2_ft, bwd);
+
 
 }
