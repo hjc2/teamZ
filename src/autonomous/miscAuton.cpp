@@ -108,80 +108,76 @@ void skillsAuto(){
   //first goal scoring
 
   turn(0);
-  moveIntake(tankProfile, 2.4_ft, fwd, 2000);
+  moveIntake(tankProfile, 2.2_ft, fwd, 2000);
   turn(45);
-  move(tankProfile, 1.1_ft, fwd);
+  move(tankProfile, 0.8_ft, fwd);
   cycle(400);
 
 
   //right wall goal
 
-  move(tankProfile, 1.2_ft, bwd);
-  turn(0);
-  move(xDriveProfile, 0.5_ft, fwd);
-  moveIntake(tankProfile, 0.5_ft, fwd, 1300);
-  move(tankProfile, 0.5_ft, bwd);
+  move(tankProfile, 3.35_ft, bwd);
   turn(270);
-  moveIntake(tankProfile, 2.35_ft, fwd, 2200);
+  moveIntake(tankProfile, 1.35_ft, fwd, 1400);
   turn(0);
-  move(tankProfile, 0.5_ft, fwd);
+  moveIntake(tankProfile, 1.9_ft, fwd, 1200);
   cycle(400);
 
 
   //getting red tile ball and back right corner goal
 
-  move(tankProfile, 1.15_ft, bwd);
+  move(tankProfile, 1.2_ft, bwd);
   turn(270);
   setReverse();
   pros::delay(300);
   setBrakeAll();
-  moveIntake(tankProfile, 2.3_ft, fwd, 2200);
+  moveIntake(tankProfile, 2.45_ft, fwd, 2800);
   turn(315);
-  move(tankProfile, 1.9_ft, fwd);
+  move(tankProfile, 2.2_ft, fwd);
   cycle(400);
 
 
   //scoring back wall goal
 
-  move(tankProfile, 1.3_ft, bwd);
+  move(tankProfile, 1.4_ft, bwd);
   turn(270);
   setReverse();
   pros::delay(250);
   setBrakeAll();
-  move(xDriveProfile, 2.8_ft, fwd);
+  move(xDriveProfile, 2.6_ft, fwd);
   move(tankProfile, 0.9_ft, fwd);
   cycle(600);
 
 
   //getting back left corner goal
 
-  move(tankProfile, 0.6_ft, bwd);
-  turn(186);
-  moveIntake(tankProfile, 3_ft, fwd, 2000);
-  turn(214);
-  move(tankProfile, 1_ft, fwd);
-  cycle(400);
-
-
-  //right wall goal + CENTER
-
-  move(tankProfile, 3_ft, bwd);
-  turn(90);
-  moveIntake(tankProfile, 1.8_ft, fwd, 1200);
+  move(tankProfile, 0.4_ft, bwd);
   turn(180);
-  moveIntake(tankProfile, 2_ft, fwd, 1200);
-  cycle(900);
+  moveIntake(tankProfile, 3.2_ft, fwd, 2200);
+  turn(225);
+  move(tankProfile, 1.2_ft, fwd);
+  cycle(600);
+
+
+  //right wall goal
+
+  move(tankProfile, 3.25_ft, bwd);
+  turn(90);
+  moveIntake(tankProfile, 1.9_ft, fwd, 1300);
+  turn(180);
+  moveIntake(tankProfile, 1.9_ft, fwd, 1650);
+  cycle(400);
 
 
   //final goal (front left corner goal)
 
-  move(tankProfile, 1.15_ft, bwd);
+  move(tankProfile, 1.2_ft, bwd);
   turn(90);
-  moveIntake(tankProfile, 2.45_ft, fwd, 2200);
+  moveIntake(tankProfile, 2.35_ft, fwd, 2400);
   turn(135);
   move(tankProfile, 2_ft, fwd);
   cycle(400);
 
-  move(tankProfile, 2_ft, bwd);
+  move(tankProfile, 3_ft, bwd);
 
 }
