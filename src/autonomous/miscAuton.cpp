@@ -6,40 +6,7 @@
 
 using namespace okapi; //DONT TOUCH THIS
 
-//INITIALIZATION CHASSIS + MP
-auto chassis = ChassisControllerBuilder()
-.withMotors(frontLeftMotorPort, frontRightMotorPort, backRightMotorPort, backLeftMotorPort) //tl, tr, br, bl //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)
-.withDimensions(AbstractMotor::gearset::green, {{3.25_in, 14_in}, imev5GreenTPR})
-.build();
-
-auto chassisStrafe = ChassisControllerBuilder()
-.withMotors(-frontLeftMotorPort, frontRightMotorPort, -backRightMotorPort, backLeftMotorPort) //tl, tr, br, bl //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)
-.withDimensions(AbstractMotor::gearset::green, {{3.25_in, 14_in}, imev5GreenTPR})
-.build();
-
-std::shared_ptr<AsyncMotionProfileController> tankProfile =
-AsyncMotionProfileControllerBuilder()
-  .withLimits({
-    1.2, // Maximum linear velocity of the Chassis in m/s
-    1.5, // Maximum linear acceleration of the Chassis in m/s/s
-    4 // Maximum linear jerk of the Chassis in m/s/s/s
-  })
-  .withOutput(chassis)
-  .buildMotionProfileController();
-
-std::shared_ptr<AsyncMotionProfileController> xDriveProfile =
-AsyncMotionProfileControllerBuilder()
-  .withLimits({
-    1.2, // Maximum linear velocity of the Chassis in m/s
-    1.5, // Maximum linear acceleration of the Chassis in m/s/s
-    4 // Maximum linear jerk of the Chassis in m/s/s/s
-  })
-  .withOutput(chassisStrafe)
-  .buildMotionProfileController();
-
-
 //AUTON FUNCTIONS
-//for motion profile movement ***(include _ft after distance value)***
 void move(std::shared_ptr<okapi::AsyncMotionProfileController> profile, okapi::QLength distance, bool dir){ //movement function
 
     profile->generatePath({
@@ -105,9 +72,7 @@ void skillsAuto(){
 
   deployMotion();
 
-
   //first goal scoring
-
 
   moveIntake(tankProfile, 2.25_ft, fwd, 2000);
   turn(45);

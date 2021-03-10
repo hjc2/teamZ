@@ -38,6 +38,41 @@ const int tuneThree = 2900; //bottom sensor
 Controller controller(ControllerId::master);
 pros::Controller master(CONTROLLER_MASTER);
 
+
+
+//initializing profileControllers
+std::shared_ptr<ChassisController>chassis = ChassisControllerBuilder()
+.withMotors(frontLeftMotorPort, frontRightMotorPort, backRightMotorPort, backLeftMotorPort) //tl, tr, br, bl //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)
+.withDimensions(AbstractMotor::gearset::green, {{3.25_in, 14_in}, imev5GreenTPR})
+.build();
+
+std::shared_ptr<okapi::ChassisController> chassisStrafe = ChassisControllerBuilder()
+.withMotors(-frontLeftMotorPort, frontRightMotorPort, -backRightMotorPort, backLeftMotorPort) //tl, tr, br, bl //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)
+.withDimensions(AbstractMotor::gearset::green, {{3.25_in, 14_in}, imev5GreenTPR})
+.build();
+
+std::shared_ptr<AsyncMotionProfileController> tankProfile =
+AsyncMotionProfileControllerBuilder()
+  .withLimits({
+    1.2, // Maximum linear velocity of the Chassis in m/s
+    1.5, // Maximum linear acceleration of the Chassis in m/s/s
+    4 // Maximum linear jerk of the Chassis in m/s/s/s
+  })
+  .withOutput(chassis)
+  .buildMotionProfileController();
+
+std::shared_ptr<AsyncMotionProfileController> xDriveProfile =
+AsyncMotionProfileControllerBuilder()
+  .withLimits({
+    1.2, // Maximum linear velocity of the Chassis in m/s
+    1.5, // Maximum linear acceleration of the Chassis in m/s/s
+    4 // Maximum linear jerk of the Chassis in m/s/s/s
+  })
+  .withOutput(chassisStrafe)
+  .buildMotionProfileController();
+
+
+
 void evaluate_auto(){
   if(skillsNone == 0){autoValue = NO_AUTO;} else //sets it to no auto
   if(skillsNone == 1){autoValue = SKILLS_AUTO;} else //sets it to skills auto

@@ -27,10 +27,18 @@ extern okapi::ControllerButton reverseButton;
 extern okapi::ControllerButton lineButton;
 extern okapi::ControllerButton noIntakeButton;
 
-
 extern pros::ADIAnalogIn lineSensorOne; //TOP LINE SENSOR ('A')
 extern pros::ADIAnalogIn lineSensorTwo; //MIDDLE LINE SENSOR ('C')
 extern pros::ADIAnalogIn lineSensorThree; //BOTTOM LINE SENSOR ('D')
+
+
+//auto chassis intialization
+extern std::shared_ptr<okapi::ChassisController> chassis;
+extern std::shared_ptr<okapi::ChassisController> chassisStrafe;
+
+extern std::shared_ptr<okapi::AsyncMotionProfileController> tankProfile;
+extern std::shared_ptr<okapi::AsyncMotionProfileController> xDriveProfile;
+
 
 extern pros::ADIAnalogIn autoSelector;
 
