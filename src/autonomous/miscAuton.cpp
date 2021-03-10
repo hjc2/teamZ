@@ -21,7 +21,7 @@ std::shared_ptr<AsyncMotionProfileController> tankProfile =
 AsyncMotionProfileControllerBuilder()
   .withLimits({
     1.2, // Maximum linear velocity of the Chassis in m/s
-    1.6, // Maximum linear acceleration of the Chassis in m/s/s
+    1.5, // Maximum linear acceleration of the Chassis in m/s/s
     4 // Maximum linear jerk of the Chassis in m/s/s/s
   })
   .withOutput(chassis)
@@ -31,7 +31,7 @@ std::shared_ptr<AsyncMotionProfileController> xDriveProfile =
 AsyncMotionProfileControllerBuilder()
   .withLimits({
     1.2, // Maximum linear velocity of the Chassis in m/s
-    1.6, // Maximum linear acceleration of the Chassis in m/s/s
+    1.5, // Maximum linear acceleration of the Chassis in m/s/s
     4 // Maximum linear jerk of the Chassis in m/s/s/s
   })
   .withOutput(chassisStrafe)
@@ -91,6 +91,7 @@ void deployMotion() {
   setOuttake();
   pros::delay(600);
   setInBrake();
+  turn(0);
 
 }
 
@@ -107,8 +108,8 @@ void skillsAuto(){
 
   //first goal scoring
 
-  turn(0);
-  moveIntake(tankProfile, 2.2_ft, fwd, 2000);
+
+  moveIntake(tankProfile, 2.25_ft, fwd, 2000);
   turn(45);
   move(tankProfile, 0.8_ft, fwd);
   cycle(400);
@@ -118,7 +119,7 @@ void skillsAuto(){
 
   move(tankProfile, 3.35_ft, bwd);
   turn(270);
-  moveIntake(tankProfile, 1.35_ft, fwd, 1400);
+  moveIntake(tankProfile, 1.35_ft, fwd, 1100);
   turn(0);
   moveIntake(tankProfile, 1.9_ft, fwd, 1200);
   cycle(400);
@@ -131,7 +132,7 @@ void skillsAuto(){
   setReverse();
   pros::delay(300);
   setBrakeAll();
-  moveIntake(tankProfile, 2.45_ft, fwd, 2800);
+  moveIntake(tankProfile, 2.4_ft, fwd, 2200);
   turn(315);
   move(tankProfile, 2.2_ft, fwd);
   cycle(400);
