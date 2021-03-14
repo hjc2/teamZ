@@ -32,7 +32,6 @@ void move(std::shared_ptr<okapi::AsyncMotionProfileController> profile, okapi::Q
 void moveIntake(std::shared_ptr<okapi::AsyncMotionProfileController> profile, okapi::QLength distance, bool dir, int time);
 void start (pros::Motor *motor, uint32_t delay, std::uint32_t speed);
 void cycle (uint32_t delay);
-void deployMotion();
 
 const bool fwd {false};
 const bool bwd {true};
