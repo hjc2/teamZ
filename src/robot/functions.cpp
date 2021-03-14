@@ -159,28 +159,28 @@ void setCyBrake(){ //correct
 void setEject(){ //correct
   ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-  ejectorMotor -> move_velocity(600);
+  ejectorMotor -> move_velocity(-600);
   cyclerMotor -> move_velocity(600);
 }
 //both cycler and ejector motors go full power
 void setCycle(){
   ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-  ejectorMotor -> move_velocity(-600);
+  ejectorMotor -> move_velocity(600);
   cyclerMotor -> move_velocity(600);
 }
 //both the ejector and cycler motors reverse
 void setReverse(){
   ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-  ejectorMotor -> move_velocity(600);
+  ejectorMotor -> move_velocity(-600);
   cyclerMotor -> move_velocity(-600);
 }
 //cycler runs slower and ejector runs full speed
 void setSlowed(){
   ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-  ejectorMotor -> move_velocity(-600);
+  ejectorMotor -> move_velocity(600);
   cyclerMotor -> move_velocity(400);
 }
 //line sensor shenanigans
@@ -210,7 +210,7 @@ void setLine(){ //semi correct
   } else { //NO BALL
     ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    ejectorMotor -> move_velocity(-290);
+    ejectorMotor -> move_velocity(250);
     cyclerMotor -> move_velocity(500);
     setIntake(); //runs intake fully
     std::cout << "no ball";
