@@ -38,7 +38,11 @@ const int tuneThree = 2830; //bottom sensor
 Controller controller(ControllerId::master);
 pros::Controller master(CONTROLLER_MASTER);
 
+const int tuneOne = 2200; //both top sensor threshold
+const int tuneTwo = 2840; //mid sensor threshold
 
+Controller controller(ControllerId::master);
+pros::Controller master(CONTROLLER_MASTER);
 
 //initializing profileControllers
 std::shared_ptr<ChassisController>chassis = ChassisControllerBuilder()
@@ -141,16 +145,16 @@ void competition_initialize() {
     while(true){
       evaluate_auto();
       pros::delay(5);
-      if(autoValue == NO_AUTO){pros::lcd::set_text(1, "NO AUTO");} else
-      if(autoValue == RED_HOMEROW){pros::lcd::set_text(1, "RED HOMEROW");} else
-      if(autoValue == RED_TWOGOAL){pros::lcd::set_text(1, "RED TWO GOAL");} else
-      if(autoValue == SKILLS_AUTO){pros::lcd::set_text(1, "SKILLS AUTO");} else
-      if(autoValue == BLUE_HOMEROW){pros::lcd::set_text(1, "BLUE HOMEROW");} else
-      if(autoValue == BLUE_TWOGOAL){pros::lcd::set_text(1, "BLUE TWO GOAL");}
+      if(autoValue == NO_AUTO){pros::lcd::set_text(1, "No Auton");} else
+      if(autoValue == RED_HOMEROW){pros::lcd::set_text(1, "Red Homerow");} else
+      if(autoValue == RED_TWOGOAL){pros::lcd::set_text(1, "Red Two Goal Right");} else
+      if(autoValue == SKILLS_AUTO){pros::lcd::set_text(1, "Skills Auton");} else
+      if(autoValue == BLUE_HOMEROW){pros::lcd::set_text(1, "Blue Homerow");} else
+      if(autoValue == BLUE_TWOGOAL){pros::lcd::set_text(1, "Blue Two Goal Right");}
       pros::delay(5);
-      pros::lcd::set_text(2, "TOP SENSOR: " + std::to_string(lineSensorOne.get_value()));
-      pros::lcd::set_text(3, "MID SENSOR: " + std::to_string(lineSensorTwo.get_value()));
-      pros::lcd::set_text(4, "BOTTOM SENSOR: " + std::to_string(lineSensorThree.get_value()));
+      pros::lcd::set_text(2, "Top Sensor Value: " + std::to_string(lineSensorOne.get_value()));
+      pros::lcd::set_text(3, "Bottom Sensor Value: " + std::to_string(lineSensorTwo.get_value()));
+      pros::lcd::set_text(4, "Second Top Sensor Value: " + std::to_string(lineSensorThree.get_value()));
       pros::delay(20);
 
     }
@@ -168,10 +172,6 @@ void autonomous() {
 void opcontrol() {
   //pros::delay(1000);
 	//DO NOT TOUCH THIS CODE
-    auto chassis = ChassisControllerBuilder()
-	   .withMotors(frontLeftMotorPort, frontRightMotorPort, backRightMotorPort, backLeftMotorPort) //tl, tr, br, bl //  .withMotors(frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor)
-	   .withDimensions(AbstractMotor::gearset::green, {{3.25_in, 14_in}, imev5GreenTPR})
-  	 .build();
 
     auto xModel = std::dynamic_pointer_cast<XDriveModel>(chassis->getModel());
 
