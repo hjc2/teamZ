@@ -27,9 +27,9 @@ extern okapi::ControllerButton reverseButton;
 extern okapi::ControllerButton lineButton;
 extern okapi::ControllerButton noIntakeButton;
 
-extern pros::ADIAnalogIn lineSensorOne; //TOP LINE SENSOR ('A')
-extern pros::ADIAnalogIn lineSensorTwo; //MIDDLE LINE SENSOR ('C')
-extern pros::ADIAnalogIn lineSensorThree; //BOTTOM LINE SENSOR ('D')
+extern pros::ADIAnalogIn lineSensorOne;
+extern pros::ADIAnalogIn lineSensorTwo;
+extern pros::ADIAnalogIn lineSensorThree; 
 
 
 //auto chassis intialization

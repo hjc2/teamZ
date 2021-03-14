@@ -186,33 +186,25 @@ void setSlowed(){
 //line sensor shenanigans
 void setLine(){ //semi correct
   int top = lineSensorOne.get_value();
-  int mid = lineSensorTwo.get_value();
-  int bot = lineSensorThree.get_value();
-  if(top < tuneOne){
-    if(mid < tuneTwo){
-      if(bot < tuneThree){ //TOP MID AND BOT ACTIVATED
-        setCyBrake();
-        setInBrake();
-        std::cout << "bot activated";
-      } else { //TOP AND MID ACTIVATED
-        setCyBrake();
-        setIntake();
-        std::cout << "mid activated";
-      }
+  int bot = lineSensorTwo.get_value();
+  int top2 = lineSensorThree.get_value(); //for accuracy
+
+  if((top < tuneOne) && (top2 < tuneOne)){
+    if(bot < tuneTwo){ //ALL ACTIVATED
+      setCyBrake();
+      setInBrake();
     } else { //TOP ACTIVATED
       cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
       ejectorMotor -> move_velocity(0);
       cyclerMotor -> move_velocity(600);
       ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
       setIntake();
-      std::cout << "top activated";
     }
   } else { //NO BALL
     ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    ejectorMotor -> move_velocity(250);
+    ejectorMotor -> move_velocity(200);
     cyclerMotor -> move_velocity(500);
     setIntake(); //runs intake fully
-    std::cout << "no ball";
   }
 }

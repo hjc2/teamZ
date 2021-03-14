@@ -35,8 +35,6 @@ pros::ADIAnalogIn lineSensorOne ('A');
 pros::ADIAnalogIn lineSensorTwo ('C');
 pros::ADIAnalogIn lineSensorThree ('B');
 
-pros::ADIAnalogIn autoSelector ('B');
-
 pros::ADIDigitalIn colorSelector('E');
 
 //IMU CODE
