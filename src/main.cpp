@@ -32,14 +32,9 @@ int skillsNone = 1;
 int toggleCycle = 0;
 int toggleLine = 0;
 int toggleNoIntake = 0;
-const int tuneOne = 2200; //top sensor
-const int tuneTwo = 2870; //mid sensor
-const int tuneThree = 2830; //bottom sensor
-Controller controller(ControllerId::master);
-pros::Controller master(CONTROLLER_MASTER);
 
-const int tuneOne = 2200; //both top sensor threshold
-const int tuneTwo = 2840; //mid sensor threshold
+const int tuneOne = 1800; //both top sensor threshold
+const int tuneTwo = 2900; //mid sensor threshold
 
 Controller controller(ControllerId::master);
 pros::Controller master(CONTROLLER_MASTER);
@@ -58,9 +53,9 @@ std::shared_ptr<okapi::ChassisController> chassisStrafe = ChassisControllerBuild
 std::shared_ptr<AsyncMotionProfileController> tankProfile =
 AsyncMotionProfileControllerBuilder()
   .withLimits({
-    1.2, // Maximum linear velocity of the Chassis in m/s
-    1.5, // Maximum linear acceleration of the Chassis in m/s/s
-    4 // Maximum linear jerk of the Chassis in m/s/s/s
+    2.4, // Maximum linear velocity of the Chassis in m/s
+    3, // Maximum linear acceleration of the Chassis in m/s/s
+    6 // Maximum linear jerk of the Chassis in m/s/s/s
   })
   .withOutput(chassis)
   .buildMotionProfileController();
@@ -68,9 +63,9 @@ AsyncMotionProfileControllerBuilder()
 std::shared_ptr<AsyncMotionProfileController> xDriveProfile =
 AsyncMotionProfileControllerBuilder()
   .withLimits({
-    1.2, // Maximum linear velocity of the Chassis in m/s
-    1.5, // Maximum linear acceleration of the Chassis in m/s/s
-    4 // Maximum linear jerk of the Chassis in m/s/s/s
+    2.4, // Maximum linear velocity of the Chassis in m/s
+    3, // Maximum linear acceleration of the Chassis in m/s/s
+    6 // Maximum linear jerk of the Chassis in m/s/s/s
   })
   .withOutput(chassisStrafe)
   .buildMotionProfileController();

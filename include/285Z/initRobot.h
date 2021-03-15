@@ -29,7 +29,7 @@ extern okapi::ControllerButton noIntakeButton;
 
 extern pros::ADIAnalogIn lineSensorOne;
 extern pros::ADIAnalogIn lineSensorTwo;
-extern pros::ADIAnalogIn lineSensorThree; 
+extern pros::ADIAnalogIn lineSensorThree;
 
 
 //auto chassis intialization
@@ -40,7 +40,6 @@ extern std::shared_ptr<okapi::AsyncMotionProfileController> tankProfile;
 extern std::shared_ptr<okapi::AsyncMotionProfileController> xDriveProfile;
 
 
-extern pros::ADIAnalogIn autoSelector;
 
 extern pros::ADIDigitalIn colorSelector;
 
