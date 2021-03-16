@@ -8,12 +8,14 @@ using namespace okapi; //DONT TOUCH THIS
 void redHomeRow(){
 
   start(ejectorMotor, 700, 600);
+  setCycle();
+  pros::delay(400);
+  setCyBrake();
   move(tankProfile, 2.2_ft, fwd);
   setOuttake();
-  setCycle();
   pros::delay(500);
-  setBrakeAll();
-  turn(290);
+  setInBrake();
+  turn(70);
   moveIntake(tankProfile, 1.8_ft, fwd, 1400);
   cycle(800);
   move(tankProfile, 6_ft, bwd);
@@ -21,18 +23,19 @@ void redHomeRow(){
   moveIntake(tankProfile, 11_ft, fwd, 2500);
   cycle(500);
   move(tankProfile, 1_ft, bwd);
-
 }
 
 void redTwoGoal(){
 
   start(ejectorMotor, 700, 600);
+  setCycle();
+  pros::delay(1100);
+  setCyBrake();
   move(tankProfile, 2.2_ft, fwd);
   setOuttake();
-  setCycle();
   pros::delay(500);
   setBrakeAll();
-  turn(290);
+  turn(70);
   moveIntake(tankProfile, 1.8_ft, fwd, 1000);
   setIntake();
   setCycle();

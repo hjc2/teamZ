@@ -136,6 +136,11 @@ void competition_initialize() {
     pros::c::lcd_register_btn0_cb(on_left_button);
     pros::c::lcd_register_btn2_cb(on_right_button);
 
+    imuSensor.reset();
+    while(imuSensor.is_calibrating()){
+      pros::delay(15);
+    }
+
     pros::delay(20);
     while(true){
       evaluate_auto();

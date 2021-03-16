@@ -10,9 +10,11 @@ using namespace okapi; //DONT TOUCH THIS
 void blueHomeRow(){
 
   start(ejectorMotor, 700, 600);
+  setCycle();
+  pros::delay(400);
+  setCyBrake();
   move(tankProfile, 2.2_ft, fwd);
   setOuttake();
-  setCycle();
   pros::delay(500);
   setBrakeAll();
   turn(75);
@@ -29,12 +31,14 @@ void blueHomeRow(){
 void blueTwoGoal(){
 
   start(ejectorMotor, 700, 600);
+  setCycle();
+  pros::delay(1100);
+  setCyBrake();
   move(tankProfile, 2.2_ft, fwd);
   setOuttake();
-  setCycle();
   pros::delay(500);
   setBrakeAll();
-  turn(75);
+  turn(70);
   moveIntake(tankProfile, 1.8_ft, fwd, 1000);
   setIntake();
   setCycle();
