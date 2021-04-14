@@ -42,6 +42,7 @@ extern std::shared_ptr<okapi::AsyncMotionProfileController> xDriveProfile;
 extern pros::ADIAnalogIn lineSensorOne;
 extern pros::ADIAnalogIn lineSensorTwo;
 
-extern pros::ADIDigitalIn colorSelector;
+extern pros::ADIDigitalIn autoSelectorLeft;
+extern pros::ADIDigitalIn autoSelectorRight;
 
 extern pros::Imu imuSensor;

@@ -2,3 +2,5 @@
 
 void blueHomeRow();
 void blueTwoGoal();
+void blueCenter();
+void blueCorner();

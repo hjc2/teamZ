@@ -34,8 +34,8 @@ okapi::ControllerButton noIntakeButton = okapi::ControllerDigital::L2;
 pros::ADIAnalogIn lineSensorOne ('A');
 pros::ADIAnalogIn lineSensorTwo ('C');
 
-pros::ADIAnalogIn autoSelectorLeft ('D');
-pros::ADIAnalogIn autoSelectorRight ('E');
+pros::ADIDigitalIn autoSelectorLeft ('E');
+pros::ADIDigitalIn autoSelectorRight ('D');
 
 //IMU CODE
 const std::uint8_t imuPort = 20;

@@ -15,20 +15,7 @@ const int EJECT = 3;
 const int LINE = 4;
 const int SLOWED = 5;
 
-const int NO_AUTO = 0;
-const int RED_HOMEROW = 1;
-const int RED_TWOGOAL = 2;
-
-const int SKILLS_AUTO = 3;
-const int BLUE_HOMEROW = 4;
-const int BLUE_TWOGOAL = 5;
-
 const double Deadzone = 0.1;
-
-int autoValue = 0;
-int twoThree = 0;
-int redBlue = 0;
-int skillsNone = 1;
 
 int toggleCycle = 0;
 int toggleLine = 0;
@@ -37,8 +24,32 @@ int toggleNoIntake = 0;
 const int tuneOne = 2400; //both top sensor threshold
 const int tuneTwo = 2900; //mid sensor threshold
 
+int i = 0;
+bool isPressed = 0;
+
 Controller controller(ControllerId::master);
 pros::Controller master(CONTROLLER_MASTER);
+
+typedef void (*AutonFunctions) ();
+AutonFunctions autList [] = {
+  redHomeRow,
+  redCenter,
+  redCorner,
+  blueHomeRow,
+  blueCenter,
+  blueCorner
+};
+
+std::string autStringList [] =
+{
+  "Red Home Row",
+  "Red 3 Goal Center",
+  "Red 3 Goal Corner",
+  "Blue Home Row",
+  "Blue 3 Goal Center",
+  "Blue 3 Goal Corner"
+};
+
 
 //initializing profileControllers
 std::shared_ptr<ChassisController>chassis = ChassisControllerBuilder()
@@ -71,59 +82,26 @@ AsyncMotionProfileControllerBuilder()
   .withOutput(chassisStrafe)
   .buildMotionProfileController();
 
-
-
-void evaluate_auto(){
-  if(skillsNone == 0){autoValue = NO_AUTO;} else //sets it to no auto
-  if(skillsNone == 1){autoValue = SKILLS_AUTO;} else //sets it to skills auto
-  if(skillsNone == 2){
-    if(redBlue == 0){
-      if(twoThree == 0){
-        autoValue = RED_HOMEROW;
-      } else {
-        autoValue = RED_TWOGOAL;
-      }
-    } else {
-      if(twoThree == 0){
-        autoValue = BLUE_HOMEROW;
-      } else {
-        autoValue = BLUE_TWOGOAL;
-      }
-    }
-  }
-}
-void on_center_button(){
-  if(skillsNone >= 0 && skillsNone < 3){
-    if(skillsNone == 2){
-      skillsNone = 0;
-    } else {
-      skillsNone++;
-    }
-  } else {
-    skillsNone = 0;
-  }
-}
-
-void on_left_button(){ //two or three auto selection
-  if(twoThree == 0){
-    twoThree = 1;
-  } else {
-    twoThree = 0;
-  }
-}
-void on_right_button(){ //red or blue selection
-  if(redBlue == 0){
-    redBlue = 1;
-  } else {
-    redBlue = 0;
-  }
-}
-
 void initialize() {
+
+  pros::lcd::initialize();
 
   imuSensor.reset();
   while(imuSensor.is_calibrating()){
     pros::delay(15);
+  }
+
+  pros::delay(20);
+
+  while (true) {
+    if (autoSelectorLeft.get_value() and !isPressed) {
+      if (i > 0) {i -= 1; isPressed = true;}}
+    else if (autoSelectorRight.get_value() and !isPressed) {
+      if (i < 5) {i += 1; isPressed = true;}}
+    else if(!autoSelectorLeft.get_value() && !autoSelectorRight.get_value()){isPressed = false;}
+
+    pros::lcd::set_text(1, autStringList[i]);
+    pros::delay(20);
   }
 
 }
@@ -133,9 +111,6 @@ void disabled() {} //LEAVE THIS EMPTY
 void competition_initialize() {
 
     pros::lcd::initialize();
-    pros::c::lcd_register_btn1_cb(on_center_button);
-    pros::c::lcd_register_btn0_cb(on_left_button);
-    pros::c::lcd_register_btn2_cb(on_right_button);
 
     imuSensor.reset();
     while(imuSensor.is_calibrating()){
@@ -143,32 +118,24 @@ void competition_initialize() {
     }
 
     pros::delay(20);
-    while(true){
-      evaluate_auto();
-      pros::delay(5);
-      if(autoValue == NO_AUTO){pros::lcd::set_text(1, "No Auton");} else
-      if(autoValue == RED_HOMEROW){pros::lcd::set_text(1, "Red Homerow");} else
-      if(autoValue == RED_TWOGOAL){pros::lcd::set_text(1, "Red Two Goal Right");} else
-      if(autoValue == SKILLS_AUTO){pros::lcd::set_text(1, "Skills Auton");} else
-      if(autoValue == BLUE_HOMEROW){pros::lcd::set_text(1, "Blue Homerow");} else
-      if(autoValue == BLUE_TWOGOAL){pros::lcd::set_text(1, "Blue Two Goal Right");}
-      pros::delay(5);
-      pros::lcd::set_text(2, "Top Sensor Value: " + std::to_string(lineSensorOne.get_value()));
-      pros::lcd::set_text(3, "Bottom Sensor Value: " + std::to_string(lineSensorTwo.get_value()));
-      pros::delay(20);
 
+    while (true) {
+    if (autoSelectorLeft.get_value() and !isPressed) {
+      if (i > 0) {i -= 1; isPressed = true;}}
+    else if (autoSelectorRight.get_value() and !isPressed) {
+      if (i < 5) {i += 1; isPressed = true;}}
+    else if(!autoSelectorLeft.get_value() && !autoSelectorRight.get_value()){isPressed = false;}
+
+      pros::lcd::set_text(1, autStringList[i]);
+      pros::delay(20);
     }
+
 }
 
 void autonomous() {
-  evaluate_auto();
-  if(autoValue == NO_AUTO){noAuto();} else
-  if(autoValue == RED_HOMEROW){redHomeRow();} else
-  if(autoValue == RED_TWOGOAL){redTwoGoal();} else
-  if(autoValue == SKILLS_AUTO){skillsAuto();} else
-  if(autoValue == BLUE_HOMEROW){blueHomeRow();} else
-  if(autoValue == BLUE_TWOGOAL){blueTwoGoal();}
+  autList[i];
 }
+
 void opcontrol() {
   //pros::delay(1000);
 	//DO NOT TOUCH THIS CODE

@@ -6,12 +6,6 @@
 
 using namespace okapi; //DONT TOUCH THIS
 
-void deplayMotion() {
-
-
-
-}
-
 void blueHomeRow(){
 
   //start(ejectorMotor, 700, 600);
@@ -53,4 +47,12 @@ void blueTwoGoal(){
   setBrakeAll();
   move(tankProfile, 1_ft, bwd);
 
+}
+
+void blueCenter() {
+  setCycle();
+}
+
+void blueCorner() {
+  setCycle();
 }

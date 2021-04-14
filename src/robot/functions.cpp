@@ -189,7 +189,6 @@ void setSlowed(){
 void setLine(){ //semi correct
   int top = lineSensorOne.get_value();
   int bot = lineSensorTwo.get_value();
-  int top2 = lineSensorThree.get_value(); //for accuracy
 
   if(top < tuneOne){
     //&& (top2 < tuneOne)
