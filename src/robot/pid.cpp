@@ -1,9 +1,9 @@
 #include "285Z/initRobot.h"
 #include "285Z/robot/pid.h"
 
-const double GLOBAL_kP = 3;
+const double GLOBAL_kP = 4;
 const double GLOBAL_kI = 0.00001;
-const double GLOBAL_kD = 0.1;
+const double GLOBAL_kD = 0.8;
 
 double deg = 0;
 bool absolute = true;
@@ -80,6 +80,6 @@ void turn(double degrees){
 
     TURN_NOT_FINISH = !((abs(error) < errorThreshold) && (abs(changeInError) < velocityThreshold));
   }
-  driveL.moveVelocity(0);
-  driveR.moveVelocity(0);
+  driveL.moveVoltage(0);
+  driveR.moveVoltage(0);
 }

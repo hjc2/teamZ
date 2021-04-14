@@ -6,16 +6,19 @@
 
 using namespace okapi; //DONT TOUCH THIS
 
-void deployMotion() {
+/*void deployMotion() {
 
-  start(ejectorMotor, 700, 600);
-  move(xDriveProfile, 0.9_ft, fwd);
-  setOuttake();
+  setCycle();
   pros::delay(600);
-  setInBrake();
-  turn(0);
+  setCyBrake();
 
-}
+  move(xDriveProfile, 0.9_ft, fwd);
+
+  setOuttake();
+  pros::delay(500);
+  setInBrake();
+
+}*/
 
 void noAuto(){
 
@@ -25,36 +28,38 @@ void noAuto(){
 
 void skillsAuto(){
 
-  deployMotion();
+
+  pros::delay(15000);
+  //deployMotion();
 
   //first goal scoring
 
-  moveIntake(tankProfile, 2.25_ft, fwd, 2000);
-  turn(45);
-  move(tankProfile, 0.8_ft, fwd);
-  cycle(400);
+  //moveIntake(tankProfile, 2.2_ft, fwd, 1300);
+  //turn(45);
+  //move(tankProfile, 1_ft, fwd);
+  //cycle(600);
 
 
   //right wall goal
-
-  move(tankProfile, 3.35_ft, bwd);
+  /*
+  moveOuttake(tankProfile, 3.7_ft, bwd, 300);
   turn(270);
-  moveIntake(tankProfile, 1.35_ft, fwd, 1100);
+  moveIntake(tankProfile, 1.5_ft, fwd, 1100);
   turn(0);
-  moveIntake(tankProfile, 1.9_ft, fwd, 1200);
-  cycle(400);
+  moveIntake(tankProfile, 2.3_ft, fwd, 1200);
+  cycle(600);
 
 
   //getting red tile ball and back right corner goal
 
-  move(tankProfile, 1.2_ft, bwd);
+  moveOuttake(tankProfile, 1.2_ft, bwd, 300);
   turn(270);
   setReverse();
   pros::delay(300);
   setBrakeAll();
-  moveIntake(tankProfile, 2.4_ft, fwd, 2200);
+  moveIntake(tankProfile, 2.2_ft, fwd, 2200);
   turn(315);
-  move(tankProfile, 2.2_ft, fwd);
+  move(tankProfile, 2_ft, fwd);
   cycle(400);
 
 
@@ -99,7 +104,7 @@ void skillsAuto(){
   move(tankProfile, 2_ft, fwd);
   cycle(400);
 
-  move(tankProfile, 3_ft, bwd);
+  move(tankProfile, 4_ft, bwd);
 
-
+  */
 }

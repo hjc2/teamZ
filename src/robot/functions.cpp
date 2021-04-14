@@ -183,7 +183,7 @@ void setSlowed(){
   ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
   ejectorMotor -> move_velocity(-600);
-  cyclerMotor -> move_velocity(400);
+  cyclerMotor -> move_velocity(600);
 }
 //line sensor shenanigans
 void setLine(){ //semi correct
@@ -197,17 +197,17 @@ void setLine(){ //semi correct
       setCyBrake();
       setInBrake();
     } else { //TOP ACTIVATED
-      cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+      cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
       ejectorMotor -> move_velocity(0);
-      cyclerMotor -> move_velocity(600);
+      cyclerMotor -> move_velocity(300);
       ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
       setIntake();
     }
   } else { //NO BALL
     ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-    ejectorMotor -> move_velocity(-420);
-    cyclerMotor -> move_velocity(500);
+    cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    ejectorMotor -> move_velocity(0);
+    cyclerMotor -> move_velocity(600);
     setIntake(); //runs intake fully
   }
 }
@@ -235,23 +235,38 @@ void moveIntake(std::shared_ptr<okapi::AsyncMotionProfileController> profile, ok
     );
 
     profile->setTarget("M", dir);
+
     for(int i = 0; i < time; i +=5){
       setLine();
       pros::delay(5);
     }
+
     setBrakeAll();
     profile->waitUntilSettled();
     profile->removePath("M");
 }
 
-void start (pros::Motor *motor, uint32_t delay, std::uint32_t speed) {
-  motor -> move_velocity(speed);
-  pros::delay(delay);
-  motor -> move_velocity(0);
+void moveOuttake(std::shared_ptr<okapi::AsyncMotionProfileController> profile, okapi::QLength distance, bool dir, int time){
+
+    profile->generatePath({
+    {0_ft,0_ft,0_deg},
+    {distance, 0_ft,0_deg}},
+    "M"
+    );
+
+    profile->setTarget("M", dir);
+
+    setOuttake();
+    setReverse();
+    pros::delay(time);
+    setBrakeAll();
+
+    profile->waitUntilSettled();
+    profile->removePath("M");
 }
 
 void cycle (uint32_t time) {
   setCycle();
   pros::delay(time);
-  setCyBrake();
+  setBrakeAll();
 }

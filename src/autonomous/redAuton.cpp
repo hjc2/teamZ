@@ -3,11 +3,18 @@
 #include "../include/285Z/robot/functions.h"
 #include "../include/285Z/initRobot.h"
 #include "../include/285Z/robot/pid.h"
+
 using namespace okapi; //DONT TOUCH THIS
+
+void deplayMotion() {
+
+
+
+}
 
 void redHomeRow(){
 
-  start(ejectorMotor, 700, 600);
+  //start(ejectorMotor, 700, 600);
   setCycle();
   pros::delay(400);
   setCyBrake();
@@ -27,7 +34,7 @@ void redHomeRow(){
 
 void redTwoGoal(){
 
-  start(ejectorMotor, 700, 600);
+  //start(ejectorMotor, 700, 600);
   setCycle();
   pros::delay(1100);
   setCyBrake();

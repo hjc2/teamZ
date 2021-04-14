@@ -6,10 +6,15 @@
 
 using namespace okapi; //DONT TOUCH THIS
 
+void deplayMotion() {
+
+
+
+}
 
 void blueHomeRow(){
 
-  start(ejectorMotor, 700, 600);
+  //start(ejectorMotor, 700, 600);
   setCycle();
   pros::delay(400);
   setCyBrake();
@@ -30,7 +35,7 @@ void blueHomeRow(){
 
 void blueTwoGoal(){
 
-  start(ejectorMotor, 700, 600);
+  //start(ejectorMotor, 700, 600);
   setCycle();
   pros::delay(1100);
   setCyBrake();

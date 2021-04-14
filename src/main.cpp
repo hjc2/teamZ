@@ -18,6 +18,7 @@ const int SLOWED = 5;
 const int NO_AUTO = 0;
 const int RED_HOMEROW = 1;
 const int RED_TWOGOAL = 2;
+
 const int SKILLS_AUTO = 3;
 const int BLUE_HOMEROW = 4;
 const int BLUE_TWOGOAL = 5;
@@ -33,7 +34,7 @@ int toggleCycle = 0;
 int toggleLine = 0;
 int toggleNoIntake = 0;
 
-const int tuneOne = 1800; //both top sensor threshold
+const int tuneOne = 2400; //both top sensor threshold
 const int tuneTwo = 2900; //mid sensor threshold
 
 Controller controller(ControllerId::master);
@@ -54,7 +55,7 @@ std::shared_ptr<AsyncMotionProfileController> tankProfile =
 AsyncMotionProfileControllerBuilder()
   .withLimits({
     2.4, // Maximum linear velocity of the Chassis in m/s
-    3, // Maximum linear acceleration of the Chassis in m/s/s
+    4, // Maximum linear acceleration of the Chassis in m/s/s
     6 // Maximum linear jerk of the Chassis in m/s/s/s
   })
   .withOutput(chassis)
@@ -64,7 +65,7 @@ std::shared_ptr<AsyncMotionProfileController> xDriveProfile =
 AsyncMotionProfileControllerBuilder()
   .withLimits({
     2.4, // Maximum linear velocity of the Chassis in m/s
-    3, // Maximum linear acceleration of the Chassis in m/s/s
+    4, // Maximum linear acceleration of the Chassis in m/s/s
     6 // Maximum linear jerk of the Chassis in m/s/s/s
   })
   .withOutput(chassisStrafe)
@@ -154,7 +155,6 @@ void competition_initialize() {
       pros::delay(5);
       pros::lcd::set_text(2, "Top Sensor Value: " + std::to_string(lineSensorOne.get_value()));
       pros::lcd::set_text(3, "Bottom Sensor Value: " + std::to_string(lineSensorTwo.get_value()));
-      pros::lcd::set_text(4, "Second Top Sensor Value: " + std::to_string(lineSensorThree.get_value()));
       pros::delay(20);
 
     }
