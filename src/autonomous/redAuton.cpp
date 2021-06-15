@@ -34,14 +34,14 @@ void redCenter() {
   setCyBrake();
   moveOuttake(tankProfile, 2.2_ft, fwd, 400);
 
-  turn(290);
-  moveIntake(tankProfile, 1.8_ft, fwd, 1400);
-  cycle(2000);
-  move(tankProfile, 2.3_ft, bwd);
+  turn(285);
+  moveIntake(tankProfile, 1.8_ft, fwd, 1200);
+  cycle(1000);
+  move(tankProfile, 3.95_ft, bwd);
 
-  turn(35);
-  moveIntake(tankProfile, 2_ft, fwd, 1400);
-  move(xDriveProfile, 1.5_ft, bwd);
+  turn(63);
+  move(tankProfile, 0.69_ft, fwd);
+  move(xDriveProfile, 4_ft, bwd);
 
 }
 
@@ -54,7 +54,7 @@ void redCorner() {
 
   turn(75);
   moveIntake(tankProfile, 1.8_ft, fwd, 1400);
-  cycle(2000);
+  cycle(1000);
   move(tankProfile, 1_ft, bwd);
 
 }

@@ -205,7 +205,7 @@ void setLine(){ //semi correct
   } else { //NO BALL
     ejectorMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     cyclerMotor -> set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-    ejectorMotor -> move_velocity(0);
+    ejectorMotor -> move_velocity(100);
     cyclerMotor -> move_velocity(600);
     setIntake(); //runs intake fully
   }

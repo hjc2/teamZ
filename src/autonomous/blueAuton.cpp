@@ -36,11 +36,11 @@ void blueCenter() {
 
   turn(285);
   moveIntake(tankProfile, 1.8_ft, fwd, 1200);
-  cycle(1300);
+  cycle(1000);
   move(tankProfile, 3.95_ft, bwd);
 
-  turn(60);
-  move(tankProfile, 0.67_ft, fwd);
+  turn(63);
+  move(tankProfile, 0.72_ft, fwd);
   move(xDriveProfile, 4_ft, bwd);
 
 }
@@ -54,7 +54,7 @@ void blueCorner() {
 
   turn(75);
   moveIntake(tankProfile, 1.8_ft, fwd, 1400);
-  cycle(1700);
+  cycle(1000);
   move(tankProfile, 1_ft, bwd);
 
 }
